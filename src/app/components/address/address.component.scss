@@ -1,0 +1,19 @@
+.address-info, app-identicon {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.index {
+  color: #888;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1088px) {
+  .address-info .name, .address-info .index {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 198px;
+  }
+}
