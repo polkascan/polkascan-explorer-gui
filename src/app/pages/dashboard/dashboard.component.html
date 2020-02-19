@@ -185,5 +185,50 @@
                 </div>
             </div>
         </section>
+        <section class="info-tiles">
+          <div class="tile is-ancestor has-text-centered">
+              <div class="tile is-parent" *ngIf="totalTransactionsDaychart$ | async as chart">
+                  <article class="tile is-child box">
+                    <app-loading-box *ngIf="chart.is_loading"></app-loading-box>
+                    <app-chart *ngIf="!chart.is_loading"
+                           [chartData]="chart"
+                           [title]="'Analytics-Charts.Total transactions by day' | translate"
+                           height="200px"
+                           [themeColor] = 'networkColor'
+                           xAxisType="datetime"
+                    >
+                    </app-chart>
+                  </article>
+              </div>
+              <div class="tile is-parent is-hidden-mobile" *ngIf="averageBlocktimeDaychart$ | async as chart">
+                  <article class="tile is-child box">
+                    <app-loading-box *ngIf="chart.is_loading"></app-loading-box>
+                    <app-chart *ngIf="!chart.is_loading"
+                      [chartData]="chart"
+                       [analyticsChart]="averageBlocktimeDaychart$"
+                       [title]="'Analytics-Charts.Average blocktime by day' | translate"
+                       height="200px"
+                       [themeColor] = 'networkColor'
+                       xAxisType="datetime"
+                    >
+                    </app-chart>
+                  </article>
+              </div>
+              <div class="tile is-parent is-hidden-touch is-hidden-desktop-only" *ngIf="cumulativeAccountsDayChart$ | async as chart">
+                  <article class="tile is-child box">
+                    <app-loading-box *ngIf="chart.is_loading"></app-loading-box>
+                    <app-chart *ngIf="!chart.is_loading"
+                           [chartData]="chart"
+                           title="Active accounts by day"
+                           [title]="'Analytics-Charts.New accounts by day' | translate"
+                           height="200px"
+                           [themeColor] = 'networkColor'
+                           xAxisType="datetime"
+                    >
+                    </app-chart>
+                  </article>
+              </div>
+          </div>
+      </section>
     </div>
 </div>

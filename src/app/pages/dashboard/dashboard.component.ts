@@ -32,7 +32,9 @@ import {HttpClient} from '@angular/common/http';
 import {BalanceTransfer} from '../../classes/balancetransfer.class';
 import {BalanceTransferService} from '../../services/balance-transfer.service';
 import {AppConfigService} from '../../services/app-config.service';
-import {Network} from '../../classes/network.class';
+import {environment} from '../../../environments/environment';
+import {AnalyticsChart} from '../../classes/analytics-chart.class';
+import {AnalyticsChartService} from '../../services/analytics-chart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,12 +54,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public networkURLPrefix: string;
   public networkTokenDecimals = 0;
   public networkTokenSymbol = '';
+  public networkColor: string;
+
+  public averageBlocktimeDaychart$: Observable<AnalyticsChart>;
+  public totalTransactionsDaychart$: Observable<AnalyticsChart>;
+  public cumulativeAccountsDayChart$: Observable<AnalyticsChart>;
 
   constructor(
     private blockService: BlockService,
     private balanceTransferService: BalanceTransferService,
     private networkstatsService: NetworkstatsService,
     private appConfigService: AppConfigService,
+    private analyticsChartService: AnalyticsChartService,
     private router: Router,
     private http: HttpClient) {
 
@@ -72,6 +80,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.networkTokenSymbol = network.attributes.token_symbol;
       this.getBlocks();
       this.networkstats$ = this.networkstatsService.get('latest');
+
+      // Retrieve charts
+      if (environment.jsonApiDiscoveryRootUrl) {
+
+        this.networkColor = '#' + network.attributes.color_code;
+
+        this.totalTransactionsDaychart$ = this.analyticsChartService.get('utcday-extrinsics_signed-sum-line-14');
+        this.cumulativeAccountsDayChart$ = this.analyticsChartService.get('utcday-accounts_new-sum-line-14');
+        this.averageBlocktimeDaychart$ = this.analyticsChartService.get('utcday-blocktime-avg-line-14');
+      }
     });
 
     const blockUpdateCounter = interval(6000);

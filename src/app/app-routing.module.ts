@@ -100,6 +100,7 @@ const routes: Routes = [
   { path: ':type/:network/system/account/:id', redirectTo: '/:type/:network/account/:id'},
   { path: ':type/:network/module/account/:id', redirectTo: '/:type/:network/account/:id', },
   { path: ':type/:network/system/account', redirectTo: '/:type/:network/account'},
+  { path: 'pre/kusama-cc3/transaction/:hash', redirectTo: '/pre/kusama/transaction/:hash'},
   { path: 'pre/kusama-cc3', redirectTo: '/pre/kusama'},
 
   {

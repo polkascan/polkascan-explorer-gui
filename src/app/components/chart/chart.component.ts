@@ -20,10 +20,11 @@
  * chart.component.ts
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'angular-highcharts';
 import {AnalyticsChart} from '../../classes/analytics-chart.class';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {AppConfigService} from '../../services/app-config.service';
 
 @Component({
   selector: 'app-chart',
@@ -33,6 +34,7 @@ import {Observable} from 'rxjs';
 export class ChartComponent implements OnInit {
 
   @Input() analyticsChart: Observable<AnalyticsChart>;
+  @Input() chartData: AnalyticsChart;
   @Input() chartId: string;
   @Input() title = '';
   @Input() yAxisTitle: string;
@@ -40,94 +42,102 @@ export class ChartComponent implements OnInit {
   @Input() themeColor = '#7cb5ec';
   @Input() height: string = null;
 
+  private networkSubscription: Subscription;
 
   chart: Chart;
 
 
-  constructor() { }
+  constructor(private ref: ChangeDetectorRef, private appConfigService: AppConfigService) { }
+
+  public renderChart(chartData) {
+    const options = {
+      colors: [this.themeColor],
+      chart: {
+        type: 'area',
+        zoomType: 'x',
+        height: this.height
+      },
+      title: {
+        text: this.title,
+        style: {fontSize: '12px'}
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {},
+      yAxis: {
+        title: {
+          text: this.yAxisTitle
+        },
+        min: 0
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, this.themeColor],
+              [1, '#fff']
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
+        }
+      },
+      series: []
+    };
+
+    if (this.xAxisType === 'datetime') {
+              options.xAxis = {
+                type: 'datetime',
+                minRange: 14 * 24 * 3600000
+              };
+            }
+
+    if (this.xAxisType === 'category') {
+              options.xAxis = {
+                type: 'category'
+              };
+            }
+
+            // @ts-ignore
+    this.chart = new Chart(options);
+
+            // tslint:disable-next-line:no-string-literal
+    this.chart.addSeries(chartData.attributes.data['series'][0], true, true);
+  }
 
   ngOnInit() {
 
-
-      this.analyticsChart.subscribe( chart => {
-        if (!chart.is_loading) {
-
-          const options = {
-            colors: [this.themeColor],
-            chart: {
-              type: 'area',
-              zoomType: 'x',
-              height: this.height
-            },
-            title: {
-              text: this.title,
-              style: {fontSize: '12px'}
-            },
-            credits: {
-              enabled: false
-            },
-            xAxis: {
-
-            },
-            yAxis: {
-              title: {
-                text: this.yAxisTitle
-              },
-              min: 0
-            },
-            legend: {
-              enabled: false
-            },
-            plotOptions: {
-              area: {
-                fillColor: {
-                  linearGradient: {
-                    x1: 0,
-                    y1: 0,
-                    x2: 0,
-                    y2: 1
-                  },
-                  stops: [
-                    [0, this.themeColor],
-                    [1, '#fff']
-                  ]
-                },
-                marker: {
-                  radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                  hover: {
-                    lineWidth: 1
-                  }
-                },
-                threshold: null
-              }
-            },
-            series: [
-            ]
-          };
-
-          if (this.xAxisType === 'datetime') {
-            options.xAxis = {
-              type: 'datetime',
-              minRange: 14 * 24 * 3600000
-            };
-          }
-
-          if (this.xAxisType === 'category') {
-            options.xAxis = {
-              type: 'category'
-            };
-          }
-
-          // @ts-ignore
-          this.chart = new Chart(options);
-
-          // tslint:disable-next-line:no-string-literal
-          this.chart.addSeries(chart.attributes.data['series'][0], true, true);
+        if (this.chartData) {
+          this.renderChart(this.chartData);
         }
-      });
+
+        if (this.analyticsChart) {
+
+          this.analyticsChart.subscribe(chart => {
+
+            if (!chart.is_loading) {
+              this.renderChart(chart);
+            }
+          });
+        }
   }
 
 }

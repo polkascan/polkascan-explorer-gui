@@ -3,7 +3,7 @@
       <app-polkascan-header></app-polkascan-header>
       <section class="info-tiles">
           <div class="tile is-ancestor has-text-centered">
-              <div class="tile is-parent is-hidden-mobile" *ngIf="totalTransactionsDaychart$ | async as chart">
+              <div class="tile is-parent" *ngIf="totalTransactionsDaychart$ | async as chart">
                   <article class="tile is-child box">
                     <app-loading-box *ngIf="chart.is_loading"></app-loading-box>
                     <app-chart
@@ -16,7 +16,7 @@
                     </app-chart>
                   </article>
               </div>
-              <div class="tile is-parent" *ngIf="averageBlocktimeDaychart$ | async as chart">
+              <div class="tile is-parent is-hidden-mobile" *ngIf="averageBlocktimeDaychart$ | async as chart">
                   <article class="tile is-child box">
                     <app-loading-box *ngIf="chart.is_loading"></app-loading-box>
                     <app-chart
