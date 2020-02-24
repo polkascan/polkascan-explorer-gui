@@ -215,7 +215,6 @@
 		"Module Events": "モジュールイベント",
 		"Number": "数",
 		"Runtime Versions": "ランタイムバージョン",
-		"Search": "サーチ",
 		"Sender": "",
 		"Transactions": "取引"
 	},
@@ -649,6 +648,8 @@
 		"Validators for current session": "現在のセッションのバリデーター"
 	},
 	"transaction-detail": {
+		"No transaction found for hash": "",
+		"Transaction not found": "",
 		"Triggered Events": ""
 	},
 	"transaction-list": {

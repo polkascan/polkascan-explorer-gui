@@ -215,7 +215,6 @@
 		"Module Events": "모듈 이벤트",
 		"Number": "번호",
 		"Runtime Versions": "런타임 버전",
-		"Search": "수색",
 		"Sender": "",
 		"Transactions": "업무"
 	},
@@ -649,6 +648,8 @@
 		"Validators for current session": "현재 세션의 유효성 검사기"
 	},
 	"transaction-detail": {
+		"No transaction found for hash": "",
+		"Transaction not found": "",
 		"Triggered Events": ""
 	},
 	"transaction-list": {

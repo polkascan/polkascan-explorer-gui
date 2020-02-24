@@ -215,7 +215,6 @@
 		"Module Events": "Eventos del módulo",
 		"Number": "Número",
 		"Runtime Versions": "Versiones de tiempo de ejecución",
-		"Search": "Buscar",
 		"Sender": "",
 		"Transactions": "Actas"
 	},
@@ -649,6 +648,8 @@
 		"Validators for current session": "Validadores para la sesión actual"
 	},
 	"transaction-detail": {
+		"No transaction found for hash": "",
+		"Transaction not found": "",
 		"Triggered Events": ""
 	},
 	"transaction-list": {

@@ -215,7 +215,6 @@
 		"Module Events": "Модульные события",
 		"Number": "Номер",
 		"Runtime Versions": "Версии выполнения",
-		"Search": "Поиск",
 		"Sender": "",
 		"Transactions": "Операции"
 	},
@@ -649,6 +648,8 @@
 		"Validators for current session": "Валидаторы для текущей сессии"
 	},
 	"transaction-detail": {
+		"No transaction found for hash": "",
+		"Transaction not found": "",
 		"Triggered Events": ""
 	},
 	"transaction-list": {

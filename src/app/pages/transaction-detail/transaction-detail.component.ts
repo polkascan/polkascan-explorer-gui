@@ -42,6 +42,8 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
   public networkURLPrefix: string;
   public networkTokenDecimals: number;
   public networkTokenSymbol: string;
+  public resourceNotFound: boolean;
+  public transactionHash: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,11 +60,20 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
       this.networkTokenDecimals = +network.attributes.token_decimals;
       this.networkTokenSymbol = network.attributes.token_symbol;
 
+      this.resourceNotFound = false;
+
       this.extrinsic$ = this.route.paramMap.pipe(
         switchMap((params: ParamMap) => {
+          this.transactionHash = params.get('id');
           return this.extrinsicService.get(params.get('id'), { include: ['events'] });
         })
       );
+
+      this.extrinsic$.subscribe(res => {}, error => {
+        if (error.status === 404) {
+          this.resourceNotFound = true;
+        }
+      });
     });
   }
 

@@ -215,7 +215,6 @@
 		"Module Events": "组件活动",
 		"Number": "区块",
 		"Runtime Versions": "运行时版本",
-		"Search": "搜索",
 		"Sender": "来自",
 		"Transactions": "交易"
 	},
@@ -649,6 +648,8 @@
 		"Validators for current session": "当前会话控制验证人"
 	},
 	"transaction-detail": {
+		"No transaction found for hash": "无法在哈希中找到交易",
+		"Transaction not found": "找不到交易",
 		"Triggered Events": "触发事件"
 	},
 	"transaction-list": {

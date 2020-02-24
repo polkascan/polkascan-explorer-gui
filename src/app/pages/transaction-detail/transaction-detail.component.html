@@ -1,8 +1,27 @@
 <div class="columns">
   <div class="column is-12" *ngIf="extrinsic$ | async as extrinsic">
       <app-polkascan-header></app-polkascan-header>
+
        <section class="info-tiles">
-        <app-extrinsic-table
+        <div class="card" *ngIf="resourceNotFound">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{ 'transaction-detail.Transaction not found' | translate }}
+                </p>
+                <a  class="card-header-icon" aria-label="more options">
+                 <span class="icon">
+                    <i class="fa fa-file-signature fa-2x" aria-hidden="true"></i>
+                  </span>
+                </a>
+            </header>
+            <div class="card-table">
+                <div class="content">
+                  <div class="no-items">{{ 'transaction-detail.No transaction found for hash' | translate }} "{{ transactionHash }}"</div>
+                </div>
+            </div>
+        </div>
+
+        <app-extrinsic-table *ngIf="resourceNotFound === false"
           [extrinsic]="extrinsic"
           [networkTokenDecimals]="networkTokenDecimals"
           [networkTokenSymbol]="networkTokenSymbol"
