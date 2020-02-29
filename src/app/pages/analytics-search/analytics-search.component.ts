@@ -121,7 +121,7 @@ export class AnalyticsSearchComponent implements OnInit, OnDestroy {
         this.loadingCount--;
       }, () => {
         this.router.navigate(
-          [this.networkURLPrefix, 'account', this.account.id],
+          [this.networkURLPrefix, 'account', this.account.attributes.address],
           { replaceUrl: this.replaceUrl }
           );
         this.loadingCount--;
