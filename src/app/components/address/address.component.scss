@@ -2,6 +2,27 @@
   display: inline-block;
   vertical-align: middle;
 
+  .identity-judgement {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .display-name {
+    display: inline-block;
+
+    &.has-identity:not(.judgement-pos) {
+      opacity: 0.66;
+    }
+    &.has-identity.judgement-neg {
+      opacity: 0.66;
+    }
+  }
+
+  .sub-ident-name {
+    margin-left: 4px;
+    display: inline-block;
+    font-size: 0.8em;
+  }
 }
 
 .index {

@@ -30,7 +30,9 @@ export class Account extends Resource {
     identity_display: 'identity_display',
     index_address: 'index_address',
     identity_judgement_good: 'identity_judgement_good',
-    identity_judgement_bad: 'identity_judgement_bad'
+    identity_judgement_bad: 'identity_judgement_bad',
+    subidentity_display: 'subidentity_display',
+    parent_identity: 'parent_identity'
   };
 
   public relationships = {
