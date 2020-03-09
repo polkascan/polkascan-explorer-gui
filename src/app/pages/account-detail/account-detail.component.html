@@ -36,6 +36,12 @@
                                   {{ account.attributes.identity_display }}
                                 </td>
                               </tr>
+                              <tr *ngIf="account.attributes.subidentity_display">
+                                <td>{{ 'AccountDetail.Sub Identity' | translate }}</td>
+                                <td>
+                                  {{ account.attributes.subidentity_display }}
+                                </td>
+                              </tr>
                               <tr *ngIf="account.attributes.identity_legal">
                                 <td>{{ 'AccountDetail.Legal name' | translate }}</td>
                                 <td>
