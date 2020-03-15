@@ -44,7 +44,7 @@
                                     [networkTokenSymbol]="networkTokenSymbol"
                                     [networkURLPrefix]="networkURLPrefix"
                                   ></app-struct>
-                                  <a *ngIf="preimage.attributes.proposal?.call_function == 'set_code'" [href]="download('new')">Download WASM binary</a>
+                                  <a *ngIf="preimage.attributes.proposal?.call_function == 'set_code'" [href]="download(preimage.attributes.proposal?.call_args[0].name)">Download WASM binary</a>
                                 </td>
                               </tr>
                               <tr *ngIf="preimage.attributes.verified">
