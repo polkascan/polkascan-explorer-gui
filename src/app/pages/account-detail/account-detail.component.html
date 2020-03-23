@@ -91,6 +91,22 @@
                                   <i *ngIf="account.attributes.is_reaped" class="fa fa-times" style="color: darkred"></i>
                                 </td>
                               </tr>
+                              <tr *ngIf="account.getCurrentRoles().length > 0">
+                                <td>{{ 'AccountDetail.Current Roles' | translate }}</td>
+                                <td>
+                                  <span *ngFor="let item of account.getCurrentRoles(); let isLast=last">
+                                     {{ 'AccountDetail.Role_' + item | translate}}{{isLast ? '' : ', '}}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr *ngIf="account.getPastRoles().length > 0">
+                                <td>{{ 'AccountDetail.Past Roles' | translate }}</td>
+                                <td>
+                                  <span *ngFor="let item of account.getPastRoles(); let isLast=last">
+                                     {{ 'AccountDetail.Role_' + item | translate}}{{isLast ? '' : ', '}}
+                                  </span>
+                                </td>
+                              </tr>
                           </tbody>
                       </table>
                   </div>
@@ -117,6 +133,12 @@
                     <a routerLink="." fragment="transfers">
                       <span class="icon is-small"><i class="fas fa-exchange-alt" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Last 25 balance transfers' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'roles'}">
+                    <a routerLink="." fragment="roles">
+                      <span class="icon is-small"><i class="fas fa-user-tag" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Roles' | translate }}</span>
                     </a>
                   </li>
                 </ul>
@@ -222,6 +244,120 @@
               <footer class="card-footer" *ngIf="slashes?.data.length == 25">
                   <a class="card-footer-item" routerLink="." [queryParams]="{ slashesPage: slashesPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
               </footer>
+              <div class="card-table" id="roles" *ngIf="currentTab == 'roles'">
+                  <div class="content">
+                      <table class="table is-fullwidth is-striped">
+                          <thead>
+                              <tr>
+                                <th></th>
+                                <th>{{ 'AccountDetail.Role' | translate }}</th>
+                                <th>{{ 'AccountDetail.Current' | translate }}</th>
+                                <th>{{ 'AccountDetail.Past' | translate }}</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Validator' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_validator" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_validator" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_validator" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_validator" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Nominator' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_nominator" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_nominator" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_nominator" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_nominator" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Council member' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_council_member" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_council_member" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_council_member" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_council_member" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Technical Committee member' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_tech_comm_member" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_tech_comm_member" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_tech_comm_member" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_tech_comm_member" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Registrar' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_registrar" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_registrar" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_registrar" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_registrar" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Treasury' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_treasury" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_treasury" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_treasury" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_treasury" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="5%">
+                                  <i class="fa fa-user-tag"></i>
+                                </td>
+                                <td>{{ 'AccountDetail.Role_Sudo' | translate }}</td>
+                                <td>
+                                  <i *ngIf="account.attributes.is_sudo" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.is_sudo" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                                <td>
+                                  <i *ngIf="account.attributes.was_sudo" class="fa fa-check" style="color: forestgreen"></i>
+                                  <i *ngIf="!account.attributes.was_sudo" class="fa fa-times" style="color: darkred"></i>
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
           </div>
        </section>
     </div>

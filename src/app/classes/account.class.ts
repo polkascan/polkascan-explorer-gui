@@ -32,7 +32,21 @@ export class Account extends Resource {
     identity_judgement_good: 'identity_judgement_good',
     identity_judgement_bad: 'identity_judgement_bad',
     subidentity_display: 'subidentity_display',
-    parent_identity: 'parent_identity'
+    parent_identity: 'parent_identity',
+    was_validator: 'is_validator',
+    is_validator: 'was_validator',
+    was_nominator: 'was_nominator',
+    is_nominator: 'is_nominator',
+    was_council_member: 'was_council_member',
+    is_council_member: 'is_council_member',
+    was_treasury: 'was_treasury',
+    is_treasury: 'is_treasury',
+    was_sudo: 'was_sudo',
+    is_sudo: 'is_sudo',
+    was_tech_comm_member: 'was_tech_comm_member',
+    is_tech_comm_member: 'is_tech_comm_member',
+    was_registrar: 'was_registrar',
+    is_registrar: 'is_registrar'
   };
 
   public relationships = {
@@ -46,4 +60,71 @@ export class Account extends Resource {
   public getIndex() {
     return this.attributes.index_address || this.attributes.address;
   }
+
+  public getCurrentRoles() {
+    const roles = [];
+    if (this.attributes.is_validator) {
+      roles.push('Validator');
+    }
+
+    if (this.attributes.is_nominator) {
+      roles.push('Nominator');
+    }
+
+    if (this.attributes.is_council_member) {
+      roles.push('Council member');
+    }
+
+    if (this.attributes.is_registrar) {
+      roles.push('Registrar');
+    }
+
+    if (this.attributes.is_treasury) {
+      roles.push('Treasury');
+    }
+
+    if (this.attributes.is_sudo) {
+      roles.push('Sudo');
+    }
+
+    if (this.attributes.is_tech_comm_member) {
+      roles.push('Technical Committee member');
+    }
+
+    return roles;
+  }
+
+  public getPastRoles() {
+    const roles = [];
+    if (this.attributes.was_validator && !this.attributes.is_validator) {
+      roles.push('Validator');
+    }
+
+    if (this.attributes.was_nominator && !this.attributes.is_nominator) {
+      roles.push('Nominator');
+    }
+
+    if (this.attributes.was_council_member && !this.attributes.is_council_member) {
+      roles.push('Council member');
+    }
+
+    if (this.attributes.was_registrar && !this.attributes.is_registrar) {
+      roles.push('Registrar');
+    }
+
+    if (this.attributes.was_treasury && !this.attributes.is_treasury) {
+      roles.push('Treasury');
+    }
+
+    if (this.attributes.was_sudo && !this.attributes.is_sudo) {
+      roles.push('Sudo');
+    }
+
+    if (this.attributes.was_tech_comm_member && !this.attributes.is_tech_comm_member) {
+      roles.push('Technical Committee member');
+    }
+
+    return roles;
+  }
+
 }
