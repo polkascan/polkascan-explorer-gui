@@ -39,9 +39,9 @@
                               <td width="20%"># {{ 'session-validator-detail.nominators' | translate }}</td>
                               <td>{{ validator.attributes.count_nominators }}</td>
                             </tr>
-                            <tr>
+                            <tr *ngIf="validator.attributes.commission !== null">
                               <td width="20%">{{ 'session-validator-detail.Commission' | translate }}</td>
-                              <td>{{ formatBalance(validator.attributes.commission) | number:'1.0-15'}} {{ networkTokenSymbol }}</td>
+                              <td>{{ validator.attributes.commission / 10000000 }}%</td>
                             </tr>
                           </tbody>
                       </table>

@@ -79,7 +79,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
-      if (value === 'transactions' || value === 'slashes' || value === 'transfers') {
+      if (value === 'transactions' || value === 'slashes' || value === 'transfers' || value == 'roles') {
         this.currentTab = value;
       }
     });
@@ -110,7 +110,9 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.getBalanceTransfers(this.balanceTransfersPage);
 
             this.slashesPage = +queryParams.slashesPage || 1;
-            this.getSlashEvents(this.slashesPage);
+            if (val.attributes.was_validator || val.attributes.was_nominator) {
+              this.getSlashEvents(this.slashesPage);
+            }
           });
         }
       });

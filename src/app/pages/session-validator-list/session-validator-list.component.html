@@ -22,6 +22,7 @@
                                 <th></th>
                                 <th>{{ 'session-validator-list.Address' | translate }}</th>
                                 <th class="is-hidden-mobile">{{ 'session-validator-list.Total bonded' | translate }}</th>
+                                <th class="is-hidden-mobile">{{ 'session-validator-detail.Commission' | translate }}</th>
                                 <th></th>
                               </tr>
                             </thead>
@@ -32,6 +33,7 @@
                                     </td>
                                     <td><a routerLink="{{ networkURLPrefix }}/account/{{ validator.attributes.validator_stash_account?.attributes.address }}"><app-address [account]="validator.attributes.validator_stash_account"></app-address></a></td>
                                     <td class="is-hidden-mobile">{{ formatBalance(validator.attributes.bonded_total) | number:'1.0-15'}} {{ networkTokenSymbol }}</td>
+                                    <td class="is-hidden-mobile">{{ validator.attributes.commission / 10000000 }}%</td>
                                     <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/session/validator/{{ validator.id }}">{{ 'session-validator-list.Details' | translate }}</a></td>
                                 </tr>
                             </tbody>
