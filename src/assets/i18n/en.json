@@ -5,6 +5,7 @@
 		"Amount": "Amount",
 		"Block": "Block",
 		"Call": "Call",
+		"Council activity": "Council activity",
 		"Created at block": "Created at block",
 		"Current": "Current",
 		"Current Roles": "Current Roles",
@@ -38,6 +39,7 @@
 		"Sub Identity": "Sub Identity",
 		"Success": "Success",
 		"Twitter": "Twitter",
+		"Type": "Type",
 		"Updated at block": "Updated at block",
 		"View next": "View next",
 		"Web": "Web"

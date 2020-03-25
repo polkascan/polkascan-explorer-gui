@@ -123,16 +123,22 @@
                       <span>{{ 'AccountDetail.Last 25 transactions' | translate }}</span>
                     </a>
                   </li>
+                  <li [ngClass]="{'is-active': currentTab == 'transfers'}" *ngIf="balanceTransfers?.data.length > 0">
+                    <a routerLink="." fragment="transfers">
+                      <span class="icon is-small"><i class="fas fa-exchange-alt" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Last 25 balance transfers' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'slashes'}" *ngIf="slashes?.data.length > 0">
                     <a routerLink="." fragment="slashes">
                       <span class="icon is-small"><i class="fas fa-user-alt-slash" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Last 25 slash events' | translate }}</span>
                     </a>
                   </li>
-                  <li [ngClass]="{'is-active': currentTab == 'transfers'}" *ngIf="balanceTransfers?.data.length > 0">
-                    <a routerLink="." fragment="transfers">
-                      <span class="icon is-small"><i class="fas fa-exchange-alt" aria-hidden="true"></i></span>
-                      <span>{{ 'AccountDetail.Last 25 balance transfers' | translate }}</span>
+                  <li [ngClass]="{'is-active': currentTab == 'council'}" *ngIf="councilActivity?.data.length > 0">
+                    <a routerLink="." fragment="council">
+                      <span class="icon is-small"><i class="fas fa-university" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Council activity' | translate }}</span>
                     </a>
                   </li>
                   <li [ngClass]="{'is-active': currentTab == 'roles'}">
@@ -236,6 +242,32 @@
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ slash.attributes.block_id }}">{{ slash.attributes.block_id }}</a></td>
                                   <td>{{ formatBalance(slash.attributes.attributes[1].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                                   <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ slash.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+              <div class="card-table" id="council" *ngIf="currentTab == 'council'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!councilActivity || councilActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="councilActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let event of councilActivity.data; trackBy: councilActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-university"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ event.attributes.block_id }}">{{ event.attributes.block_id }}</a></td>
+                                <td *ngIf="event.attributes.event_id == 'Voted'">Voted on <a routerLink="{{ networkURLPrefix }}/council/motion/{{ event.attributes.attributes[1].value }}">motion <div class="hash-format">{{ event.attributes.attributes[1].value }}</div></a></td>
+                                  <td *ngIf="event.attributes.event_id == 'Proposed'">Proposed <a routerLink="{{ networkURLPrefix }}/council/motion/{{ event.attributes.attributes[1].value }}">motion <div class="hash-format">{{ event.attributes.attributes[2].value }}</div></a></td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ event.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
                               </tr>
                           </tbody>
                       </table>

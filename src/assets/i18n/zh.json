@@ -5,6 +5,7 @@
 		"Amount": "数量",
 		"Block": "区块",
 		"Call": "操作",
+		"Council activity": "",
 		"Created at block": "在区块创建",
 		"Current": "",
 		"Current Roles": "",
@@ -38,6 +39,7 @@
 		"Sub Identity": "子身份",
 		"Success": "成功",
 		"Twitter": "Twitter",
+		"Type": "",
 		"Updated at block": "在区块更新",
 		"View next": "查看下一个",
 		"Web": "网站"

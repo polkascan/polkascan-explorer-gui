@@ -48,10 +48,13 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public balanceTransfers: DocumentCollection<BalanceTransfer>;
   public extrinsics: DocumentCollection<Extrinsic>;
   public slashes: DocumentCollection<Event>;
+  public councilActivity: DocumentCollection<Event>;
 
   public balanceTransfersPage = 1;
   public extrinsicsPage = 1;
   public slashesPage = 1;
+  public councilActivityPage = 1;
+
   public accountId: string;
 
   public account$: Observable<Account>;
@@ -79,7 +82,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
-      if (value === 'transactions' || value === 'slashes' || value === 'transfers' || value == 'roles') {
+      if (['roles', 'transactions', 'slashes', 'transfers', 'council'].includes(value)) {
         this.currentTab = value;
       }
     });
@@ -109,9 +112,14 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.balanceTransfersPage = +queryParams.balanceTransfersPage || 1;
             this.getBalanceTransfers(this.balanceTransfersPage);
 
-            this.slashesPage = +queryParams.slashesPage || 1;
             if (val.attributes.was_validator || val.attributes.was_nominator) {
+              this.slashesPage = +queryParams.slashesPage || 1;
               this.getSlashEvents(this.slashesPage);
+            }
+
+            if (val.attributes.was_council_member) {
+              this.slashesPage = +queryParams.slashesPage || 1;
+              this.getCouncilActivity(this.councilActivityPage);
             }
           });
         }
@@ -143,8 +151,17 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
      this.eventService.all({
         page: {number: page, size: 25},
         remotefilter: {address: this.accountId, search_index: 1},
-      }).subscribe(slashes => {
-        this.slashes = slashes;
+      }).subscribe(events => {
+        this.slashes = events;
+      });
+  }
+
+  public getCouncilActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '4,5'},
+      }).subscribe(events => {
+        this.councilActivity = events;
       });
   }
 
