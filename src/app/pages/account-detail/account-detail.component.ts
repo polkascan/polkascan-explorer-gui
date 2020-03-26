@@ -47,13 +47,16 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public balanceTransfers: DocumentCollection<BalanceTransfer>;
   public extrinsics: DocumentCollection<Extrinsic>;
+
   public slashes: DocumentCollection<Event>;
   public councilActivity: DocumentCollection<Event>;
+  public stakingBondActivity: DocumentCollection<Extrinsic>;
 
   public balanceTransfersPage = 1;
   public extrinsicsPage = 1;
   public slashesPage = 1;
   public councilActivityPage = 1;
+  public stakingBondActivityPage = 1;
 
   public accountId: string;
 
@@ -82,7 +85,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
-      if (['roles', 'transactions', 'slashes', 'transfers', 'council'].includes(value)) {
+      if (['roles', 'transactions', 'slashes', 'transfers', 'council', 'bonding'].includes(value)) {
         this.currentTab = value;
       }
     });
@@ -113,12 +116,17 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.getBalanceTransfers(this.balanceTransfersPage);
 
             if (val.attributes.was_validator || val.attributes.was_nominator) {
+
+              // Validator & Nominator tabs
               this.slashesPage = +queryParams.slashesPage || 1;
               this.getSlashEvents(this.slashesPage);
+
+              this.getStakingBondActivity(+queryParams.stakingBondActivityPage || 1);
             }
 
             if (val.attributes.was_council_member) {
-              this.slashesPage = +queryParams.slashesPage || 1;
+              // Council member tabs
+              this.councilActivityPage = +queryParams.councilPage || 1;
               this.getCouncilActivity(this.councilActivityPage);
             }
           });
@@ -162,6 +170,15 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         remotefilter: {address: this.accountId, search_index: '4,5'},
       }).subscribe(events => {
         this.councilActivity = events;
+      });
+  }
+
+  public getStakingBondActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '6,7,8'},
+      }).subscribe(extrinsics => {
+        this.stakingBondActivity = extrinsics;
       });
   }
 

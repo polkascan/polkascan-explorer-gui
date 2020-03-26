@@ -4,6 +4,8 @@
 		"Active": "アクティブ",
 		"Amount": "量",
 		"Block": "ブロック",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "コール",
 		"Council activity": "",
 		"Created at block": "ブロックで作成",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "",
+		"Staking bond activity": "",
 		"Sub Identity": "",
 		"Success": "成功",
 		"Twitter": "",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "ブロックで更新",
 		"View next": "",
-		"Web": ""
+		"Web": "",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "アカウント",

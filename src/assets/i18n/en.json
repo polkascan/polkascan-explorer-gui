@@ -4,6 +4,8 @@
 		"Active": "Active",
 		"Amount": "Amount",
 		"Block": "Block",
+		"Bonded": "Bonded",
+		"Bonded extra": "Bonded extra",
 		"Call": "Call",
 		"Council activity": "Council activity",
 		"Created at block": "Created at block",
@@ -36,13 +38,16 @@
 		"Role_Validator": "Validator",
 		"Roles": "Roles",
 		"Sender": "From",
+		"Staking bond activity": "Staking bond activity",
 		"Sub Identity": "Sub Identity",
 		"Success": "Success",
 		"Twitter": "Twitter",
 		"Type": "Type",
+		"Unbonded": "Unbonded",
 		"Updated at block": "Updated at block",
 		"View next": "View next",
-		"Web": "Web"
+		"Web": "Web",
+		"Withdraw unbonded": "Withdraw unbonded"
 	},
 	"AccountIndexDetail": {
 		"Account": "Account",

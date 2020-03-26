@@ -4,6 +4,8 @@
 		"Active": "유효한",
 		"Amount": "양",
 		"Block": "블록",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "요구",
 		"Council activity": "",
 		"Created at block": "블록에서 생성",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "",
+		"Staking bond activity": "",
 		"Sub Identity": "",
 		"Success": "성공",
 		"Twitter": "",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "블록에서 업데이트",
 		"View next": "",
-		"Web": ""
+		"Web": "",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "계정",

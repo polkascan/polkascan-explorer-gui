@@ -4,6 +4,8 @@
 		"Active": "Activo",
 		"Amount": "Cantidad",
 		"Block": "Bloquear",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "Llamada",
 		"Council activity": "",
 		"Created at block": "Creado en bloque",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "",
+		"Staking bond activity": "",
 		"Sub Identity": "",
 		"Success": "Éxito",
 		"Twitter": "",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "Actualizado en el bloque",
 		"View next": "",
-		"Web": ""
+		"Web": "",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "Cuenta",

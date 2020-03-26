@@ -135,6 +135,12 @@
                       <span>{{ 'AccountDetail.Last 25 slash events' | translate }}</span>
                     </a>
                   </li>
+                  <li [ngClass]="{'is-active': currentTab == 'bonding'}" *ngIf="stakingBondActivity?.data.length > 0">
+                    <a routerLink="." fragment="bonding">
+                      <span class="icon is-small"><i class="fas fa-user-lock" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Staking bond activity' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'council'}" *ngIf="councilActivity?.data.length > 0">
                     <a routerLink="." fragment="council">
                       <span class="icon is-small"><i class="fas fa-university" aria-hidden="true"></i></span>
@@ -152,7 +158,7 @@
               <div class="card-table" id="transfers" *ngIf="currentTab == 'transfers'">
                   <div class="content">
                       <app-loading-box *ngIf="!balanceTransfers || balanceTransfers.is_loading"></app-loading-box>
-                      <table class="table is-fullwidth is-striped">
+                      <table class="table is-fullwidth is-striped" *ngIf="balanceTransfers?.data">
                           <thead>
                             <th></th>
                             <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }} #</th>
@@ -246,6 +252,40 @@
                           </tbody>
                       </table>
                   </div>
+                  <footer class="card-footer" *ngIf="slashes?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ slashesPage: slashesPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="bonding" *ngIf="currentTab == 'bonding'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!stakingBondActivity || stakingBondActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="stakingBondActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Amount' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of stakingBondActivity.data; trackBy: stakingBondActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-user-lock"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'bond_extra'">{{ 'AccountDetail.Bonded extra' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'bond'">{{ 'AccountDetail.Bonded' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'unbond'">{{ 'AccountDetail.Unbonded' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'withdraw_unbonded'">{{ 'AccountDetail.Withdraw unbonded' | translate }}</td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/extrinsic/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="stakingBondActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ stakingBondActivityPage: stakingBondActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
               </div>
               <div class="card-table" id="council" *ngIf="currentTab == 'council'">
                   <div class="content">
@@ -272,10 +312,11 @@
                           </tbody>
                       </table>
                   </div>
+                  <footer class="card-footer" *ngIf="councilActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ councilPage: councilActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
               </div>
-              <footer class="card-footer" *ngIf="slashes?.data.length == 25">
-                  <a class="card-footer-item" routerLink="." [queryParams]="{ slashesPage: slashesPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
-              </footer>
+
               <div class="card-table" id="roles" *ngIf="currentTab == 'roles'">
                   <div class="content">
                       <table class="table is-fullwidth is-striped">

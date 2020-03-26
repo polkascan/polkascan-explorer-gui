@@ -4,6 +4,8 @@
 		"Active": "Активний",
 		"Amount": "Кількість",
 		"Block": "Блок",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "Телефонуйте",
 		"Council activity": "",
 		"Created at block": "Створено в блоці",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "",
+		"Staking bond activity": "",
 		"Sub Identity": "",
 		"Success": "Успіх",
 		"Twitter": "",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "Оновлено в блоці",
 		"View next": "",
-		"Web": ""
+		"Web": "",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "Рахунок",

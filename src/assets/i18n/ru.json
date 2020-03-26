@@ -4,6 +4,8 @@
 		"Active": "Aктивный",
 		"Amount": "Количество",
 		"Block": "Блок",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "Вызов",
 		"Council activity": "",
 		"Created at block": "Создано в блоке",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "",
+		"Staking bond activity": "",
 		"Sub Identity": "",
 		"Success": "Успех",
 		"Twitter": "",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "Обновлено в блоке",
 		"View next": "",
-		"Web": ""
+		"Web": "",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "Аккаунт",

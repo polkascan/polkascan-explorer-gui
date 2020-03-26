@@ -4,6 +4,8 @@
 		"Active": "活跃",
 		"Amount": "数量",
 		"Block": "区块",
+		"Bonded": "",
+		"Bonded extra": "",
 		"Call": "操作",
 		"Council activity": "",
 		"Created at block": "在区块创建",
@@ -36,13 +38,16 @@
 		"Role_Validator": "",
 		"Roles": "",
 		"Sender": "来自",
+		"Staking bond activity": "",
 		"Sub Identity": "子身份",
 		"Success": "成功",
 		"Twitter": "Twitter",
 		"Type": "",
+		"Unbonded": "",
 		"Updated at block": "在区块更新",
 		"View next": "查看下一个",
-		"Web": "网站"
+		"Web": "网站",
+		"Withdraw unbonded": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "帐户",
