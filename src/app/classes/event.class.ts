@@ -24,7 +24,10 @@ import { Resource } from 'ngx-jsonapi';
 
 export class Event extends Resource {
   public attributes = {
+    block_id: 'block_id',
     module_id: 'module_id',
     event_id: 'event_id',
+    extrinsic_idx: 'extrinsic_idx',
+    attributes: 'attributes'
   };
 }

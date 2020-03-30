@@ -35,6 +35,8 @@ import {BalanceTransfer} from '../../classes/balancetransfer.class';
 import {AppConfigService} from '../../services/app-config.service';
 import {AccountIndexService} from '../../services/account-index.service';
 import {EventService} from '../../services/event.service';
+import {BlockTotal} from '../../classes/block-total.class';
+import {BlockTotalService} from '../../services/block-total.service';
 
 @Component({
   selector: 'app-account-detail',
@@ -50,13 +52,19 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public slashes: DocumentCollection<Event>;
   public councilActivity: DocumentCollection<Event>;
+  public imOnlineActivity: DocumentCollection<Event>;
   public stakingBondActivity: DocumentCollection<Extrinsic>;
+  public identityActivity: DocumentCollection<Event>;
+  public authoredBlocks: DocumentCollection<BlockTotal>;
 
   public balanceTransfersPage = 1;
   public extrinsicsPage = 1;
   public slashesPage = 1;
   public councilActivityPage = 1;
   public stakingBondActivityPage = 1;
+  public imOnlineActivityPage = 1;
+  public identityActivityPage = 1;
+  public authoredBlocksPage = 1;
 
   public accountId: string;
 
@@ -74,6 +82,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     private balanceTransferService: BalanceTransferService,
     private extrinsicService: ExtrinsicService,
     private eventService: EventService,
+    private blockTotalService: BlockTotalService,
     private accountService: AccountService,
     private accountIndexService: AccountIndexService,
     private appConfigService: AppConfigService,
@@ -85,7 +94,10 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
-      if (['roles', 'transactions', 'slashes', 'transfers', 'council', 'bonding'].includes(value)) {
+      if ([
+        'roles', 'transactions', 'slashes', 'transfers', 'council',
+        'bonding', 'imonline', 'identity', 'authoredblocks'
+      ].includes(value)) {
         this.currentTab = value;
       }
     });
@@ -115,13 +127,20 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.balanceTransfersPage = +queryParams.balanceTransfersPage || 1;
             this.getBalanceTransfers(this.balanceTransfersPage);
 
+            this.identityActivityPage = +queryParams.identityActivityPage || 1;
+            this.getIdentityActivity(this.identityActivityPage);
+
             if (val.attributes.was_validator || val.attributes.was_nominator) {
 
               // Validator & Nominator tabs
               this.slashesPage = +queryParams.slashesPage || 1;
               this.getSlashEvents(this.slashesPage);
-
-              this.getStakingBondActivity(+queryParams.stakingBondActivityPage || 1);
+              this.stakingBondActivityPage = +queryParams.stakingBondActivityPage || 1;
+              this.getStakingBondActivity(this.stakingBondActivityPage);
+              this.imOnlineActivityPage = +queryParams.imOnlineActivityPage || 1;
+              this.getImOnlineActivity(this.imOnlineActivityPage);
+              this.authoredBlocksPage = +queryParams.authoredBlocksPage || 1;
+              this.getAuthoredBlocks(this.authoredBlocksPage);
             }
 
             if (val.attributes.was_council_member) {
@@ -176,10 +195,35 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public getStakingBondActivity(page: number) {
      this.extrinsicService.all({
         page: {number: page, size: 25},
-        remotefilter: {address: this.accountId, search_index: '6,7,8'},
+        remotefilter: {address: this.accountId, search_index: '6,7,8,10,11,12,19'},
       }).subscribe(extrinsics => {
         this.stakingBondActivity = extrinsics;
       });
+  }
+
+  public getImOnlineActivity(page: number) {
+   this.eventService.all({
+      page: {number: page, size: 25},
+      remotefilter: {address: this.accountId, search_index: '3,9'},
+    }).subscribe(events => {
+      this.imOnlineActivity = events;
+    });
+  }
+
+  public getIdentityActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '13,14,15,16,17,18,20'},
+      }).subscribe(events => {
+        this.identityActivity = events;
+      });
+  }
+
+  public getAuthoredBlocks(page: number) {
+    this.blockTotalService.all({
+      page: {number: page, size: 25},
+      remotefilter: {author: this.accountId},
+    }).subscribe(blocks => this.authoredBlocks = blocks);
   }
 
   ngOnDestroy() {
