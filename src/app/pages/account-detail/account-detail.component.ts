@@ -52,19 +52,25 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public slashes: DocumentCollection<Event>;
   public councilActivity: DocumentCollection<Event>;
+  public memberActivity: DocumentCollection<Event>;
+  public electionActivity: DocumentCollection<Extrinsic>;
   public imOnlineActivity: DocumentCollection<Event>;
   public stakingBondActivity: DocumentCollection<Extrinsic>;
   public identityActivity: DocumentCollection<Event>;
   public authoredBlocks: DocumentCollection<BlockTotal>;
+  public accountLifecycle: DocumentCollection<Event>;
 
   public balanceTransfersPage = 1;
   public extrinsicsPage = 1;
   public slashesPage = 1;
   public councilActivityPage = 1;
+  public electionActivityPage = 1;
+  public memberActivityPage = 1;
   public stakingBondActivityPage = 1;
   public imOnlineActivityPage = 1;
   public identityActivityPage = 1;
   public authoredBlocksPage = 1;
+  public accountLifecyclePage = 1;
 
   public accountId: string;
 
@@ -95,8 +101,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
-        'roles', 'transactions', 'slashes', 'transfers', 'council',
-        'bonding', 'imonline', 'identity', 'authoredblocks'
+        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member',
+        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle'
       ].includes(value)) {
         this.currentTab = value;
       }
@@ -130,6 +136,9 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.identityActivityPage = +queryParams.identityActivityPage || 1;
             this.getIdentityActivity(this.identityActivityPage);
 
+            this.accountLifecyclePage = +queryParams.accountLifecyclePage || 1;
+            this.getAccountLifecycle(this.accountLifecyclePage);
+
             if (val.attributes.was_validator || val.attributes.was_nominator) {
 
               // Validator & Nominator tabs
@@ -147,6 +156,12 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
               // Council member tabs
               this.councilActivityPage = +queryParams.councilPage || 1;
               this.getCouncilActivity(this.councilActivityPage);
+
+              this.electionActivityPage = +queryParams.electionActivityPage || 1;
+              this.getElectionActivity(this.electionActivityPage);
+
+              this.memberActivityPage = +queryParams.memberActivityPage || 1;
+              this.getMemberActivity(this.memberActivityPage);
             }
           });
         }
@@ -192,6 +207,24 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       });
   }
 
+  public getMemberActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '23,24'},
+      }).subscribe(events => {
+        this.memberActivity = events;
+      });
+  }
+
+  public getElectionActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '25,26,27'},
+      }).subscribe(extrinsics => {
+        this.electionActivity = extrinsics;
+      });
+  }
+
   public getStakingBondActivity(page: number) {
      this.extrinsicService.all({
         page: {number: page, size: 25},
@@ -224,6 +257,15 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
       page: {number: page, size: 25},
       remotefilter: {author: this.accountId},
     }).subscribe(blocks => this.authoredBlocks = blocks);
+  }
+
+  public getAccountLifecycle(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '21,22'},
+      }).subscribe(events => {
+        this.accountLifecycle = events;
+      });
   }
 
   ngOnDestroy() {

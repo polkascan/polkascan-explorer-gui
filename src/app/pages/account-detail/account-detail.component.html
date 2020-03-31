@@ -77,15 +77,7 @@
                                 <td>{{ account.attributes.nonce || 0}}</td>
                               </tr>
                               <tr>
-                                <td width="20%">{{ 'AccountDetail.Created at block' | translate }}</td>
-                                <td><a routerLink="{{ networkURLPrefix }}/block/{{ account.attributes.created_at_block }}">{{account.attributes.created_at_block}}</a></td>
-                              </tr>
-                              <tr>
-                                <td width="20%">{{ 'AccountDetail.Updated at block' | translate }}</td>
-                                <td><a routerLink="{{ networkURLPrefix }}/block/{{ account.attributes.updated_at_block }}">{{account.attributes.updated_at_block}}</a></td>
-                              </tr>
-                              <tr>
-                                <td>{{ 'AccountDetail.Active' | translate }}</td>
+                                <td width="20%">{{ 'AccountDetail.Active' | translate }}</td>
                                 <td>
                                   <i *ngIf="!account.attributes.is_reaped" class="fa fa-check" style="color: forestgreen"></i>
                                   <i *ngIf="account.attributes.is_reaped" class="fa fa-times" style="color: darkred"></i>
@@ -129,7 +121,7 @@
                       <span>{{ 'AccountDetail.Last 25 balance transfers' | translate }}</span>
                     </a>
                   </li>
-                  <li [ngClass]="{'is-active': currentTab == 'identity'}" >
+                  <li [ngClass]="{'is-active': currentTab == 'identity'}" *ngIf="identityActivity?.data.length > 0">
                     <a routerLink="." fragment="identity">
                       <span class="icon is-small"><i class="fas fa-id-card" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Identity activity' | translate }}</span>
@@ -144,7 +136,7 @@
                   <li [ngClass]="{'is-active': currentTab == 'bonding'}" *ngIf="stakingBondActivity?.data.length > 0">
                     <a routerLink="." fragment="bonding">
                       <span class="icon is-small"><i class="fas fa-user-lock" aria-hidden="true"></i></span>
-                      <span>{{ 'AccountDetail.Staking bond activity' | translate }}</span>
+                      <span>{{ 'AccountDetail.Staking activity' | translate }}</span>
                     </a>
                   </li>
                   <li [ngClass]="{'is-active': currentTab == 'imonline'}" *ngIf="imOnlineActivity?.data.length > 0">
@@ -153,7 +145,7 @@
                       <span>{{ 'AccountDetail.ImOnline activity' | translate }}</span>
                     </a>
                   </li>
-                  <li [ngClass]="{'is-active': currentTab == 'authoredblocks'}" *ngIf="account.attributes.was_validator">
+                  <li [ngClass]="{'is-active': currentTab == 'authoredblocks'}" *ngIf="account.attributes.was_validator && authoredBlocks?.data.length > 0">
                     <a routerLink="." fragment="authoredblocks">
                       <span class="icon is-small"><i class="fas fa-cube" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Authored Blocks' | translate }}</span>
@@ -163,6 +155,24 @@
                     <a routerLink="." fragment="council">
                       <span class="icon is-small"><i class="fas fa-university" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Council activity' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'member'}" *ngIf="memberActivity?.data.length > 0">
+                    <a routerLink="." fragment="member">
+                      <span class="icon is-small"><i class="fas fa-university" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Member activity' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'election'}" *ngIf="electionActivity?.data.length > 0">
+                    <a routerLink="." fragment="election">
+                      <span class="icon is-small"><i class="fas fa-university" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Election activity' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'lifecycle'}" *ngIf="accountLifecycle?.data.length > 0">
+                    <a routerLink="." fragment="lifecycle">
+                      <span class="icon is-small"><i class="fas fa-user" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Account lifecycle' | translate }}</span>
                     </a>
                   </li>
                   <li [ngClass]="{'is-active': currentTab == 'roles'}">
@@ -337,7 +347,7 @@
                                   <td *ngIf="item.attributes.call_id == 'validate'">{{ 'AccountDetail.Started validating' | translate }}</td>
                                   <td *ngIf="item.attributes.call_id == 'nominate'">{{ 'AccountDetail.Nominated { amount } validators' | translate:{'amount': item.attributes.params[0].value.length} }}</td>
                                   <td *ngIf="item.attributes.call_id == 'set_payee'">{{ 'AccountDetail.Changed payee to' | translate }} {{item.attributes.params[0].value}}</td>
-                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/extrinsic/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
                               </tr>
                           </tbody>
                       </table>
@@ -405,6 +415,104 @@
                   </div>
                   <footer class="card-footer" *ngIf="councilActivity?.data.length == 25">
                       <a class="card-footer-item" routerLink="." [queryParams]="{ councilPage: councilActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="member" *ngIf="currentTab == 'member'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!memberActivity || memberActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="memberActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let event of memberActivity.data; trackBy: memberActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-university"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ event.attributes.block_id }}">{{ event.attributes.block_id }}</a></td>
+                                  <td *ngIf="event.attributes.event_id == 'NewTerm'">{{ 'AccountDetail.Elected as council member' | translate }}</td>
+                                  <td *ngIf="event.attributes.event_id == 'MemberKicked'">{{ 'AccountDetail.Member was kicked from council' | translate }}</td>
+                                  <td *ngIf="event.attributes.event_id == 'MemberRenounced'">{{ 'AccountDetail.Member has renounced their candidacy' | translate }}</td>
+                                  <td width="5%">
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{event.attributes.block_id}}-{{ event.attributes.extrinsic_idx }}" *ngIf="event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ event.id }}" *ngIf="!event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="memberActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ memberActivityPage: memberActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="election" *ngIf="currentTab == 'election'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!electionActivity || electionActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="electionActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of electionActivity.data; trackBy: electionActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-user-lock"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'vote' && accountId == item.attributes.address">{{ 'AccountDetail.Voted on {number} candidates locking {deposit} {currency}' | translate:{
+                                    'number': item.attributes.params[0].value.length, 'deposit': formatBalance(item.attributes.params[1].value) | number:'1.0-15', 'currency': networkTokenSymbol
+                                  } }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'vote' && accountId != item.attributes.address">{{ 'AccountDetail.Received a vote from ' | translate }} <a routerLink="{{ networkURLPrefix }}/account/{{ item.attributes.address }}" class="address-mobile-format"><app-identicon [accountId]="item.attributes.address_id"></app-identicon>{{ item.attributes.address }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'submit_candidacy'">{{ 'AccountDetail.Submitted candidacy' | translate }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'renounce_candidacy'">{{ 'AccountDetail.Renounced candidacy' | translate }}</td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="electionActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ electionActivityPage: electionActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="lifecycle" *ngIf="currentTab == 'lifecycle'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!accountLifecycle || accountLifecycle.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="accountLifecycle?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let event of accountLifecycle.data; trackBy: accountLifecycle.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-user"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ event.attributes.block_id }}">{{ event.attributes.block_id }}</a></td>
+                                  <td *ngIf="event.attributes.event_id == 'NewAccount'">{{ 'AccountDetail.Account created' | translate }}</td>
+                                  <td *ngIf="event.attributes.event_id == 'KilledAccount' || event.attributes.event_id == 'ReapedAccount'">{{ 'AccountDetail.Account reaped' | translate }}</td>
+                                  <td width="5%">
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{event.attributes.block_id}}-{{ event.attributes.extrinsic_idx }}" *ngIf="event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ event.id }}" *ngIf="!event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="accountLifecycle?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ accountLifecyclePage: accountLifecyclePage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="authoredblocks" *ngIf="currentTab == 'authoredblocks'">
