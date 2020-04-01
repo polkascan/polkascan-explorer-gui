@@ -159,7 +159,6 @@ const routes: Routes = [
       { path: 'harvester/admin', component: HarvesterAdminComponent },
       { path: 'analytics/search', component: AnalyticsSearchComponent},
       { path: 'analytics/search/:query', component: AnalyticsSearchComponent},
-
       { path: 'analytics/charts', component: AnalyticsChartsComponent },
       { path: 'analytics/chart/:id', component: AnalyticsChartDetailComponent },
     ]},
