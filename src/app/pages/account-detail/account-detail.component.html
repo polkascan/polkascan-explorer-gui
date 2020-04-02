@@ -30,7 +30,7 @@
                               <tr *ngIf="account.attributes.identity_display">
                                 <td>{{ 'AccountDetail.Display name' | translate }}</td>
                                 <td>
-                                  <i *ngIf="account.attributes.identity_judgement_good > 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
+                                  <i *ngIf="account.attributes.identity_judgement_good > 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
                                   <i *ngIf="account.attributes.identity_judgement_bad > 0" class="fa fa-minus-circle" style="color: brown" title="{{ account.attributes.identity_judgement_bad }} negative judgements"></i>
                                   <i *ngIf="account.attributes.identity_judgement_good == 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-minus-circle" style="color: gray" title="No judgements provided"></i>
                                   {{ account.attributes.identity_display }}
