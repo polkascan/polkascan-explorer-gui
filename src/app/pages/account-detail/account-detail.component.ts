@@ -52,10 +52,11 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public slashes: DocumentCollection<Event>;
   public councilActivity: DocumentCollection<Event>;
-  public memberActivity: DocumentCollection<Event>;
-  public electionActivity: DocumentCollection<Extrinsic>;
+  public memberActivity: DocumentCollection<Extrinsic>;
+  public electionActivity: DocumentCollection<Event>;
   public imOnlineActivity: DocumentCollection<Event>;
   public stakingBondActivity: DocumentCollection<Extrinsic>;
+  public treasuryActivity: DocumentCollection<Extrinsic>;
   public identityActivity: DocumentCollection<Event>;
   public authoredBlocks: DocumentCollection<BlockTotal>;
   public accountLifecycle: DocumentCollection<Event>;
@@ -67,6 +68,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public electionActivityPage = 1;
   public memberActivityPage = 1;
   public stakingBondActivityPage = 1;
+  public treasuryActivityPage = 1;
   public imOnlineActivityPage = 1;
   public identityActivityPage = 1;
   public authoredBlocksPage = 1;
@@ -102,9 +104,11 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
         'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member',
-        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle'
+        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury'
       ].includes(value)) {
         this.currentTab = value;
+      } else {
+        this.currentTab = 'transactions';
       }
     });
 
@@ -125,6 +129,18 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         if (val.attributes.address) {
 
           this.accountId = val.attributes.address;
+
+          // reset tabs
+          this.slashes = null;
+          this.councilActivity = null;
+          this.memberActivity = null;
+          this.electionActivity = null;
+          this.imOnlineActivity = null;
+          this.stakingBondActivity = null;
+          this.treasuryActivity = null;
+          this.identityActivity = null;
+          this.authoredBlocks = null;
+          this.accountLifecycle = null;
 
           this.queryParamsSubsription = this.activatedRoute.queryParams.subscribe(queryParams => {
             this.extrinsicsPage = +queryParams.extrinsicsPage || 1;
@@ -160,6 +176,9 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
               this.electionActivityPage = +queryParams.electionActivityPage || 1;
               this.getElectionActivity(this.electionActivityPage);
 
+              this.treasuryActivityPage = +queryParams.treasuryActivityPage || 1;
+              this.getTreasuryActivity(this.treasuryActivityPage);
+
               this.memberActivityPage = +queryParams.memberActivityPage || 1;
               this.getMemberActivity(this.memberActivityPage);
             }
@@ -192,7 +211,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public getSlashEvents(page: number) {
      this.eventService.all({
         page: {number: page, size: 25},
-        remotefilter: {address: this.accountId, search_index: 1},
+        remotefilter: {address: this.accountId, search_index: '1'},
       }).subscribe(events => {
         this.slashes = events;
       });
@@ -208,20 +227,20 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   }
 
   public getMemberActivity(page: number) {
-     this.eventService.all({
+    this.extrinsicService.all({
         page: {number: page, size: 25},
-        remotefilter: {address: this.accountId, search_index: '23,24'},
-      }).subscribe(events => {
-        this.memberActivity = events;
+        remotefilter: {address: this.accountId, search_index: '25,26,27'},
+      }).subscribe(extrinsics => {
+        this.memberActivity = extrinsics;
       });
   }
 
   public getElectionActivity(page: number) {
-     this.extrinsicService.all({
+      this.eventService.all({
         page: {number: page, size: 25},
-        remotefilter: {address: this.accountId, search_index: '25,26,27'},
-      }).subscribe(extrinsics => {
-        this.electionActivity = extrinsics;
+        remotefilter: {address: this.accountId, search_index: '23,24'},
+      }).subscribe(events => {
+        this.electionActivity = events;
       });
   }
 
@@ -249,6 +268,15 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         remotefilter: {address: this.accountId, search_index: '13,14,15,16,17,18,20'},
       }).subscribe(events => {
         this.identityActivity = events;
+      });
+  }
+
+  public getTreasuryActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: 28},
+      }).subscribe(extrinsics => {
+        this.treasuryActivity = extrinsics;
       });
   }
 
