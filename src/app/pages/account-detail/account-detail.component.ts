@@ -58,6 +58,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public stakingBondActivity: DocumentCollection<Extrinsic>;
   public treasuryActivity: DocumentCollection<Extrinsic>;
   public identityActivity: DocumentCollection<Event>;
+  public proposalActivity: DocumentCollection<Extrinsic>;
+  public referendumActivity: DocumentCollection<Extrinsic>;
   public authoredBlocks: DocumentCollection<BlockTotal>;
   public accountLifecycle: DocumentCollection<Event>;
 
@@ -71,6 +73,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public treasuryActivityPage = 1;
   public imOnlineActivityPage = 1;
   public identityActivityPage = 1;
+  public proposalActivityPage = 1;
+  public referendumActivityPage = 1;
   public authoredBlocksPage = 1;
   public accountLifecyclePage = 1;
 
@@ -104,7 +108,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
         'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member',
-        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury'
+        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda'
       ].includes(value)) {
         this.currentTab = value;
       } else {
@@ -139,6 +143,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
           this.stakingBondActivity = null;
           this.treasuryActivity = null;
           this.identityActivity = null;
+          this.proposalActivity = null;
+          this.referendumActivity = null;
           this.authoredBlocks = null;
           this.accountLifecycle = null;
 
@@ -154,6 +160,12 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
             this.accountLifecyclePage = +queryParams.accountLifecyclePage || 1;
             this.getAccountLifecycle(this.accountLifecyclePage);
+
+            this.proposalActivityPage = +queryParams.proposalActivityPage || 1;
+            this.getProposalActivity(this.proposalActivityPage);
+
+            this.referendumActivityPage = +queryParams.referendumActivityPage || 1;
+            this.getReferendumActivity(this.referendumActivityPage);
 
             if (val.attributes.was_validator || val.attributes.was_nominator) {
 
@@ -268,6 +280,24 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         remotefilter: {address: this.accountId, search_index: '13,14,15,16,17,18,20'},
       }).subscribe(events => {
         this.identityActivity = events;
+      });
+  }
+
+  public getProposalActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '31,32'},
+      }).subscribe(extrinsics => {
+        this.proposalActivity = extrinsics;
+      });
+  }
+
+  public getReferendumActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '29,30'},
+      }).subscribe(extrinsics => {
+        this.referendumActivity = extrinsics;
       });
   }
 

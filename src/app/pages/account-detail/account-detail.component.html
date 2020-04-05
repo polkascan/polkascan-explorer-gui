@@ -127,6 +127,18 @@
                       <span>{{ 'AccountDetail.Identity activity' | translate }}</span>
                     </a>
                   </li>
+                  <li [ngClass]="{'is-active': currentTab == 'proposals'}" *ngIf="proposalActivity?.data.length > 0">
+                    <a routerLink="." fragment="proposals">
+                      <span class="icon is-small"><i class="fas fa-poll" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Proposal activity' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'referenda'}" *ngIf="referendumActivity?.data.length > 0">
+                    <a routerLink="." fragment="referenda">
+                      <span class="icon is-small"><i class="fas fa-person-booth" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Referenda activity' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'slashes'}" *ngIf="slashes?.data.length > 0">
                     <a routerLink="." fragment="slashes">
                       <span class="icon is-small"><i class="fas fa-user-alt-slash" aria-hidden="true"></i></span>
@@ -297,6 +309,64 @@
                   </div>
                   <footer class="card-footer" *ngIf="councilActivity?.data.length == 25">
                       <a class="card-footer-item" routerLink="." [queryParams]="{ councilPage: councilActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="proposals" *ngIf="currentTab == 'proposals'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!proposalActivity || proposalActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="proposalActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of proposalActivity.data; trackBy: proposalActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-user-lock"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'propose'">{{ 'AccountDetail.Created a proposal' | translate }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'second'">{{ 'AccountDetail.Seconds a proposal' | translate }}</td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="proposalActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ proposalActivityPage: proposalActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="referenda" *ngIf="currentTab == 'referenda'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!referendumActivity || referendumActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="referendumActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of referendumActivity.data; trackBy: referendumActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-user-lock"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'vote'">{{ 'AccountDetail.Voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/democracy/referendum/{{ item.attributes.params[0].value }}">referendum #{{ item.attributes.params[0].value }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'proxy_vote'">{{ 'AccountDetail.Proxy voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/democracy/referendum/{{ item.attributes.params[0].value }}">referendum #{{ item.attributes.params[0].value }}</a></td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="referendumActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ referendumActivityPage: referendumActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="slashes" *ngIf="currentTab == 'slashes'">
