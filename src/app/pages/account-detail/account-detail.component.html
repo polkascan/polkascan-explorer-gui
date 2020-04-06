@@ -187,6 +187,12 @@
                       <span>{{ 'AccountDetail.Treasury activity' | translate }}</span>
                     </a>
                   </li>
+                  <li [ngClass]="{'is-active': currentTab == 'techcomm'}" *ngIf="techcommActivity?.data.length > 0">
+                    <a routerLink="." fragment="techcomm">
+                      <span class="icon is-small"><i class="fas fa-microchip" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Techcomm activity' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'lifecycle'}" *ngIf="accountLifecycle?.data.length > 0">
                     <a routerLink="." fragment="lifecycle">
                       <span class="icon is-small"><i class="fas fa-user" aria-hidden="true"></i></span>
@@ -326,7 +332,7 @@
                           <tbody>
                               <tr *ngFor="let item of proposalActivity.data; trackBy: proposalActivity.trackBy">
                                   <td width="5%">
-                                    <i class="fa fa-user-lock"></i>
+                                    <i class="fa fa-poll"></i>
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
                                   <td *ngIf="item.attributes.call_id == 'propose'">{{ 'AccountDetail.Created a proposal' | translate }}</td>
@@ -355,7 +361,7 @@
                           <tbody>
                               <tr *ngFor="let item of referendumActivity.data; trackBy: referendumActivity.trackBy">
                                   <td width="5%">
-                                    <i class="fa fa-user-lock"></i>
+                                    <i class="fa fa-person-booth"></i>
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
                                   <td *ngIf="item.attributes.call_id == 'vote'">{{ 'AccountDetail.Voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/democracy/referendum/{{ item.attributes.params[0].value }}">referendum #{{ item.attributes.params[0].value }}</a></td>
@@ -574,7 +580,7 @@
                           <tbody>
                               <tr *ngFor="let item of treasuryActivity.data; trackBy: treasuryActivity.trackBy">
                                   <td width="5%">
-                                    <i class="fa fa-user-lock"></i>
+                                    <i class="fa fa-piggy-bank"></i>
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
                                   <td *ngIf="item.attributes.call_id == 'propose_spend'">{{ 'AccountDetail.Suggested a spending of {amount} {currency} to ' | translate:{
@@ -587,6 +593,35 @@
                   </div>
                   <footer class="card-footer" *ngIf="treasuryActivity?.data.length == 25">
                       <a class="card-footer-item" routerLink="." [queryParams]="{ treasuryActivityPage: treasuryActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="techcomm" *ngIf="currentTab == 'techcomm'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!techcommActivity || techcommActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="techcommActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of techcommActivity.data; trackBy: techcommActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-microchip"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'vote'">{{ 'AccountDetail.Voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/techcomm/proposal/{{ item.attributes.params[1].value }}">referendum #{{ item.attributes.params[1].value }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'propose'">{{ 'AccountDetail.Created a proposal' | translate }}</td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="techcommActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ techcommActivityPage: techcommActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="lifecycle" *ngIf="currentTab == 'lifecycle'">

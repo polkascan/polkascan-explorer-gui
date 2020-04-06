@@ -60,6 +60,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public identityActivity: DocumentCollection<Event>;
   public proposalActivity: DocumentCollection<Extrinsic>;
   public referendumActivity: DocumentCollection<Extrinsic>;
+  public techcommActivity: DocumentCollection<Extrinsic>;
   public authoredBlocks: DocumentCollection<BlockTotal>;
   public accountLifecycle: DocumentCollection<Event>;
 
@@ -75,6 +76,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public identityActivityPage = 1;
   public proposalActivityPage = 1;
   public referendumActivityPage = 1;
+  public techcommActivityPage = 1;
   public authoredBlocksPage = 1;
   public accountLifecyclePage = 1;
 
@@ -107,7 +109,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
-        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member',
+        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member', 'techcomm',
         'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda'
       ].includes(value)) {
         this.currentTab = value;
@@ -145,6 +147,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
           this.identityActivity = null;
           this.proposalActivity = null;
           this.referendumActivity = null;
+          this.techcommActivity = null;
           this.authoredBlocks = null;
           this.accountLifecycle = null;
 
@@ -193,6 +196,11 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
               this.memberActivityPage = +queryParams.memberActivityPage || 1;
               this.getMemberActivity(this.memberActivityPage);
+            }
+
+            if (val.attributes.was_tech_comm_member) {
+              this.techcommActivityPage = +queryParams.techcommActivityPage || 1;
+              this.getTechCommActivity(this.techcommActivityPage);
             }
           });
         }
@@ -298,6 +306,15 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         remotefilter: {address: this.accountId, search_index: '29,30'},
       }).subscribe(extrinsics => {
         this.referendumActivity = extrinsics;
+      });
+  }
+
+  public getTechCommActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '33,34'},
+      }).subscribe(extrinsics => {
+        this.techcommActivity = extrinsics;
       });
   }
 
