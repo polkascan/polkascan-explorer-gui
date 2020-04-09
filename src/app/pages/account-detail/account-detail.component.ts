@@ -20,7 +20,7 @@
  * account-detail.component.ts
  */
 
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {DocumentCollection} from 'ngx-jsonapi';
 import {Extrinsic} from '../../classes/extrinsic.class';
 import {Event} from '../../classes/event.class';
@@ -37,6 +37,7 @@ import {AccountIndexService} from '../../services/account-index.service';
 import {EventService} from '../../services/event.service';
 import {BlockTotal} from '../../classes/block-total.class';
 import {BlockTotalService} from '../../services/block-total.service';
+import {Chart} from 'angular-highcharts';
 
 @Component({
   selector: 'app-account-detail',
@@ -92,6 +93,10 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   private fragmentSubsription: Subscription;
   private queryParamsSubsription: Subscription;
 
+  public balanceHistoryChart: Chart;
+  private balanceHistoryChartOptions: {};
+  private balanceHistoryChartData = {};
+
   constructor(
     private balanceTransferService: BalanceTransferService,
     private extrinsicService: ExtrinsicService,
@@ -100,7 +105,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     private accountService: AccountService,
     private accountIndexService: AccountIndexService,
     private appConfigService: AppConfigService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -109,7 +115,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
-        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member', 'techcomm',
+        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member', 'techcomm', 'balance-history',
         'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda'
       ].includes(value)) {
         this.currentTab = value;
@@ -124,6 +130,63 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
       this.networkTokenDecimals = +network.attributes.token_decimals;
       this.networkTokenSymbol = network.attributes.token_symbol;
+
+      this.balanceHistoryChartOptions = {
+        colors: ['#' + network.attributes.color_code],
+        chart: {
+          type: 'area',
+          zoomType: 'x',
+          height: null
+        },
+        title: {
+          text: '',
+          style: {fontSize: '12px'}
+        },
+        credits: {
+          enabled: false
+        },
+        xAxis: {
+          title: {
+            text: 'Block number'
+          }
+        },
+        yAxis: {
+          title: {
+            text: network.attributes.token_symbol
+          },
+          min: 0
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          area: {
+            fillColor: {
+              linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+              },
+              stops: [
+                [0, '#' + network.attributes.color_code],
+                [1, '#fff']
+              ]
+            },
+            marker: {
+              radius: 2
+            },
+            lineWidth: 1,
+            states: {
+              hover: {
+                lineWidth: 1
+              }
+            },
+            threshold: null
+          }
+        },
+        series: []
+      };
 
       this.account$ = this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
@@ -150,6 +213,11 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
           this.techcommActivity = null;
           this.authoredBlocks = null;
           this.accountLifecycle = null;
+
+          this.balanceHistoryChartData = val.attributes.balance_history[0];
+          this.renderChart();
+          // this.chart.addSeries(val.attributes.balance_history[1], true, true);
+          // this.chart.addSeries(val.attributes.balance_history[2], true, true);
 
           this.queryParamsSubsription = this.activatedRoute.queryParams.subscribe(queryParams => {
             this.extrinsicsPage = +queryParams.extrinsicsPage || 1;
@@ -206,6 +274,12 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  public renderChart() {
+    this.balanceHistoryChart = new Chart(this.balanceHistoryChartOptions);
+    // @ts-ignore
+    this.balanceHistoryChart.addSeries(this.balanceHistoryChartData, true, true);
   }
 
   public formatBalance(balance: number) {

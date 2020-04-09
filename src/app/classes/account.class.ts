@@ -46,7 +46,8 @@ export class Account extends Resource {
     was_tech_comm_member: 'was_tech_comm_member',
     is_tech_comm_member: 'is_tech_comm_member',
     was_registrar: 'was_registrar',
-    is_registrar: 'is_registrar'
+    is_registrar: 'is_registrar',
+    balance_history: 'balance_history'
   };
 
   public relationships = {

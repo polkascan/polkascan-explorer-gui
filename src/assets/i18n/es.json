@@ -7,6 +7,7 @@
 		"Active": "Activo",
 		"Amount": "Cantidad",
 		"Authored Blocks": "",
+		"Balance History": "",
 		"Block": "Bloquear",
 		"Block number": "",
 		"Bonded": "",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "",
 		"Techcomm activity": "",
 		"Time": "",
+		"Total Balance": "",
 		"Treasury activity": "",
 		"Twitter": "",
 		"Type": "",
@@ -85,7 +87,8 @@
 		"Voted on": "",
 		"Voted on {number} candidates locking {deposit} {currency}": "",
 		"Web": "",
-		"Withdraw unbonded": ""
+		"Withdraw unbonded": "",
+		"proposal": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "Cuenta",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "Cuentas",
-		"Active": "Activo",
 		"Address": "Dirección",
 		"Details": "Detalles",
 		"No items": "No hay articulos",
-		"Updated at block": "Actualizado en el bloque",
+		"Total balance": "",
 		"View next": "Ver siguiente"
 	},
 	"AddressDetail": {

@@ -7,6 +7,7 @@
 		"Active": "活跃",
 		"Amount": "数量",
 		"Authored Blocks": "",
+		"Balance History": "",
 		"Block": "区块",
 		"Block number": "",
 		"Bonded": "",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "",
 		"Techcomm activity": "",
 		"Time": "",
+		"Total Balance": "",
 		"Treasury activity": "",
 		"Twitter": "Twitter",
 		"Type": "",
@@ -85,7 +87,8 @@
 		"Voted on": "",
 		"Voted on {number} candidates locking {deposit} {currency}": "",
 		"Web": "网站",
-		"Withdraw unbonded": ""
+		"Withdraw unbonded": "",
+		"proposal": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "帐户",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "账户",
-		"Active": "活跃",
 		"Address": "地址",
 		"Details": "显示更多",
 		"No items": "无项目",
-		"Updated at block": "上次更新时间",
+		"Total balance": "",
 		"View next": "查看下一个"
 	},
 	"AddressDetail": {

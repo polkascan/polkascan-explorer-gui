@@ -7,6 +7,7 @@
 		"Active": "Активний",
 		"Amount": "Кількість",
 		"Authored Blocks": "",
+		"Balance History": "",
 		"Block": "Блок",
 		"Block number": "",
 		"Bonded": "",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "",
 		"Techcomm activity": "",
 		"Time": "",
+		"Total Balance": "",
 		"Treasury activity": "",
 		"Twitter": "",
 		"Type": "",
@@ -85,7 +87,8 @@
 		"Voted on": "",
 		"Voted on {number} candidates locking {deposit} {currency}": "",
 		"Web": "",
-		"Withdraw unbonded": ""
+		"Withdraw unbonded": "",
+		"proposal": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "Рахунок",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "Аккаунти",
-		"Active": "Активний",
 		"Address": "Адреса",
 		"Details": "Деталі",
 		"No items": "Немає предметів",
-		"Updated at block": "Оновлено в блоці",
+		"Total balance": "",
 		"View next": "Переглянути далі"
 	},
 	"AddressDetail": {

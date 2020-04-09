@@ -7,6 +7,7 @@
 		"Active": "アクティブ",
 		"Amount": "量",
 		"Authored Blocks": "",
+		"Balance History": "",
 		"Block": "ブロック",
 		"Block number": "",
 		"Bonded": "",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "",
 		"Techcomm activity": "",
 		"Time": "",
+		"Total Balance": "",
 		"Treasury activity": "",
 		"Twitter": "",
 		"Type": "",
@@ -85,7 +87,8 @@
 		"Voted on": "",
 		"Voted on {number} candidates locking {deposit} {currency}": "",
 		"Web": "",
-		"Withdraw unbonded": ""
+		"Withdraw unbonded": "",
+		"proposal": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "アカウント",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "アカウント",
-		"Active": "アクティブ",
 		"Address": "住所",
 		"Details": "詳細",
 		"No items": "アイテムはありません",
-		"Updated at block": "ブロックで更新",
+		"Total balance": "",
 		"View next": "次を見る"
 	},
 	"AddressDetail": {

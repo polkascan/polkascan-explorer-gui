@@ -31,4 +31,5 @@ interface Env {
   CHAIN_TYPE: string;
   NETWORK_TOKEN_SYMBOL: string;
   NETWORK_TOKEN_DECIMALS: number;
+  NETWORK_COLOR_CODE: string;
 }

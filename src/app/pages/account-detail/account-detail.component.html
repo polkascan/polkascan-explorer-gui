@@ -23,6 +23,18 @@
                                 <td>{{ 'AccountDetail.Reserved Balance' | translate }}</td>
                                 <td>{{ formatBalance(account.attributes.reserved_balance) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                               </tr>
+                              <tr *ngIf="account.attributes.balance_total">
+                                <td>{{ 'AccountDetail.Total Balance' | translate }}</td>
+                                <td>{{ formatBalance(account.attributes.balance_total) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                              </tr>
+                              <tr *ngIf="account.attributes.balance_free">
+                                <td>{{ 'AccountDetail.Free Balance' | translate }}</td>
+                                <td>{{ formatBalance(account.attributes.balance_free) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                              </tr>
+                              <tr *ngIf="account.attributes.balance_reserved">
+                                <td>{{ 'AccountDetail.Reserved Balance' | translate }}</td>
+                                <td>{{ formatBalance(account.attributes.balance_reserved) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                              </tr>
                               <tr *ngIf="account.attributes.index_address">
                                 <td>{{ 'AccountDetail.Account index' | translate }}</td>
                                 <td><a routerLink="{{ networkURLPrefix }}/indices/account/{{ account.attributes.index_address }}">{{ account.attributes.index_address}}</a></td>
@@ -30,10 +42,12 @@
                               <tr *ngIf="account.attributes.identity_display">
                                 <td>{{ 'AccountDetail.Display name' | translate }}</td>
                                 <td>
-                                  <i *ngIf="account.attributes.identity_judgement_good > 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
-                                  <i *ngIf="account.attributes.identity_judgement_bad > 0" class="fa fa-minus-circle" style="color: brown" title="{{ account.attributes.identity_judgement_bad }} negative judgements"></i>
-                                  <i *ngIf="account.attributes.identity_judgement_good == 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-minus-circle" style="color: gray" title="No judgements provided"></i>
-                                  {{ account.attributes.identity_display }}
+                                  <div class="display-name">
+                                    <i *ngIf="account.attributes.identity_judgement_good > 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
+                                    <i *ngIf="account.attributes.identity_judgement_bad > 0" class="fa fa-minus-circle" style="color: brown" title="{{ account.attributes.identity_judgement_bad }} negative judgements"></i>
+                                    <i *ngIf="account.attributes.identity_judgement_good == 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-minus-circle" style="color: gray" title="No judgements provided"></i>
+                                    {{ account.attributes.identity_display }}
+                                  </div>
                                 </td>
                               </tr>
                               <tr *ngIf="account.attributes.subidentity_display">
@@ -203,6 +217,12 @@
                     <a routerLink="." fragment="roles">
                       <span class="icon is-small"><i class="fas fa-user-tag" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Roles' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'balance-history'}">
+                    <a routerLink="." fragment="balance-history" (click)="renderChart()">
+                      <span class="icon is-small"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Balance History' | translate }}</span>
                     </a>
                   </li>
                 </ul>
@@ -613,7 +633,7 @@
                                     <i class="fa fa-microchip"></i>
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
-                                  <td *ngIf="item.attributes.call_id == 'vote'">{{ 'AccountDetail.Voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/techcomm/proposal/{{ item.attributes.params[1].value }}">referendum #{{ item.attributes.params[1].value }}</a></td>
+                                  <td *ngIf="item.attributes.call_id == 'vote'">{{ 'AccountDetail.Voted on' | translate }} <a routerLink="{{ networkURLPrefix }}/techcomm/proposal/{{ item.attributes.params[1].value }}">{{ 'AccountDetail.proposal' | translate }} #{{ item.attributes.params[1].value }}</a></td>
                                   <td *ngIf="item.attributes.call_id == 'propose'">{{ 'AccountDetail.Created a proposal' | translate }}</td>
                                   <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
                               </tr>
@@ -798,6 +818,11 @@
                               </tr>
                           </tbody>
                       </table>
+                  </div>
+              </div>
+              <div class="card-table" id="balance-history" *ngIf="currentTab == 'balance-history'">
+                  <div class="content">
+                      <div [chart]="balanceHistoryChart"></div>
                   </div>
               </div>
           </div>

@@ -37,14 +37,15 @@ export const environment = {
   //   tokenDecimals: null
   // }
   jsonApiDiscoveryRootUrl: null,
-  jsonApiRootUrl: 'https://polkascan.io/kusama/api/v1',
+  jsonApiRootUrl: 'http://127.0.0.1:8000',
   network: {
     name: 'Kusama',
     networkId: 'kusama',
     networkType: 'pre',
     chainType: 'relay',
     tokenSymbol: 'KSM',
-    tokenDecimals: 12
+    tokenDecimals: 12,
+    colorCode: 'd32e79'
   }
 };
 

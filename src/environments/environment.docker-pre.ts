@@ -30,6 +30,7 @@ export const environment = {
     networkType: $ENV.NETWORK_TYPE,
     chainType: $ENV.CHAIN_TYPE,
     tokenSymbol: $ENV.NETWORK_TOKEN_SYMBOL,
-    tokenDecimals: $ENV.NETWORK_TOKEN_DECIMALS
+    tokenDecimals: $ENV.NETWORK_TOKEN_DECIMALS,
+    colorCode: $ENV.NETWORK_COLOR_CODE
   }
 };

@@ -7,6 +7,7 @@
 		"Active": "유효한",
 		"Amount": "양",
 		"Authored Blocks": "",
+		"Balance History": "",
 		"Block": "블록",
 		"Block number": "",
 		"Bonded": "",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "",
 		"Techcomm activity": "",
 		"Time": "",
+		"Total Balance": "",
 		"Treasury activity": "",
 		"Twitter": "",
 		"Type": "",
@@ -85,7 +87,8 @@
 		"Voted on": "",
 		"Voted on {number} candidates locking {deposit} {currency}": "",
 		"Web": "",
-		"Withdraw unbonded": ""
+		"Withdraw unbonded": "",
+		"proposal": ""
 	},
 	"AccountIndexDetail": {
 		"Account": "계정",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "계정",
-		"Active": "유효한",
 		"Address": "주소",
 		"Details": "세부",
 		"No items": "항목이 없습니다",
-		"Updated at block": "블록에서 업데이트",
+		"Total balance": "",
 		"View next": "다음에보기"
 	},
 	"AddressDetail": {

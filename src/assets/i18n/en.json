@@ -7,6 +7,7 @@
 		"Active": "Active",
 		"Amount": "Amount",
 		"Authored Blocks": "Authored blocks",
+		"Balance History": "Balance history",
 		"Block": "Block",
 		"Block number": "Block number",
 		"Bonded": "Bonded",
@@ -77,6 +78,7 @@
 		"Suggested a spending of {amount} {currency} to ": "Suggested a spending of {amount} {currency} to ",
 		"Techcomm activity": "Techcomm activity",
 		"Time": "Time",
+		"Total Balance": "Total balance",
 		"Treasury activity": "Treasury activity",
 		"Twitter": "Twitter",
 		"Type": "Type",
@@ -85,7 +87,8 @@
 		"Voted on": "Voted on",
 		"Voted on {number} candidates locking {deposit} {currency}": "Voted on {number} candidates locking {deposit} {currency}",
 		"Web": "Web",
-		"Withdraw unbonded": "Withdraw unbonded"
+		"Withdraw unbonded": "Withdraw unbonded",
+		"proposal": "proposal"
 	},
 	"AccountIndexDetail": {
 		"Account": "Account",
@@ -108,11 +111,10 @@
 	},
 	"AccountList": {
 		"Accounts": "Accounts",
-		"Active": "Active",
 		"Address": "Address",
 		"Details": "Details",
 		"No items": "No items",
-		"Updated at block": "Updated at block",
+		"Total balance": "Total balance",
 		"View next": "View next"
 	},
 	"AddressDetail": {

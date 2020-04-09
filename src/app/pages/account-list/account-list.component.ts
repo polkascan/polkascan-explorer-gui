@@ -41,6 +41,8 @@ export class AccountListComponent implements OnInit, OnDestroy {
   private fragmentSubsription: Subscription;
   private networkSubscription: Subscription;
   public networkURLPrefix: string;
+  public networkTokenDecimals: number;
+  public networkTokenSymbol: string;
 
   constructor(
     private accountService: AccountService,
@@ -53,6 +55,8 @@ export class AccountListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.networkSubscription = this.appConfigService.getCurrentNetwork().subscribe( network => {
       this.networkURLPrefix = this.appConfigService.getUrlPrefix();
+      this.networkTokenDecimals = +network.attributes.token_decimals;
+      this.networkTokenSymbol = network.attributes.token_symbol;
       this.fragmentSubsription = this.activatedRoute.queryParams.subscribe(queryParams => {
         this.currentPage = +queryParams.page || 1;
         this.getItems(this.currentPage);
@@ -70,6 +74,10 @@ export class AccountListComponent implements OnInit, OnDestroy {
     this.accountService.all(params).subscribe(accounts => {
       this.accounts = accounts;
     });
+  }
+
+  public formatBalance(balance: number) {
+    return balance / Math.pow(10, this.networkTokenDecimals);
   }
 
   ngOnDestroy() {
