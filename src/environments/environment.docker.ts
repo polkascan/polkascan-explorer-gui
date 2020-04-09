@@ -30,6 +30,7 @@ export const environment = {
     networkType: null,
     chainType: null,
     tokenSymbol: null,
-    tokenDecimals: null
+    tokenDecimals: null,
+    colorCode: null
   }
 };
