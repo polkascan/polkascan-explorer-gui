@@ -181,7 +181,7 @@
                       <span>{{ 'AccountDetail.Election activity' | translate }}</span>
                     </a>
                   </li>
-                  <li [ngClass]="{'is-active': currentTab == 'treasury'}" *ngIf="stakingBondActivity?.data.length > 0">
+                  <li [ngClass]="{'is-active': currentTab == 'treasury'}" *ngIf="treasuryActivity?.data.length > 0">
                     <a routerLink="." fragment="treasury">
                       <span class="icon is-small"><i class="fas fa-piggy-bank" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Treasury activity' | translate }}</span>
@@ -313,8 +313,8 @@
                           </tbody>
                       </table>
                   </div>
-                  <footer class="card-footer" *ngIf="councilActivity?.data.length == 25">
-                      <a class="card-footer-item" routerLink="." [queryParams]="{ councilPage: councilActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  <footer class="card-footer" *ngIf="identityActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ identityActivityPage: identityActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="proposals" *ngIf="currentTab == 'proposals'">
@@ -463,8 +463,8 @@
                           </tbody>
                       </table>
                   </div>
-                  <footer class="card-footer" *ngIf="slashes?.data.length == 25">
-                      <a class="card-footer-item" routerLink="." [queryParams]="{ slashesPage: slashesPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  <footer class="card-footer" *ngIf="imOnlineActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ imOnlineActivityPage: imOnlineActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="council" *ngIf="currentTab == 'council'">
