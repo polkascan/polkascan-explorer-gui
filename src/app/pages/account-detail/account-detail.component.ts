@@ -57,6 +57,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public electionActivity: DocumentCollection<Event>;
   public imOnlineActivity: DocumentCollection<Event>;
   public stakingBondActivity: DocumentCollection<Extrinsic>;
+  public stakingSessionsActivity: DocumentCollection<Event>;
   public treasuryActivity: DocumentCollection<Extrinsic>;
   public identityActivity: DocumentCollection<Event>;
   public proposalActivity: DocumentCollection<Extrinsic>;
@@ -72,6 +73,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public electionActivityPage = 1;
   public memberActivityPage = 1;
   public stakingBondActivityPage = 1;
+  public stakingSessionsActivityPage = 1;
   public treasuryActivityPage = 1;
   public imOnlineActivityPage = 1;
   public identityActivityPage = 1;
@@ -116,7 +118,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
       if ([
         'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member', 'techcomm', 'balance-history',
-        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda'
+        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda',
+        'sessions'
       ].includes(value)) {
         this.currentTab = value;
       } else {
@@ -205,6 +208,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
           this.electionActivity = null;
           this.imOnlineActivity = null;
           this.stakingBondActivity = null;
+          this.stakingSessionsActivity = null;
           this.treasuryActivity = null;
           this.identityActivity = null;
           this.proposalActivity = null;
@@ -244,6 +248,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
               this.getSlashEvents(this.slashesPage);
               this.stakingBondActivityPage = +queryParams.stakingBondActivityPage || 1;
               this.getStakingBondActivity(this.stakingBondActivityPage);
+              this.stakingSessionsActivityPage = +queryParams.stakingSessionsActivityPage || 1;
+              this.getStakingSessionsActivity(this.stakingSessionsActivityPage);
               this.imOnlineActivityPage = +queryParams.imOnlineActivityPage || 1;
               this.getImOnlineActivity(this.imOnlineActivityPage);
               this.authoredBlocksPage = +queryParams.authoredBlocksPage || 1;
@@ -343,6 +349,15 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         remotefilter: {address: this.accountId, search_index: '6,7,8,10,11,12,19'},
       }).subscribe(extrinsics => {
         this.stakingBondActivity = extrinsics;
+      });
+  }
+
+  public getStakingSessionsActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: 38},
+      }).subscribe(events => {
+        this.stakingSessionsActivity = events;
       });
   }
 

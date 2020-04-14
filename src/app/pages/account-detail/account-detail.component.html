@@ -165,6 +165,12 @@
                       <span>{{ 'AccountDetail.Staking activity' | translate }}</span>
                     </a>
                   </li>
+                   <li [ngClass]="{'is-active': currentTab == 'sessions'}" *ngIf="stakingSessionsActivity?.data.length > 0">
+                    <a routerLink="." fragment="sessions">
+                      <span class="icon is-small"><i class="fas fa-user-check" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Staking sessions' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'imonline'}" *ngIf="imOnlineActivity?.data.length > 0">
                     <a routerLink="." fragment="imonline">
                       <span class="icon is-small"><i class="fas fa-user-clock" aria-hidden="true"></i></span>
@@ -245,14 +251,16 @@
 
                                 <td width="5%"><i class="fa fa-exchange-alt"></i></td>
                                 <td class="is-hidden-mobile"><a [routerLink]="[networkURLPrefix, 'block', balanceTransfer.attributes.block_id]">{{ balanceTransfer.attributes.block_id }}</a></td>
-                                <td *ngIf="account.id != balanceTransfer.attributes?.sender?.id"><a *ngIf="balanceTransfer.attributes.sender" [routerLink]="[networkURLPrefix, 'account', balanceTransfer.attributes.sender?.attributes?.address]" class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.sender"></app-address></a></td>
+                                <td *ngIf="balanceTransfer.attributes?.event_id == 'Transfer' && account.id != balanceTransfer.attributes?.sender?.id"><a *ngIf="balanceTransfer.attributes.sender" [routerLink]="[networkURLPrefix, 'account', balanceTransfer.attributes.sender?.attributes?.address]" class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.sender"></app-address></a></td>
+                                <td *ngIf="balanceTransfer.attributes?.event_id == 'Claimed'"><div class="transfer-source">{{ 'AccountDetail.Claim' | translate }}</div></td>
+                                <td *ngIf="balanceTransfer.attributes?.event_id == 'Deposit'"><div class="transfer-source">{{ 'AccountDetail.Deposit' | translate }}</div></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.sender?.id" class="current-account"><span class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.sender"></app-address></span></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.sender?.id" width="5%" class="transfer-out"><i class="fa fa-sign-out-alt" title="Outgoing transfer"></i></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.destination?.id" width="5%" class="transfer-in"><i class="fa fa-sign-in-alt" title="Incoming transfer"></i></td>
                                 <td *ngIf="account.id != balanceTransfer.attributes.destination?.id"><a [routerLink]="[networkURLPrefix, 'account', balanceTransfer.attributes.destination.attributes?.address]" class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.destination"></app-address></a></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.destination?.id" class="current-account"><span class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.destination"></app-address></span></td>
                                 <td>{{ formatBalance(balanceTransfer.attributes.value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
-                                <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/balances/transfer/{{ balanceTransfer.id }}">Details</a></td>
+                                <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ balanceTransfer.id }}">Details</a></td>
                               </tr>
                           </tbody>
                       </table>
@@ -485,6 +493,37 @@
                   </div>
                   <footer class="card-footer" *ngIf="imOnlineActivity?.data.length == 25">
                       <a class="card-footer-item" routerLink="." [queryParams]="{ imOnlineActivityPage: imOnlineActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="sessions" *ngIf="currentTab == 'sessions'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!stakingSessionsActivity || stakingSessionsActivity.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="stakingSessionsActivity?.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Type' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let event of stakingSessionsActivity.data; trackBy: stakingSessionsActivity.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-university"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ event.attributes.block_id }}">{{ event.attributes.block_id }}</a></td>
+                                  <td *ngIf="event.attributes.event_id == 'NewSession'">{{ 'AccountDetail.Staking activities in ' | translate }} <a routerLink="{{ networkURLPrefix }}/session/session/{{ event.attributes.attributes[0].value - 1 }}">session #{{ event.attributes.attributes[0].value - 1}}</a></td>
+                                  <td width="5%">
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{event.attributes.block_id}}-{{ event.attributes.extrinsic_idx }}" *ngIf="event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                    <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ event.id }}" *ngIf="!event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="stakingSessionsActivity?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ stakingSessionsActivityPage: stakingSessionsActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="council" *ngIf="currentTab == 'council'">
