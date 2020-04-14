@@ -42,12 +42,12 @@
                               <tr *ngIf="account.attributes.identity_display">
                                 <td>{{ 'AccountDetail.Display name' | translate }}</td>
                                 <td>
-                                  <div class="display-name">
-                                    <i *ngIf="account.attributes.identity_judgement_good > 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
-                                    <i *ngIf="account.attributes.identity_judgement_bad > 0" class="fa fa-minus-circle" style="color: brown" title="{{ account.attributes.identity_judgement_bad }} negative judgements"></i>
-                                    <i *ngIf="account.attributes.identity_judgement_good == 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-minus-circle" style="color: gray" title="No judgements provided"></i>
-                                    {{ account.attributes.identity_display }}
-                                  </div>
+                                    <div class="identity-judgement">
+                                      <i *ngIf="account.attributes.identity_judgement_good > 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-check-circle" style="color: forestgreen" title="{{ account.attributes.identity_judgement_good }} positive judgements"></i>
+                                      <i *ngIf="account.attributes.identity_judgement_bad > 0" class="fa fa-minus-circle" style="color: brown" title="{{ account.attributes.identity_judgement_bad }} negative judgements"></i>
+                                      <i *ngIf="account.attributes.identity_judgement_good == 0 && account.attributes.identity_judgement_bad == 0" class="fa fa-minus-circle" style="color: gray" title="No judgements provided"></i>
+                                    </div>
+                                    <div class="display-name">{{ account.attributes.identity_display }}</div>
                                 </td>
                               </tr>
                               <tr *ngIf="account.attributes.subidentity_display">
@@ -442,7 +442,7 @@
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ item.attributes.block_id }}">{{ item.attributes.block_id }}</a></td>
                                   <td *ngIf="item.attributes.call_id == 'bond_extra'">{{ 'AccountDetail.Bonded extra' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
-                                  <td *ngIf="item.attributes.call_id == 'bond'">{{ 'AccountDetail.Bonded' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                  <td *ngIf="item.attributes.call_id == 'bond'">{{ 'AccountDetail.Bonded' | translate }} {{ formatBalance(item.attributes.params[1].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                                   <td *ngIf="item.attributes.call_id == 'unbond'">{{ 'AccountDetail.Unbonded' | translate }} {{ formatBalance(item.attributes.params[0].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                                   <td *ngIf="item.attributes.call_id == 'withdraw_unbonded'">{{ 'AccountDetail.Withdraw unbonded' | translate }}</td>
                                   <td *ngIf="item.attributes.call_id == 'chill'">{{ 'AccountDetail.Stopped validating/nominating' | translate }}</td>
