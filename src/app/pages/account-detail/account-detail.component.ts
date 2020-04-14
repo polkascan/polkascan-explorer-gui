@@ -153,8 +153,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
         yAxis: {
           title: {
             text: network.attributes.token_symbol
-          },
-          min: 0
+          }
         },
         legend: {
           enabled: false
