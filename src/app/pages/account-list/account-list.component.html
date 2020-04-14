@@ -41,16 +41,18 @@
                               <tr>
                                 <th></th>
                                 <th>{{ 'AccountList.Address' | translate }}</th>
+                                <th class="is-hidden-mobile">{{ 'AccountList.Transactions' | translate }}</th>
                                 <th class="is-hidden-mobile">{{ 'AccountList.Total balance' | translate }}</th>
                                 <th></th>
                               </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let account of accounts.data; trackBy: accounts.trackBy">
+                                <tr *ngFor="let account of accounts.data; trackBy: accounts.trackBy; let i = index">
                                     <td width="5%">
-                                      <i class="fa fa-id-card"></i>
+                                      <div class="dot">{{ i + 1 + (currentPage - 1) * 25 }}</div>
                                     </td>
                                     <td><a routerLink="{{ networkURLPrefix }}/account/{{ account.attributes.address }}"><app-address [account]="account"></app-address></a></td>
+                                    <td class="is-hidden-mobile">{{ account.attributes.nonce || 0 }}</td>
                                     <td class="is-hidden-mobile">{{ formatBalance(account.attributes.balance_total) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                                     <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/account/{{ account.attributes.address }}">{{ 'AccountList.Details' | translate }}</a></td>
                                 </tr>

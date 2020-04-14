@@ -123,6 +123,7 @@
 		"Sudo accounts": "Sudo accounts",
 		"Technical committee members": "Technical committee",
 		"Total balance": "Total balance",
+		"Transactions": "Transactions",
 		"Treasury accounts": "Treasuries",
 		"Validators": "Validators",
 		"View next": "View next"
@@ -447,7 +448,7 @@
 		"item_Modules": "Modules",
 		"item_Nominator Accounts": "Nominators",
 		"item_Nominators": "Nominators",
-		"item_Preimages": "Proposal pre-images",
+		"item_Preimages": "Proposal PreImages",
 		"item_Proposals": "Proposals",
 		"item_Referenda": "Referenda",
 		"item_Registrar Accounts": "Registrars",
