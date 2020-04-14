@@ -4,9 +4,29 @@
         <section>
             <div class="card ">
                 <header class="card-header">
-                    <p class="card-header-title">
-                        {{ 'AccountList.Accounts' | translate }}
-                    </p>
+                    <ng-container [ngSwitch]="title">
+                      <p class="card-header-title" *ngSwitchCase="'Validators'">
+                        {{ 'AccountList.Validators' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchCase="'Nominators'">
+                        {{ 'AccountList.Nominators' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchCase="'Council members'">
+                        {{ 'AccountList.Council members' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchCase="'Technical committee members'">
+                        {{ 'AccountList.Technical committee members' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchCase="'Treasury accounts'">
+                        {{ 'AccountList.Treasury accounts' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchCase="'Sudo accounts'">
+                        {{ 'AccountList.Sudo accounts' | translate }}
+                      </p>
+                      <p class="card-header-title" *ngSwitchDefault>
+                          {{ 'AccountList.Accounts' | translate }}
+                      </p>
+                    </ng-container>
                     <a [routerLink]="" fragment="list" class="card-header-icon" aria-label="more options">
                       <span class="icon">
                         <i class="fa fa-id-card fa-2x" aria-hidden="true"></i>
@@ -36,7 +56,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="no-items" *ngIf="accounts?.data.length == 0 && accounts?.is_loading">{{ 'AccountList.No items' | translate }}</div>
+                        <div class="no-items" *ngIf="accounts?.data.length == 0 && !accounts?.is_loading">{{ 'AccountList.No items' | translate }}</div>
                     </div>
                 </div>
                 <footer class="card-footer" *ngIf="accounts && accounts.data.length == 25">

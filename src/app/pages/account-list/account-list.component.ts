@@ -43,6 +43,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
   public networkURLPrefix: string;
   public networkTokenDecimals: number;
   public networkTokenSymbol: string;
+  public title: string;
 
   constructor(
     private accountService: AccountService,
@@ -53,6 +54,9 @@ export class AccountListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.title = this.activatedRoute.snapshot.data.title;
+
     this.networkSubscription = this.appConfigService.getCurrentNetwork().subscribe( network => {
       this.networkURLPrefix = this.appConfigService.getUrlPrefix();
       this.networkTokenDecimals = +network.attributes.token_decimals;
@@ -70,6 +74,10 @@ export class AccountListComponent implements OnInit, OnDestroy {
       page: { number: page, size: 25},
       remotefilter: {},
     };
+
+    if (this.activatedRoute.snapshot.data.filter) {
+      params.remotefilter[this.activatedRoute.snapshot.data.filter] = 1;
+    }
 
     this.accountService.all(params).subscribe(accounts => {
       this.accounts = accounts;
