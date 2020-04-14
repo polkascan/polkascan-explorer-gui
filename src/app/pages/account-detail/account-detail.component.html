@@ -513,7 +513,7 @@
                                     <i class="fa fa-university"></i>
                                   </td>
                                   <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ event.attributes.block_id }}">{{ event.attributes.block_id }}</a></td>
-                                  <td *ngIf="event.attributes.event_id == 'NewSession'">{{ 'AccountDetail.Staking activities in ' | translate }} <a routerLink="{{ networkURLPrefix }}/session/session/{{ event.attributes.attributes[0].value - 1 }}">session #{{ event.attributes.attributes[0].value - 1}}</a></td>
+                                  <td *ngIf="event.attributes.event_id == 'NewSession'">{{ 'AccountDetail.Staking activities in ' | translate }} <a routerLink="{{ networkURLPrefix }}/session/session/{{ event.attributes.attributes[0].value }}">session #{{ event.attributes.attributes[0].value }}</a></td>
                                   <td width="5%">
                                     <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{event.attributes.block_id}}-{{ event.attributes.extrinsic_idx }}" *ngIf="event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
                                     <a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ event.id }}" *ngIf="!event.attributes.extrinsic_idx">{{ 'AccountDetail.Details' | translate }}</a>
