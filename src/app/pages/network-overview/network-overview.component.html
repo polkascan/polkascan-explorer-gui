@@ -21,7 +21,7 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor="let network of networks.data; trackBy: networks.trackBy" [ngClass]="{
-                                    'explore-westend': network.attributes.network_id == 'westend',
+                                    'explore-westend': network.attributes.network_id == 'westend' || network.attributes.network_id == 'westend-m2',
                                     'explore-kusama': ['kusama', 'kusama-cc1', 'kusama-cc2', 'kusama-cc3', 'kusama-cc4', 'kusama-cc5'].includes(network.attributes.network_id),
                                     'explore-edgeware': network.attributes.network_id == 'edgeware' || network.attributes.network_id == 'edgeware-berlin',
                                     'explore-edgeware-testnet': network.attributes.network_id == 'edgeware-testnet',
@@ -34,6 +34,8 @@
                                     'explore-centrifuge': network.attributes.network_id == 'centrifuge' || network.attributes.network_id == 'centrifuge-amber' || network.attributes.network_id == 'centrifuge-amber-cc2',
                                     'explore-robonomics': network.attributes.network_id == 'robonomics' || network.attributes.network_id == 'robonomics-testnet',
                                     'explore-joystream': network.attributes.network_id == 'joystream' || network.attributes.network_id == 'joystream-testnet',
+                                    'explore-datahighway': network.attributes.network_id == 'datahighway' || network.attributes.network_id == 'datahighway-testnet',
+                                    'explore-encointer': network.attributes.network_id == 'encointer' || network.attributes.network_id == 'encointer-gesell',
                                     'explore-other': network.attributes.network_id == 'dev'
                                   }">
                                       <td width="5%">
