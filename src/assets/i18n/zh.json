@@ -116,6 +116,7 @@
 	"AccountList": {
 		"Accounts": "账户",
 		"Accounts with identity": "Accounts with identity",
+		"Accounts with negative judgement": "Accounts with negative judgement",
 		"Address": "地址",
 		"Council members": "Council",
 		"Details": "显示更多",
@@ -439,6 +440,7 @@
 		"Runtime": "运行",
 		"Staking": "质押",
 		"item_Accounts": "账号",
+		"item_Blacklist": "Blacklist",
 		"item_Blocks": "区块",
 		"item_Charts": "图表",
 		"item_Council Accounts": "Council",

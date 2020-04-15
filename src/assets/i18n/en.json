@@ -116,6 +116,7 @@
 	"AccountList": {
 		"Accounts": "Accounts",
 		"Accounts with identity": "Accounts with identity",
+		"Accounts with negative judgement": "Accounts with negative judgement",
 		"Address": "Address",
 		"Council members": "Council",
 		"Details": "Details",
@@ -439,6 +440,7 @@
 		"Runtime": "Runtime",
 		"Staking": "Staking",
 		"item_Accounts": "All accounts",
+		"item_Blacklist": "Blacklist",
 		"item_Blocks": "Blocks",
 		"item_Charts": "Charts",
 		"item_Council Accounts": "Council",
