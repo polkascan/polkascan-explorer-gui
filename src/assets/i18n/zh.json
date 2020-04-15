@@ -115,6 +115,7 @@
 	},
 	"AccountList": {
 		"Accounts": "账户",
+		"Accounts with identity": "Accounts with identity",
 		"Address": "地址",
 		"Council members": "Council",
 		"Details": "显示更多",
@@ -443,6 +444,7 @@
 		"item_Council Accounts": "Council",
 		"item_CouncilMotions": "议会议案",
 		"item_Events": "活动",
+		"item_Identities": "Identities",
 		"item_Inherents": "内在因素",
 		"item_Logs": "日志",
 		"item_Modules": "组件",

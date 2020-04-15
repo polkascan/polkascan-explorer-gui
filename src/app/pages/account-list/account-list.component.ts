@@ -44,6 +44,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
   public networkTokenDecimals: number;
   public networkTokenSymbol: string;
   public title: string;
+  public showBalances: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -54,7 +55,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    this.showBalances = true;
     this.title = this.activatedRoute.snapshot.data.title;
 
     this.networkSubscription = this.appConfigService.getCurrentNetwork().subscribe( network => {
@@ -80,6 +81,9 @@ export class AccountListComponent implements OnInit, OnDestroy {
     }
 
     this.accountService.all(params).subscribe(accounts => {
+      if (!accounts.is_loading && accounts.data.length > 0) {
+        this.showBalances = accounts.data[0].attributes.balance_total !== null;
+      }
       this.accounts = accounts;
     });
   }

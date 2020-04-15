@@ -23,6 +23,9 @@
                       <p class="card-header-title" *ngSwitchCase="'Sudo accounts'">
                         {{ 'AccountList.Sudo accounts' | translate }}
                       </p>
+                      <p class="card-header-title" *ngSwitchCase="'Accounts with identity'">
+                        {{ 'AccountList.Accounts with identity' | translate }}
+                      </p>
                       <p class="card-header-title" *ngSwitchDefault>
                           {{ 'AccountList.Accounts' | translate }}
                       </p>
@@ -41,8 +44,8 @@
                               <tr>
                                 <th></th>
                                 <th>{{ 'AccountList.Address' | translate }}</th>
-                                <th class="is-hidden-mobile">{{ 'AccountList.Transactions' | translate }}</th>
-                                <th class="is-hidden-mobile">{{ 'AccountList.Total balance' | translate }}</th>
+                                <th *ngIf="showBalances" class="is-hidden-mobile">{{ 'AccountList.Transactions' | translate }}</th>
+                                <th *ngIf="showBalances" class="is-hidden-mobile">{{ 'AccountList.Total balance' | translate }}</th>
                                 <th></th>
                               </tr>
                             </thead>
@@ -52,8 +55,8 @@
                                       <div class="dot">{{ i + 1 + (currentPage - 1) * 25 }}</div>
                                     </td>
                                     <td><a routerLink="{{ networkURLPrefix }}/account/{{ account.attributes.address }}"><app-address [account]="account"></app-address></a></td>
-                                    <td class="is-hidden-mobile">{{ account.attributes.nonce || 0 }}</td>
-                                    <td class="is-hidden-mobile">{{ formatBalance(account.attributes.balance_total) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                    <td *ngIf="showBalances" class="is-hidden-mobile">{{ account.attributes.nonce || 0 }}</td>
+                                    <td *ngIf="showBalances" class="is-hidden-mobile">{{ formatBalance(account.attributes.balance_total) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
                                     <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/account/{{ account.attributes.address }}">{{ 'AccountList.Details' | translate }}</a></td>
                                 </tr>
                             </tbody>

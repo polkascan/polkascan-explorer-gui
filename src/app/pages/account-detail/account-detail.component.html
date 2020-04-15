@@ -86,9 +86,9 @@
                                   <a href="https://twitter.com/{{account.attributes.identity_twitter }}" target="_blank"><i class="fab fa-twitter"></i> {{ account.attributes.identity_twitter }}</a>
                                 </td>
                               </tr>
-                              <tr>
+                              <tr *ngIf="account.attributes.nonce !== null">
                                 <td>{{ 'AccountDetail.Nonce' | translate }}</td>
-                                <td>{{ account.attributes.nonce || 0}}</td>
+                                <td>{{ account.attributes.nonce }}</td>
                               </tr>
                               <tr>
                                 <td width="20%">{{ 'AccountDetail.Active' | translate }}</td>
@@ -255,8 +255,8 @@
                                 <td *ngIf="balanceTransfer.attributes?.event_id == 'Claimed'"><div class="transfer-source">{{ 'AccountDetail.Claim' | translate }}</div></td>
                                 <td *ngIf="balanceTransfer.attributes?.event_id == 'Deposit'"><div class="transfer-source">{{ 'AccountDetail.Deposit' | translate }}</div></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.sender?.id" class="current-account"><span class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.sender"></app-address></span></td>
-                                <td *ngIf="account.id == balanceTransfer.attributes.sender?.id" width="5%" class="transfer-out"><i class="fa fa-sign-out-alt" title="Outgoing transfer"></i></td>
-                                <td *ngIf="account.id == balanceTransfer.attributes.destination?.id" width="5%" class="transfer-in"><i class="fa fa-sign-in-alt" title="Incoming transfer"></i></td>
+                                <td *ngIf="account.id == balanceTransfer.attributes.sender?.id" class="transfer-out"><i class="fa fa-sign-out-alt" title="Outgoing transfer"></i></td>
+                                <td *ngIf="account.id == balanceTransfer.attributes.destination?.id" class="transfer-in"><i class="fa fa-sign-in-alt" title="Incoming transfer"></i></td>
                                 <td *ngIf="account.id != balanceTransfer.attributes.destination?.id"><a [routerLink]="[networkURLPrefix, 'account', balanceTransfer.attributes.destination.attributes?.address]" class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.destination"></app-address></a></td>
                                 <td *ngIf="account.id == balanceTransfer.attributes.destination?.id" class="current-account"><span class="address-mobile-format"><app-address [account]="balanceTransfer.attributes.destination"></app-address></span></td>
                                 <td>{{ formatBalance(balanceTransfer.attributes.value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>

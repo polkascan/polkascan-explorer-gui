@@ -115,6 +115,7 @@
 	},
 	"AccountList": {
 		"Accounts": "Accounts",
+		"Accounts with identity": "Accounts with identity",
 		"Address": "Address",
 		"Council members": "Council",
 		"Details": "Details",
@@ -443,6 +444,7 @@
 		"item_Council Accounts": "Council",
 		"item_CouncilMotions": "Council Motions",
 		"item_Events": "Events",
+		"item_Identities": "Identities",
 		"item_Inherents": "Inherents",
 		"item_Logs": "Logs",
 		"item_Modules": "Modules",
