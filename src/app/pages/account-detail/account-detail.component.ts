@@ -20,7 +20,7 @@
  * account-detail.component.ts
  */
 
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {DocumentCollection} from 'ngx-jsonapi';
 import {Extrinsic} from '../../classes/extrinsic.class';
 import {Event} from '../../classes/event.class';
@@ -35,6 +35,9 @@ import {BalanceTransfer} from '../../classes/balancetransfer.class';
 import {AppConfigService} from '../../services/app-config.service';
 import {AccountIndexService} from '../../services/account-index.service';
 import {EventService} from '../../services/event.service';
+import {BlockTotal} from '../../classes/block-total.class';
+import {BlockTotalService} from '../../services/block-total.service';
+import {Chart} from 'angular-highcharts';
 
 @Component({
   selector: 'app-account-detail',
@@ -47,11 +50,39 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public balanceTransfers: DocumentCollection<BalanceTransfer>;
   public extrinsics: DocumentCollection<Extrinsic>;
+
   public slashes: DocumentCollection<Event>;
+  public councilActivity: DocumentCollection<Event>;
+  public memberActivity: DocumentCollection<Extrinsic>;
+  public electionActivity: DocumentCollection<Event>;
+  public imOnlineActivity: DocumentCollection<Event>;
+  public stakingBondActivity: DocumentCollection<Extrinsic>;
+  public stakingSessionsActivity: DocumentCollection<Event>;
+  public treasuryActivity: DocumentCollection<Extrinsic>;
+  public identityActivity: DocumentCollection<Event>;
+  public proposalActivity: DocumentCollection<Extrinsic>;
+  public referendumActivity: DocumentCollection<Extrinsic>;
+  public techcommActivity: DocumentCollection<Extrinsic>;
+  public authoredBlocks: DocumentCollection<BlockTotal>;
+  public accountLifecycle: DocumentCollection<Event>;
 
   public balanceTransfersPage = 1;
   public extrinsicsPage = 1;
   public slashesPage = 1;
+  public councilActivityPage = 1;
+  public electionActivityPage = 1;
+  public memberActivityPage = 1;
+  public stakingBondActivityPage = 1;
+  public stakingSessionsActivityPage = 1;
+  public treasuryActivityPage = 1;
+  public imOnlineActivityPage = 1;
+  public identityActivityPage = 1;
+  public proposalActivityPage = 1;
+  public referendumActivityPage = 1;
+  public techcommActivityPage = 1;
+  public authoredBlocksPage = 1;
+  public accountLifecyclePage = 1;
+
   public accountId: string;
 
   public account$: Observable<Account>;
@@ -64,14 +95,20 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   private fragmentSubsription: Subscription;
   private queryParamsSubsription: Subscription;
 
+  public balanceHistoryChart: Chart;
+  private balanceHistoryChartOptions: {};
+  private balanceHistoryChartData = {};
+
   constructor(
     private balanceTransferService: BalanceTransferService,
     private extrinsicService: ExtrinsicService,
     private eventService: EventService,
+    private blockTotalService: BlockTotalService,
     private accountService: AccountService,
     private accountIndexService: AccountIndexService,
     private appConfigService: AppConfigService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -79,8 +116,14 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
-      if (value === 'transactions' || value === 'slashes' || value === 'transfers' || value == 'roles') {
+      if ([
+        'roles', 'transactions', 'slashes', 'transfers', 'council', 'election', 'member', 'techcomm', 'balance-history',
+        'bonding', 'imonline', 'identity', 'authoredblocks', 'lifecycle', 'treasury', 'proposals', 'referenda',
+        'sessions'
+      ].includes(value)) {
         this.currentTab = value;
+      } else {
+        this.currentTab = 'transactions';
       }
     });
 
@@ -90,6 +133,62 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
       this.networkTokenDecimals = +network.attributes.token_decimals;
       this.networkTokenSymbol = network.attributes.token_symbol;
+
+      this.balanceHistoryChartOptions = {
+        colors: ['#' + network.attributes.color_code],
+        chart: {
+          type: 'area',
+          zoomType: 'x',
+          height: null
+        },
+        title: {
+          text: '',
+          style: {fontSize: '12px'}
+        },
+        credits: {
+          enabled: false
+        },
+        xAxis: {
+          title: {
+            text: 'Block number'
+          }
+        },
+        yAxis: {
+          title: {
+            text: network.attributes.token_symbol
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          area: {
+            fillColor: {
+              linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+              },
+              stops: [
+                [0, '#' + network.attributes.color_code],
+                [1, '#fff']
+              ]
+            },
+            marker: {
+              radius: 2
+            },
+            lineWidth: 1,
+            states: {
+              hover: {
+                lineWidth: 1
+              }
+            },
+            threshold: null
+          }
+        },
+        series: []
+      };
 
       this.account$ = this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
@@ -102,6 +201,27 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
           this.accountId = val.attributes.address;
 
+          // reset tabs
+          this.slashes = null;
+          this.councilActivity = null;
+          this.memberActivity = null;
+          this.electionActivity = null;
+          this.imOnlineActivity = null;
+          this.stakingBondActivity = null;
+          this.stakingSessionsActivity = null;
+          this.treasuryActivity = null;
+          this.identityActivity = null;
+          this.proposalActivity = null;
+          this.referendumActivity = null;
+          this.techcommActivity = null;
+          this.authoredBlocks = null;
+          this.accountLifecycle = null;
+
+          this.balanceHistoryChartData = val.attributes.balance_history[0];
+          this.renderChart();
+          // this.chart.addSeries(val.attributes.balance_history[1], true, true);
+          // this.chart.addSeries(val.attributes.balance_history[2], true, true);
+
           this.queryParamsSubsription = this.activatedRoute.queryParams.subscribe(queryParams => {
             this.extrinsicsPage = +queryParams.extrinsicsPage || 1;
             this.getTransactions(this.extrinsicsPage);
@@ -109,14 +229,62 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
             this.balanceTransfersPage = +queryParams.balanceTransfersPage || 1;
             this.getBalanceTransfers(this.balanceTransfersPage);
 
-            this.slashesPage = +queryParams.slashesPage || 1;
+            this.identityActivityPage = +queryParams.identityActivityPage || 1;
+            this.getIdentityActivity(this.identityActivityPage);
+
+            this.accountLifecyclePage = +queryParams.accountLifecyclePage || 1;
+            this.getAccountLifecycle(this.accountLifecyclePage);
+
+            this.proposalActivityPage = +queryParams.proposalActivityPage || 1;
+            this.getProposalActivity(this.proposalActivityPage);
+
+            this.referendumActivityPage = +queryParams.referendumActivityPage || 1;
+            this.getReferendumActivity(this.referendumActivityPage);
+
             if (val.attributes.was_validator || val.attributes.was_nominator) {
+
+              // Validator & Nominator tabs
+              this.slashesPage = +queryParams.slashesPage || 1;
               this.getSlashEvents(this.slashesPage);
+              this.stakingBondActivityPage = +queryParams.stakingBondActivityPage || 1;
+              this.getStakingBondActivity(this.stakingBondActivityPage);
+              this.stakingSessionsActivityPage = +queryParams.stakingSessionsActivityPage || 1;
+              this.getStakingSessionsActivity(this.stakingSessionsActivityPage);
+              this.imOnlineActivityPage = +queryParams.imOnlineActivityPage || 1;
+              this.getImOnlineActivity(this.imOnlineActivityPage);
+              this.authoredBlocksPage = +queryParams.authoredBlocksPage || 1;
+              this.getAuthoredBlocks(this.authoredBlocksPage);
+            }
+
+            if (val.attributes.was_council_member) {
+              // Council member tabs
+              this.councilActivityPage = +queryParams.councilPage || 1;
+              this.getCouncilActivity(this.councilActivityPage);
+
+              this.electionActivityPage = +queryParams.electionActivityPage || 1;
+              this.getElectionActivity(this.electionActivityPage);
+
+              this.treasuryActivityPage = +queryParams.treasuryActivityPage || 1;
+              this.getTreasuryActivity(this.treasuryActivityPage);
+
+              this.memberActivityPage = +queryParams.memberActivityPage || 1;
+              this.getMemberActivity(this.memberActivityPage);
+            }
+
+            if (val.attributes.was_tech_comm_member) {
+              this.techcommActivityPage = +queryParams.techcommActivityPage || 1;
+              this.getTechCommActivity(this.techcommActivityPage);
             }
           });
         }
       });
     });
+  }
+
+  public renderChart() {
+    this.balanceHistoryChart = new Chart(this.balanceHistoryChartOptions);
+    // @ts-ignore
+    this.balanceHistoryChart.addSeries(this.balanceHistoryChartData, true, true);
   }
 
   public formatBalance(balance: number) {
@@ -142,9 +310,124 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   public getSlashEvents(page: number) {
      this.eventService.all({
         page: {number: page, size: 25},
-        remotefilter: {address: this.accountId, search_index: 1},
-      }).subscribe(slashes => {
-        this.slashes = slashes;
+        remotefilter: {address: this.accountId, search_index: '1'},
+      }).subscribe(events => {
+        this.slashes = events;
+      });
+  }
+
+  public getCouncilActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '4,5'},
+      }).subscribe(events => {
+        this.councilActivity = events;
+      });
+  }
+
+  public getMemberActivity(page: number) {
+    this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '25,26,27'},
+      }).subscribe(extrinsics => {
+        this.memberActivity = extrinsics;
+      });
+  }
+
+  public getElectionActivity(page: number) {
+      this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '23,24'},
+      }).subscribe(events => {
+        this.electionActivity = events;
+      });
+  }
+
+  public getStakingBondActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '6,7,8,10,11,12,19'},
+      }).subscribe(extrinsics => {
+        this.stakingBondActivity = extrinsics;
+      });
+  }
+
+  public getStakingSessionsActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: 38},
+      }).subscribe(events => {
+        this.stakingSessionsActivity = events;
+      });
+  }
+
+  public getImOnlineActivity(page: number) {
+   this.eventService.all({
+      page: {number: page, size: 25},
+      remotefilter: {address: this.accountId, search_index: '3,9'},
+    }).subscribe(events => {
+      this.imOnlineActivity = events;
+    });
+  }
+
+  public getIdentityActivity(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '13,14,15,16,17,18,20'},
+      }).subscribe(events => {
+        this.identityActivity = events;
+      });
+  }
+
+  public getProposalActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '31,32'},
+      }).subscribe(extrinsics => {
+        this.proposalActivity = extrinsics;
+      });
+  }
+
+  public getReferendumActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '29,30'},
+      }).subscribe(extrinsics => {
+        this.referendumActivity = extrinsics;
+      });
+  }
+
+  public getTechCommActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '33,34'},
+      }).subscribe(extrinsics => {
+        this.techcommActivity = extrinsics;
+      });
+  }
+
+  public getTreasuryActivity(page: number) {
+     this.extrinsicService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: 28},
+      }).subscribe(extrinsics => {
+        this.treasuryActivity = extrinsics;
+      });
+  }
+
+  public getAuthoredBlocks(page: number) {
+    this.blockTotalService.all({
+      page: {number: page, size: 25},
+      remotefilter: {author: this.accountId},
+    }).subscribe(blocks => this.authoredBlocks = blocks);
+  }
+
+  public getAccountLifecycle(page: number) {
+     this.eventService.all({
+        page: {number: page, size: 25},
+        remotefilter: {address: this.accountId, search_index: '21,22'},
+      }).subscribe(events => {
+        this.accountLifecycle = events;
       });
   }
 

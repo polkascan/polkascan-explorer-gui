@@ -100,6 +100,7 @@ export class NetworkMainComponent implements OnInit, OnDestroy {
       network.attributes.token_symbol = environment.network.tokenSymbol;
       network.attributes.network_type = environment.network.networkType;
       network.attributes.chain_type = environment.network.chainType;
+      network.attributes.color_code = environment.network.colorCode;
 
       this.appConfigService.setNetwork(network);
     }

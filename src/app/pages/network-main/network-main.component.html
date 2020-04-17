@@ -41,15 +41,38 @@
                     <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account">
                       {{ 'NavBar.item_Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/indices/account">
-                      {{ 'NavBar.item_Indices' | translate }}
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/validators">
+                      {{ 'NavBar.item_Validator Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/balances/transfer">
-                      {{ 'NavBar.item_Transfers' | translate }}
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/nominators">
+                      {{ 'NavBar.item_Nominator Accounts' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/council">
+                      {{ 'NavBar.item_Council Accounts' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/tech-comm">
+                      {{ 'NavBar.item_Techcomm Accounts' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/registrars">
+                      {{ 'NavBar.item_Registrar Accounts' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/treasury">
+                      {{ 'NavBar.item_Treasury Accounts' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/sudo">
+                      {{ 'NavBar.item_Sudo Accounts' | translate }}
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/contracts/contract">
-                      {{ 'NavBar.item_Contracts' | translate }}
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/identities">
+                      {{ 'NavBar.item_Identities' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/blacklist">
+                      {{ 'NavBar.item_Blacklist' | translate }}
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/balances/transfer">
+                      {{ 'NavBar.item_Transfers' | translate }}
                     </a>
                   </div>
                 </div>
@@ -76,9 +99,6 @@
                     {{ 'NavBar.Governance' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/preimage">
-                      {{ 'NavBar.item_Preimages' | translate }}
-                    </a>
                     <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/proposal">
                       {{ 'NavBar.item_Proposals' | translate }}
                     </a>
@@ -93,6 +113,9 @@
                     </a>
                     <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/treasury/proposal">
                       {{ 'NavBar.item_TreasuryProposals' | translate }}
+                    </a>
+                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/preimage">
+                      {{ 'NavBar.item_Preimages' | translate }}
                     </a>
                   </div>
                 </div>

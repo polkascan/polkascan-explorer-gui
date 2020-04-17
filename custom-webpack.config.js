@@ -34,7 +34,8 @@ module.exports = {
         NETWORK_TYPE: JSON.stringify(process.env.NETWORK_TYPE),
         CHAIN_TYPE: JSON.stringify(process.env.CHAIN_TYPE),
         NETWORK_TOKEN_SYMBOL: JSON.stringify(process.env.NETWORK_TOKEN_SYMBOL),
-        NETWORK_TOKEN_DECIMALS: JSON.stringify(process.env.NETWORK_TOKEN_DECIMALS)
+        NETWORK_TOKEN_DECIMALS: JSON.stringify(process.env.NETWORK_TOKEN_DECIMALS),
+        NETWORK_COLOR_CODE: JSON.stringify(process.env.NETWORK_COLOR_CODE)
       }
     })
   ]

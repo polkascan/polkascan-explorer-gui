@@ -21,18 +21,21 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor="let network of networks.data; trackBy: networks.trackBy" [ngClass]="{
-                                    'explore-westend': network.attributes.network_id == 'westend',
+                                    'explore-westend': network.attributes.network_id == 'westend' || network.attributes.network_id == 'westend-m2',
                                     'explore-kusama': ['kusama', 'kusama-cc1', 'kusama-cc2', 'kusama-cc3', 'kusama-cc4', 'kusama-cc5'].includes(network.attributes.network_id),
                                     'explore-edgeware': network.attributes.network_id == 'edgeware' || network.attributes.network_id == 'edgeware-berlin',
                                     'explore-edgeware-testnet': network.attributes.network_id == 'edgeware-testnet',
                                     'explore-straightedge': network.attributes.network_id == 'straightedge',
                                     'explore-darwinia': network.attributes.network_id == 'darwinia',
                                     'explore-kulupu': network.attributes.network_id == 'kulupu',
-                                    'explore-miniplasm': network.attributes.network_id == 'miniplasm' || network.attributes.network_id == 'plasm-testnet',
-                                    'explore-acala': network.attributes.network_id == 'acala' || network.attributes.network_id == 'acala-mandala',
-                                    'explore-centrifuge': network.attributes.network_id == 'centrifuge' || network.attributes.network_id == 'centrifuge-amber',
+                                    'explore-miniplasm': network.attributes.network_id == 'miniplasm' || network.attributes.network_id == 'plasm-testnet' || network.attributes.network_id == 'plasm-testnet-v3',
+                                    'explore-acala': network.attributes.network_id == 'acala' || network.attributes.network_id == 'acala-mandala' || network.attributes.network_id == 'acala-mandala-tc2',
+                                    'explore-nodle': network.attributes.network_id == 'nodle' || network.attributes.network_id == 'nodle-arcadia',
+                                    'explore-centrifuge': network.attributes.network_id == 'centrifuge' || network.attributes.network_id == 'centrifuge-amber' || network.attributes.network_id == 'centrifuge-amber-cc2',
                                     'explore-robonomics': network.attributes.network_id == 'robonomics' || network.attributes.network_id == 'robonomics-testnet',
                                     'explore-joystream': network.attributes.network_id == 'joystream' || network.attributes.network_id == 'joystream-testnet',
+                                    'explore-datahighway': network.attributes.network_id == 'datahighway' || network.attributes.network_id == 'datahighway-testnet',
+                                    'explore-encointer': network.attributes.network_id == 'encointer' || network.attributes.network_id == 'encointer-gesell',
                                     'explore-other': network.attributes.network_id == 'dev'
                                   }">
                                       <td width="5%">

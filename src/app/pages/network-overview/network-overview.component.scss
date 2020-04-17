@@ -13,6 +13,34 @@
   }
 }
 
+.explore-datahighway {
+  .button.is-primary {
+    background-color: #6c33de;
+  }
+
+  .network-icon {
+    color: #6c33de;
+  }
+
+  .button.is-primary:hover {
+    background-color: #6c33de;
+  }
+}
+
+.explore-encointer {
+  .button.is-primary {
+    background-color: #3b64b0;
+  }
+
+  .network-icon {
+    color: #3b64b0;
+  }
+
+  .button.is-primary:hover {
+    background-color: #3b64b0;
+  }
+}
+
 .explore-kusama {
   .button.is-primary {
     background-color: #d32e79;
@@ -52,6 +80,20 @@
 
   .button.is-primary:hover {
     background-color: #185eb4;
+  }
+}
+
+.explore-nodle {
+  .button.is-primary {
+    background-color: #02ba88;
+  }
+
+  .network-icon {
+    color: #02ba88;
+  }
+
+  .button.is-primary:hover {
+    background-color: #02ba88;
   }
 }
 

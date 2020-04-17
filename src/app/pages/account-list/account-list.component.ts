@@ -41,6 +41,10 @@ export class AccountListComponent implements OnInit, OnDestroy {
   private fragmentSubsription: Subscription;
   private networkSubscription: Subscription;
   public networkURLPrefix: string;
+  public networkTokenDecimals: number;
+  public networkTokenSymbol: string;
+  public title: string;
+  public showBalances: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -51,8 +55,13 @@ export class AccountListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.showBalances = true;
+    this.title = this.activatedRoute.snapshot.data.title;
+
     this.networkSubscription = this.appConfigService.getCurrentNetwork().subscribe( network => {
       this.networkURLPrefix = this.appConfigService.getUrlPrefix();
+      this.networkTokenDecimals = +network.attributes.token_decimals;
+      this.networkTokenSymbol = network.attributes.token_symbol;
       this.fragmentSubsription = this.activatedRoute.queryParams.subscribe(queryParams => {
         this.currentPage = +queryParams.page || 1;
         this.getItems(this.currentPage);
@@ -67,9 +76,20 @@ export class AccountListComponent implements OnInit, OnDestroy {
       remotefilter: {},
     };
 
+    if (this.activatedRoute.snapshot.data.filter) {
+      params.remotefilter[this.activatedRoute.snapshot.data.filter] = 1;
+    }
+
     this.accountService.all(params).subscribe(accounts => {
+      if (!accounts.is_loading && accounts.data.length > 0) {
+        this.showBalances = accounts.data[0].attributes.balance_total !== null;
+      }
       this.accounts = accounts;
     });
+  }
+
+  public formatBalance(balance: number) {
+    return balance / Math.pow(10, this.networkTokenDecimals);
   }
 
   ngOnDestroy() {
