@@ -55,7 +55,8 @@
                             <tbody>
                                 <tr *ngFor="let account of accounts.data; trackBy: accounts.trackBy; let i = index">
                                     <td width="5%">
-                                      <div class="dot">{{ i + 1 + (currentPage - 1) * 25 }}</div>
+                                      <i *ngIf="title" class="fa fa-id-card"></i>
+                                      <div *ngIf="!title" class="dot">{{ i + 1 + (currentPage - 1) * 25 }}</div>
                                     </td>
                                     <td><a routerLink="{{ networkURLPrefix }}/account/{{ account.attributes.address }}"><app-address [account]="account"></app-address></a></td>
                                     <td *ngIf="showBalances" class="is-hidden-mobile">{{ account.attributes.nonce || 0 }}</td>
