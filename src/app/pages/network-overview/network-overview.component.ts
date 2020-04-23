@@ -42,7 +42,7 @@ export class NetworkOverviewComponent implements OnInit {
 
     if (environment.jsonApiDiscoveryRootUrl) {
 
-      this.networkService.all().subscribe(networks => {
+      this.networkService.all({remotefilter: {visible: true}}).subscribe(networks => {
         this.networks = networks;
       });
     } else {

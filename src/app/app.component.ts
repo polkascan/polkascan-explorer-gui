@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     if (environment.jsonApiDiscoveryRootUrl) {
-      this.networkService.all().subscribe(networks => {
+      this.networkService.all({remotefilter: {visible: true}}).subscribe(networks => {
         this.networks = networks;
       });
     }
