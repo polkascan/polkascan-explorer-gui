@@ -1,8 +1,10 @@
 {
 	"AccountDetail": {
+		"Account \"{account}\" not found": "",
 		"Account created": "",
 		"Account index": "Індекс рахунку",
 		"Account lifecycle": "",
+		"Account not found": "",
 		"Account reaped": "",
 		"Active": "Активний",
 		"Amount": "Кількість",
@@ -184,7 +186,9 @@
 	},
 	"Block-Detail": {
 		"Block": "Блок",
+		"Block \"{block}\" not found": "",
 		"Block Author": "",
+		"Block not found": "",
 		"Block time": "Час блокування",
 		"Call": "Телефонуйте",
 		"Details": "Деталі",

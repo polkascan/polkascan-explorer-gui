@@ -1,6 +1,23 @@
-<div class="column is-12">
-    <app-polkascan-header></app-polkascan-header>
     <div *ngIf="account$ | async as account">
+      <app-loading-box *ngIf="account.is_loading && !resourceNotFound"></app-loading-box>
+      <div class="card" *ngIf="resourceNotFound">
+        <header class="card-header">
+            <p class="card-header-title">
+                {{ 'AccountDetail.Account not found' | translate }}
+            </p>
+            <a  class="card-header-icon" aria-label="more options">
+             <span class="icon">
+                <i class="fa fa-id-card fa-2x" aria-hidden="true"></i>
+              </span>
+            </a>
+        </header>
+        <div class="card-table">
+            <div class="content">
+              <div class="no-items">{{ 'AccountDetail.Account "{account}" not found' | translate:{account: accountId} }}</div>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="!account.is_loading && !resourceNotFound">
         <section class="info-tiles">
           <div class="card events-card">
               <header class="card-header">
@@ -866,5 +883,5 @@
               </div>
           </div>
        </section>
+      </div>
     </div>
-</div>

@@ -87,6 +87,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   public account$: Observable<Account>;
 
+  public resourceNotFound: boolean;
+
   public networkURLPrefix: string;
   public networkTokenDecimals: number;
   public networkTokenSymbol: string;
@@ -113,6 +115,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.resourceNotFound = false;
     this.currentTab = 'transactions';
 
     this.fragmentSubsription = this.activatedRoute.fragment.subscribe(value => {
@@ -192,6 +195,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
       this.account$ = this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
+          this.accountId = params.get('id');
           return this.accountService.get(params.get('id'));
         })
       );
@@ -276,6 +280,10 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
               this.getTechCommActivity(this.techcommActivityPage);
             }
           });
+        }
+      }, error => {
+        if (error.status === 404) {
+          this.resourceNotFound = true;
         }
       });
     });

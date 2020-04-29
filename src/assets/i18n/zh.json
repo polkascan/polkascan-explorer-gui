@@ -1,8 +1,10 @@
 {
 	"AccountDetail": {
+		"Account \"{account}\" not found": "找不到帐户 \"{account}\" ",
 		"Account created": "Account created",
 		"Account index": "帐户指数",
 		"Account lifecycle": "Account lifecycle",
+		"Account not found": "找不到帐户",
 		"Account reaped": "Account reaped",
 		"Active": "活跃",
 		"Amount": "数量",
@@ -184,8 +186,10 @@
 	},
 	"Block-Detail": {
 		"Block": "区块",
+		"Block \"{block}\" not found": "找不到区块 \"{block}\"",
 		"Block Author": "验证人",
-		"Block time": "出块时间",
+		"Block not found": "找不到区块",
+		"Block time": "区块时间",
 		"Call": "操作",
 		"Details": "显示更多",
 		"Event": "活动",

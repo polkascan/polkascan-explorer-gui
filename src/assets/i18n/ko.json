@@ -1,8 +1,10 @@
 {
 	"AccountDetail": {
+		"Account \"{account}\" not found": "",
 		"Account created": "",
 		"Account index": "계정 인덱스",
 		"Account lifecycle": "",
+		"Account not found": "",
 		"Account reaped": "",
 		"Active": "유효한",
 		"Amount": "양",
@@ -184,7 +186,9 @@
 	},
 	"Block-Detail": {
 		"Block": "블록",
+		"Block \"{block}\" not found": "",
 		"Block Author": "",
+		"Block not found": "",
 		"Block time": "차단 시간",
 		"Call": "요구",
 		"Details": "세부",

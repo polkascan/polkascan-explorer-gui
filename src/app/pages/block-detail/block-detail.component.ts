@@ -44,6 +44,9 @@ export class BlockDetailComponent implements OnInit, OnDestroy {
   block$: Observable<Block>;
   blockTotal$: Observable<BlockTotal>;
 
+  public resourceNotFound: boolean;
+  public blockId: string;
+
   private networkSubscription: Subscription;
 
   public networkURLPrefix: string;
@@ -66,6 +69,7 @@ export class BlockDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.resourceNotFound = false;
 
     this.currentTab = 'transactions';
 
@@ -78,6 +82,7 @@ export class BlockDetailComponent implements OnInit, OnDestroy {
       this.block$ = this.route.paramMap.pipe(
         switchMap((params: ParamMap) => {
             if (params.get('id')) {
+              this.blockId = params.get('id');
               return this.blockService.get(params.get('id'), { include: ['transactions', 'inherents', 'events', 'logs'] });
             }
         })
@@ -93,6 +98,10 @@ export class BlockDetailComponent implements OnInit, OnDestroy {
         if (this.currentTab === 'transactions' && value.relationships.transactions.data.length === 0 &&
           value.relationships.inherents.data.length > 0) {
           this.currentTab = 'inherents';
+        }
+      }, error => {
+        if (error.status === 404) {
+          this.resourceNotFound = true;
         }
       });
 

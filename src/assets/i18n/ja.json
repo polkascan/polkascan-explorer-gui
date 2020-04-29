@@ -1,8 +1,10 @@
 {
 	"AccountDetail": {
+		"Account \"{account}\" not found": "",
 		"Account created": "",
 		"Account index": "アカウントインデックス",
 		"Account lifecycle": "",
+		"Account not found": "",
 		"Account reaped": "",
 		"Active": "アクティブ",
 		"Amount": "量",
@@ -184,7 +186,9 @@
 	},
 	"Block-Detail": {
 		"Block": "ブロック",
+		"Block \"{block}\" not found": "",
 		"Block Author": "",
+		"Block not found": "",
 		"Block time": "ブロック時間",
 		"Call": "コール",
 		"Details": "詳細",

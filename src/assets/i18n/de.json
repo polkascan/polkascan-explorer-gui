@@ -1,8 +1,10 @@
 {
 	"AccountDetail": {
+		"Account \"{account}\" not found": "",
 		"Account created": "",
 		"Account index": "Kontenindex",
 		"Account lifecycle": "",
+		"Account not found": "",
 		"Account reaped": "",
 		"Active": "Aktiv",
 		"Amount": "Menge",
@@ -184,7 +186,9 @@
 	},
 	"Block-Detail": {
 		"Block": "Block",
+		"Block \"{block}\" not found": "",
 		"Block Author": "",
+		"Block not found": "",
 		"Block time": "Zeit blockieren",
 		"Call": "Anruf",
 		"Details": "Einzelheiten",
