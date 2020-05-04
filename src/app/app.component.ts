@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public currentNetwork;
   public showNavigation = false;
   public showSubmenus = true;
-  public langs = ['en', 'zh', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pt', 'ru', 'th', 'tr', 'uk'];
+  public langs = ['en', 'zh', 'ru'];
   public selectedLanguage = 'en';
 
   public networks: DocumentCollection<Network>;
