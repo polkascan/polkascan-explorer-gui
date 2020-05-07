@@ -752,7 +752,7 @@
                                   </td>
                                   <td class="is-hidden-mobile">{{ block.attributes.parent_datetime | date:'short' }}</td>
                                   <td><a routerLink="{{ networkURLPrefix }}/block/{{ block.id }}">{{ block.id }}</a></td>
-                                  <td><a routerLink="{{ networkURLPrefix }}/session/{{ block.attributes.session_id }}">{{ block.attributes.session_id }}</a></td>
+                                  <td><a routerLink="{{ networkURLPrefix }}/session/session/{{ block.attributes.session_id }}">{{ block.attributes.session_id }}</a></td>
                                   <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/block/{{ block.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
                               </tr>
                           </tbody>
