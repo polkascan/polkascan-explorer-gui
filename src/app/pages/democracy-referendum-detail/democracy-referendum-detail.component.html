@@ -24,14 +24,26 @@
                                 <td><a routerLink="{{ networkURLPrefix }}/block/{{ referendum.attributes.updated_at_block }}">{{ referendum.attributes.updated_at_block }}</a></td>
                               </tr>
                               <ng-container *ngIf="referendum.attributes.proposal">
-                                <tr>
-                                  <td>{{ 'Democracy-referendum-detail.Delay' | translate }}</td>
-                                  <td>{{ referendum.attributes.proposal.delay }}</td>
-                                </tr>
-                                <tr>
-                                  <td>{{ 'Democracy-referendum-detail.End' | translate }}</td>
-                                  <td><a routerLink="{{ networkURLPrefix }}/block/{{ referendum.attributes.proposal.end }}">{{ referendum.attributes.proposal.end }}</a></td>
-                                </tr>
+                                <ng-container *ngIf="!referendum.attributes.proposal?.Ongoing">
+                                  <tr>
+                                    <td>{{ 'Democracy-referendum-detail.Delay' | translate }}</td>
+                                    <td>{{ referendum.attributes.proposal.delay }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>{{ 'Democracy-referendum-detail.End' | translate }}</td>
+                                    <td><a routerLink="{{ networkURLPrefix }}/block/{{ referendum.attributes.proposal.end }}">{{ referendum.attributes.proposal.end }}</a></td>
+                                  </tr>
+                                </ng-container>
+                                <ng-container *ngIf="referendum.attributes.proposal?.Ongoing">
+                                  <tr>
+                                    <td>{{ 'Democracy-referendum-detail.Delay' | translate }}</td>
+                                    <td>{{ referendum.attributes.proposal.Ongoing.delay }}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>{{ 'Democracy-referendum-detail.End' | translate }}</td>
+                                    <td><a routerLink="{{ networkURLPrefix }}/block/{{ referendum.attributes.proposal.Ongoing.end }}">{{ referendum.attributes.proposal.Ongoing.end }}</a></td>
+                                  </tr>
+                                </ng-container>
                               </ng-container>
                               <tr>
                                 <td width="20%">{{ 'Democracy-referendum-detail.Vote Threshold' | translate }}</td>
