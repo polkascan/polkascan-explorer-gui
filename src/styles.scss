@@ -392,6 +392,40 @@ nav.navbar {
   }
 }
 
+.network-polkadot {
+  .hero.welcome.is-info {
+    background: linear-gradient(to right, #e6007a, #e6007a);
+  }
+
+  .button.is-primary {
+    background-color: #e6007a;
+  }
+
+  .button.is-primary:hover {
+    background-color: #e6007a;
+  }
+
+  .card-header-icon {
+    color: #e6007a;
+  }
+  .navbar {
+    background: #e6007a;
+  }
+
+  .tabs li.is-active a {
+    color: #e6007a;
+    border-bottom-color: #e6007a;
+  }
+
+  a {
+    color: #e6007a;
+  }
+
+  .navbar-item a, a.navbar-item {
+    color: #4a4a4a;
+  }
+}
+
 .network-kulupu {
   .hero.welcome.is-info {
     background: linear-gradient(to right, #003366, #003366);
