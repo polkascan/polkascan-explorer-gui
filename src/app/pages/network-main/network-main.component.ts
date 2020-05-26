@@ -75,8 +75,7 @@ export class NetworkMainComponent implements OnInit, OnDestroy {
 
           for (const network of networks.data) {
 
-            if (this.route.snapshot.paramMap.get('type') === network.attributes.network_type &&
-              this.route.snapshot.paramMap.get('network') === network.attributes.network_id) {
+            if (this.route.snapshot.paramMap.get('network') === network.attributes.network_id) {
               this.appConfigService.setNetwork(network);
               networkFound = true;
             }
@@ -107,10 +106,8 @@ export class NetworkMainComponent implements OnInit, OnDestroy {
 
     this.route.paramMap.subscribe(
         (params: ParamMap) => {
-
-          if (params.get('type') && params.get('network')) {
+          if (params.get('network')) {
             this.networkId = params.get('network');
-            this.networkType = params.get('type');
           }
       });
   }

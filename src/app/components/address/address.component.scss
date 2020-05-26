@@ -25,6 +25,9 @@
     margin-left: 4px;
     display: inline-block;
     font-size: 0.8em;
+    color: #333;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
   }
 }
 

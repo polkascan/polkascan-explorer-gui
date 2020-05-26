@@ -105,7 +105,7 @@ const routes: Routes = [
   { path: 'pre/kusama-cc3', redirectTo: '/pre/kusama'},
 
   {
-    path: ':type/:network',
+    path: ':network',
     component: NetworkMainComponent,
     children: [
       { path: '', component: DashboardComponent},

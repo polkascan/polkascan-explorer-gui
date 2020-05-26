@@ -7,7 +7,7 @@
               </div>
         <div id="navMenu" class="navbar-menu" [ngClass]="{'is-active': showNavigation}">
             <div class="navbar-start">
-                <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}">
+                <a class="navbar-item" routerLink="/{{ networkId }}">
                   {{ 'NavBar.Dashboard' | translate }}
                 </a>
                 <div class="navbar-item has-dropdown" [ngClass]="{'is-hoverable': showSubmenus}">
@@ -15,19 +15,19 @@
                     {{ 'NavBar.Chain' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/block">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/block">
                       {{ 'NavBar.item_Blocks' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/transaction">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/transaction">
                       {{ 'NavBar.item_Transactions' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/inherent">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/inherent">
                       {{ 'NavBar.item_Inherents' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/event">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/event">
                       {{ 'NavBar.item_Events' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/log">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/log">
                       {{ 'NavBar.item_Logs' | translate }}
                     </a>
                   </div>
@@ -38,37 +38,37 @@
                     {{ 'NavBar.Accounts' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account">
                       {{ 'NavBar.item_Accounts' | translate }}
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/validators">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/validators">
                       {{ 'NavBar.item_Validator Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/nominators">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/nominators">
                       {{ 'NavBar.item_Nominator Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/council">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/council">
                       {{ 'NavBar.item_Council Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/tech-comm">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/tech-comm">
                       {{ 'NavBar.item_Techcomm Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/registrars">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/registrars">
                       {{ 'NavBar.item_Registrar Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/treasury">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/treasury">
                       {{ 'NavBar.item_Treasury Accounts' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/sudo">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/sudo">
                       {{ 'NavBar.item_Sudo Accounts' | translate }}
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/account/identities">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/account/identities">
                       {{ 'NavBar.item_Identities' | translate }}
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/balances/transfer">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/balances/transfer">
                       {{ 'NavBar.item_Transfers' | translate }}
                     </a>
                   </div>
@@ -79,13 +79,13 @@
                     {{ 'NavBar.Staking' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                     <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/session/session">
+                     <a class="navbar-item" routerLink="/{{ networkId }}/session/session">
                       {{ 'NavBar.item_Sessions' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/session/validator">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/session/validator">
                       {{ 'NavBar.item_Validators' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/session/nominator">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/session/nominator">
                       {{ 'NavBar.item_Nominators' | translate }}
                     </a>
                   </div>
@@ -96,22 +96,22 @@
                     {{ 'NavBar.Governance' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/proposal">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/proposal">
                       {{ 'NavBar.item_Proposals' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/referendum">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/referendum">
                       {{ 'NavBar.item_Referenda' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/council/motion">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/council/motion">
                       {{ 'NavBar.item_CouncilMotions' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/techcomm/proposal">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/techcomm/proposal">
                       {{ 'NavBar.item_TechCommProposals' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/treasury/proposal">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/treasury/proposal">
                       {{ 'NavBar.item_TreasuryProposals' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/democracy/preimage">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/preimage">
                       {{ 'NavBar.item_Preimages' | translate }}
                     </a>
                   </div>
@@ -122,10 +122,10 @@
                     {{ 'NavBar.Analytics' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/analytics/search">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/analytics/search">
                       {{ 'NavBar.item_Search' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/analytics/charts">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/analytics/charts">
                       {{ 'NavBar.item_Charts' | translate }}
                     </a>
                   </div>
@@ -136,14 +136,14 @@
                     {{ 'NavBar.Runtime' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/runtime-module">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/runtime-module">
                       {{ 'NavBar.item_Modules' | translate }}
                     </a>
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/runtime-type">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/runtime-type">
                       {{ 'NavBar.item_Types' | translate }}
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" routerLink="/{{ networkType }}/{{ networkId }}/runtime">
+                    <a class="navbar-item" routerLink="/{{ networkId }}/runtime">
                       {{ 'NavBar.item_Upgrade_history' | translate }}
                     </a>
                   </div>

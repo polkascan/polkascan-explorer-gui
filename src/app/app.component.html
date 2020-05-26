@@ -42,7 +42,7 @@
                     {{ currentNetwork?.attributes.name || 'Global.Network' | translate }}
                   </a>
                   <div *ngIf="networks?.data.length > 0" class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a *ngFor="let network of networks.data; trackBy: networks.trackBy" class="navbar-item" (click)="switchNetwork(network)" [routerLink]="'/' + network.attributes.network_type + '/' + network.attributes.network_id">
+                    <a *ngFor="let network of networks.data; trackBy: networks.trackBy" class="navbar-item" (click)="switchNetwork(network)" [routerLink]="'/' + network.attributes.network_id">
                       <i *ngIf="network.attributes.chain_type == 'para'" class="fa fa-project-diagram network-icon"  [style.color]="'#' + network.attributes.color_code" title="Parachain"></i>
                       <i *ngIf="network.attributes.chain_type == 'relay'" class="fa fa-globe network-icon" [style.color]="'#' + network.attributes.color_code" title="Relay chain"></i>
                       {{ network.attributes.name }}

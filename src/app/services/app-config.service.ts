@@ -127,9 +127,7 @@ export class AppConfigService {
 
 
   public setNetwork(network: Network) {
-      // console.log('Set API urls to ', network.attributes.api_url_root);
 
-      // TODO there must be a more elegant way to achieve this
       this.blockService.jsonApiRootUrl = network.attributes.api_url_root;
       this.blockTotalService.jsonApiRootUrl = network.attributes.api_url_root;
       this.balanceTransferService.jsonApiRootUrl = network.attributes.api_url_root;
@@ -161,7 +159,7 @@ export class AppConfigService {
       this.runtimeErrorService.jsonApiRootUrl = network.attributes.api_url_root;
       this.analyticsChartService.jsonApiRootUrl = network.attributes.api_url_root;
 
-      this.networkURLPrefix = '/' + network.attributes.network_type + '/' + network.attributes.network_id;
+      this.networkURLPrefix = '/' + network.attributes.network_id;
 
       this.networkName = network.attributes.name;
       this.networkApiURLRoot = network.attributes.api_url_root;

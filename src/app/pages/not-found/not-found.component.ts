@@ -21,6 +21,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
@@ -29,9 +30,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    // Check for legacy URLs
+    if (this.route.snapshot.url[0].path === 'pre') {
+      // redirect by stripping deprecated pre
+      delete this.route.snapshot.url[0];
+      this.router.navigateByUrl(this.route.snapshot.url.join('/'));
+    }
   }
 
 }

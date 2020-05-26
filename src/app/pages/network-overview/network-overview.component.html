@@ -43,7 +43,7 @@
                                         <i *ngIf="network.attributes.chain_type == 'relay'" class="fa fa-globe network-icon" title="Relay chain"></i>
                                       </td>
                                       <td>{{ network.attributes.name }}</td>
-                                      <td width="5%"><a class="button is-small is-primary" routerLink="/{{ network.attributes.network_type  }}/{{ network.attributes.network_id }}">{{ 'Network-overview.Explore' | translate }}</a></td>
+                                      <td width="5%"><a class="button is-small is-primary" routerLink="/{{ network.attributes.network_id }}">{{ 'Network-overview.Explore' | translate }}</a></td>
                                   </tr>
                               </tbody>
                           </table>

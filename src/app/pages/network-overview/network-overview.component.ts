@@ -46,7 +46,7 @@ export class NetworkOverviewComponent implements OnInit {
         this.networks = networks;
       });
     } else {
-      this.router.navigate([environment.network.networkType, environment.network.networkId]);
+      this.router.navigate([environment.network.networkId]);
     }
   }
 
