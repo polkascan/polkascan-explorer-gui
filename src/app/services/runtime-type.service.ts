@@ -27,8 +27,14 @@ import {Runtime} from '../classes/runtime.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class RuntimeTypeService extends Service<Runtime> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Runtime;
     public type = 'runtimetype';
     public path = 'runtime-type';

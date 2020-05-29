@@ -27,8 +27,13 @@ import {SessionNominator} from '../classes/session-nominator.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
 export class SessionNominatorService extends Service<SessionNominator> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = SessionNominator;
     public type = 'sessionnominator';
     public path = 'session/nominator';

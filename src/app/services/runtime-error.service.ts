@@ -27,8 +27,14 @@ import {RuntimeError} from '../classes/runtime-error.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class RuntimeErrorService extends Service<RuntimeError> {
+
+  public constructor() {
+      super();
+      this.register();
+  }
+
   public resource = RuntimeError;
   public type = 'runtimeerrormessage';
   public path = 'runtimeerrormessage';

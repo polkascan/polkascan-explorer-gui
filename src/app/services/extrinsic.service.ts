@@ -23,13 +23,19 @@
 import { Injectable } from '@angular/core';
 import {Autoregister, Service} from 'ngx-jsonapi';
 import {Extrinsic} from '../classes/extrinsic.class';
-import {environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class ExtrinsicService extends Service<Extrinsic> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Extrinsic;
     public type = 'extrinsic';
     public path = 'extrinsic';

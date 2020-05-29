@@ -21,16 +21,21 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Autoregister, Service } from 'ngx-jsonapi';
+import { Service } from 'ngx-jsonapi';
 import { Block } from '../classes/block.class';
-import {environment} from "../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class BlockService extends Service<Block> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Block;
     public type = 'block';
     public path = 'block';

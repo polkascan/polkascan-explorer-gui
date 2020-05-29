@@ -27,8 +27,13 @@ import {TechCommProposalVote} from '../classes/tech-comm-proposal-vote.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
 export class TechCommProposalVoteService extends Service<TechCommProposalVote> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = TechCommProposalVote;
     public type = 'techcommproposalvote';
     public path = 'techcomm/proposalvote';

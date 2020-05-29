@@ -27,8 +27,12 @@ import {RuntimeStorage} from "../classes/runtime-storage.class";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class RuntimeStorageService extends Service<RuntimeStorage> {
+  public constructor() {
+      super();
+      this.register();
+  }
   public resource = RuntimeStorage;
   public type = 'runtimestorage';
   public path = 'runtime-storage';

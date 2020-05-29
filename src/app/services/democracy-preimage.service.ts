@@ -27,8 +27,14 @@ import {DemocracyPreimage} from '../classes/democracy-preimage.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class DemocracyPreimageService extends Service<DemocracyPreimage> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = DemocracyPreimage;
     public type = 'democracypreimage';
     public path = 'democracy/preimage';

@@ -27,8 +27,14 @@ import {BlockTotal} from "../classes/block-total.class";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class BlockTotalService extends Service<BlockTotal> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = BlockTotal;
     public type = 'block-total';
     public path = 'block-total';

@@ -28,8 +28,14 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class NetworkstatsService extends Service<Networkstats> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Networkstats;
     public type = 'networkstats';
     public path = 'networkstats';

@@ -27,8 +27,13 @@ import {TreasuryProposal} from '../classes/treasury-proposal.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
 export class TreasuryProposalService extends Service<TreasuryProposal> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = TreasuryProposal;
     public type = 'treasuryproposal';
     public path = 'treasury/proposal';

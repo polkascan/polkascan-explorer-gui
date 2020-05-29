@@ -22,13 +22,19 @@
 
 import { Injectable } from '@angular/core';
 import {Autoregister, Service} from 'ngx-jsonapi';
-import {Contract} from "../classes/contract.class";
+import {Contract} from '../classes/contract.class';
 
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class ContractService extends Service<Contract> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Contract;
     public type = 'contract';
     public path = 'contract/contract';

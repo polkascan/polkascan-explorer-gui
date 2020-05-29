@@ -27,8 +27,14 @@ import {CouncilMotion} from '../classes/council-motion.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class CouncilMotionService extends Service<CouncilMotion> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = CouncilMotion;
     public type = 'councilmotion';
     public path = 'council/motion';

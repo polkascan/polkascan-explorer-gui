@@ -79,6 +79,7 @@ import {TreasuryProposalListComponent} from './pages/treasury-proposal-list/trea
 import {TreasuryProposalDetailComponent} from './pages/treasury-proposal-detail/treasury-proposal-detail.component';
 import {DemocracyPreimageListComponent} from './pages/democracy-preimage-list/democracy-preimage-list.component';
 import {DemocracyPreimageDetailComponent} from './pages/democracy-preimage-detail/democracy-preimage-detail.component';
+import {ExtrinsicParamDownloadComponent} from './pages/extrinsic-param-download/extrinsic-param-download.component';
 
 const routes: Routes = [
   { path: '', component: NetworkOverviewComponent, },
@@ -116,6 +117,7 @@ const routes: Routes = [
       { path: 'transaction/:id', component: TransactionDetailComponent},
       { path: 'inherent', component: InherentListComponent},
       { path: 'inherent/:id', component: InherentDetailComponent},
+      { path: 'extrinsic-param/download/:extrinsicId/:hash', component: ExtrinsicParamDownloadComponent},
       { path: 'extrinsic', component: ExtrinsicListComponent},
       { path: 'extrinsic/:id', component: ExtrinsicDetailComponent},
       { path: 'event', component: EventListComponent},

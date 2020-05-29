@@ -27,8 +27,14 @@ import {CouncilVote} from '../classes/council-vote.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class CouncilVoteService extends Service<CouncilVote> {
+
+  public constructor() {
+      super();
+      this.register();
+  }
+
   public resource = CouncilVote;
     public type = 'councilvote';
     public path = 'council/vote';

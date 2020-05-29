@@ -28,8 +28,14 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class RuntimeEventService extends Service<RuntimeEvent> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = RuntimeEvent;
     public type = 'runtimeevent';
     public path = 'runtime-event';

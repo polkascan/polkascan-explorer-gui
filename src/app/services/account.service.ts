@@ -27,8 +27,13 @@ import {Account} from "../classes/account.class";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class AccountService extends Service<Account> {
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Account;
     public type = 'account';
     public path = 'account';

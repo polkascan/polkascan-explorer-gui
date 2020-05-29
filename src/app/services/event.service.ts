@@ -28,8 +28,14 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class EventService extends Service<Event> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Event;
     public type = 'event';
     public path = 'event';

@@ -28,8 +28,14 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class RuntimeCallParamService extends Service<RuntimeCallParam> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = RuntimeCallParam;
     public type = 'runtimecallparam';
     public path = 'runtime-call-param';

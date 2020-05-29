@@ -27,8 +27,13 @@ import {Session} from "../classes/session.class";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
 export class SessionService extends Service<Session> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = Session;
     public type = 'session';
     public path = 'session/session';

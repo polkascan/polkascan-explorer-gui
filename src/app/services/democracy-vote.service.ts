@@ -27,8 +27,14 @@ import {DemocracyVote} from '../classes/democracy-vote.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class DemocracyVoteService extends Service<DemocracyVote> {
+
+  public constructor() {
+      super();
+      this.register();
+  }
+
   public resource = DemocracyVote;
   public type = 'democracyvote';
   public path = 'democracy/vote';

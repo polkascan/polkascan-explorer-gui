@@ -27,8 +27,15 @@ import {AccountIndex} from '../classes/account-index.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class AccountIndexService extends Service<AccountIndex> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
+
     public resource = AccountIndex;
     public type = 'accountindex';
     public path = 'accountindex';

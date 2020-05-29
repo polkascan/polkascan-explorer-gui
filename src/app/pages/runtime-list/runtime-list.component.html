@@ -29,10 +29,10 @@
                             <tbody>
                                 <tr *ngFor="let runtime of runtimes.data; trackBy: runtimes.trackBy">
                                     <td width="5%"><i class="fa fa-cogs"></i></td>
-                                    <td width="10%"><a routerLink="{{ networkURLPrefix }}/runtime/{{ runtime.id }}">{{ runtime.id }}</a></td>
+                                    <td width="10%"><a routerLink="{{ networkURLPrefix }}/runtime/{{ runtime.attributes.id}}">{{ runtime.attributes.id}}</a></td>
                                     <td>{{ runtime.attributes.impl_name }}</td>
                                     <td>{{ runtime.attributes.spec_version }}</td>
-                                    <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/runtime/{{ runtime.id }}">{{ 'runtime-list.Details' | translate }}</a></td>
+                                    <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/runtime/{{ runtime.attributes.id }}">{{ 'runtime-list.Details' | translate }}</a></td>
                                 </tr>
                             </tbody>
                         </table>

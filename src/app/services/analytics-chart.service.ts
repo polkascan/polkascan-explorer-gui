@@ -27,8 +27,14 @@ import {AnalyticsChart} from '../classes/analytics-chart.class';
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
+
 export class AnalyticsChartService extends Service<AnalyticsChart> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = AnalyticsChart;
     public type = 'chart';
     public path = 'analytics/chart';

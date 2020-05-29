@@ -28,8 +28,13 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-@Autoregister()
 export class RuntimeModuleService extends Service<RuntimeModule> {
+
+    public constructor() {
+        super();
+        this.register();
+    }
+
     public resource = RuntimeModule;
     public type = 'runtimemodule';
     public path = 'runtime-module';
