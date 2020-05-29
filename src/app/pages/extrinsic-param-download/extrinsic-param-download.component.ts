@@ -27,9 +27,10 @@ export class ExtrinsicParamDownloadComponent implements OnInit, OnDestroy {
       this.fragmentSubsription = this.route.paramMap.subscribe(
         (params: ParamMap) => {
           if (params.get('extrinsicId') && params.get('hash')) {
-            window.location.href =
+            window.open(
               network.attributes.api_url_root + '/extrinsic-param/download/' + params.get('extrinsicId') + '/' +
-              params.get('hash');
+              params.get('hash')
+            );
             this.location.back();
           }
       });
