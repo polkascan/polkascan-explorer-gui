@@ -42,8 +42,6 @@ export class HarvesterAdminComponent implements OnInit, OnDestroy {
   public harvesterQueue: Object;
   public harvesterQueue$: Observable<Object>;
 
-  private statsUpdateSubsription: Subscription;
-
   constructor(
     private networkstatsService: NetworkstatsService,
     private httpClient: HttpClient,
@@ -53,23 +51,16 @@ export class HarvesterAdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.networkSubscription = this.appConfigService.getCurrentNetwork().subscribe( network => {
 
-      this.networkstats$ = this.networkstatsService.get('latest');
-
-      this.harvesterQueue$ = this.httpClient.get(this.appConfigService.getNetworkApiUrlRoot() + '/harvester/status');
+      this.harvesterQueue$ = this.httpClient.get(this.appConfigService.getNetworkApiUrlRoot() + '/harvester/queue');
 
       this.harvesterQueue$.subscribe((res: Object) => {
         this.harvesterQueue = res;
       });
-
-      const updateCounter = interval(20000);
-
-      this.statsUpdateSubsription = updateCounter.subscribe( n => this.networkstats$ = this.networkstatsService.get('latest'));
     });
   }
 
   ngOnDestroy() {
     // Will clear when component is destroyed e.g. route is navigated away from.
-    this.statsUpdateSubsription.unsubscribe();
     this.networkSubscription.unsubscribe();
   }
 
