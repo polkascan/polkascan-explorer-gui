@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "次を見る"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "収穫されたブロック",
 		"From": "から",
-		"Harvester Head": "収穫機ヘッド",
 		"Harvester queue": "収穫機キュー",
-		"Progress": "進捗",
-		"Running": "ランニング",
-		"Start": "開始",
 		"To": "に"
 	},
 	"Inherent-list": {

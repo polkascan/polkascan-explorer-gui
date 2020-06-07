@@ -75,6 +75,7 @@
 		"Session": "Сессия",
 		"Staking activities in ": "Стейкинговая активность в",
 		"Staking activity": "Стейкинговая активность",
+		"Staking reward": "Staking reward",
 		"Staking sessions": "Стейкинговые сессии",
 		"Started validating": "Начал валидировать",
 		"Stopped validating/nominating": "Закончил валидировать/номинировать",
@@ -395,13 +396,8 @@
 		"View next": "Смотреть дальше"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Собрано блоков",
 		"From": "От",
-		"Harvester Head": "Заголовок сбора",
 		"Harvester queue": "Очередь сборов",
-		"Progress": "Прогресс",
-		"Running": "Ход",
-		"Start": "Начало",
 		"To": "до"
 	},
 	"Inherent-list": {

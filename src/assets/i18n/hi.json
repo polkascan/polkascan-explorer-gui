@@ -75,6 +75,7 @@
 		"Session": "Session",
 		"Staking activities in ": "Staking activities in ",
 		"Staking activity": "Staking activity",
+		"Staking reward": "",
 		"Staking sessions": "Staking sessions",
 		"Started validating": "Started validating",
 		"Stopped validating/nominating": "Stopped validating/nominating",
@@ -395,13 +396,8 @@
 		"View next": "View next"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Blocks harvested",
 		"From": "From",
-		"Harvester Head": "Harvester Head",
 		"Harvester queue": "Harvester queue",
-		"Progress": "Progress",
-		"Running": "Running",
-		"Start": "Start",
 		"To": "To"
 	},
 	"Inherent-list": {

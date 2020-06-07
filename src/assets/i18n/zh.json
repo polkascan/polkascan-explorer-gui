@@ -75,6 +75,7 @@
 		"Session": "会话控制",
 		"Staking activities in ": "Staking activities in ",
 		"Staking activity": "质押",
+		"Staking reward": "收益",
 		"Staking sessions": "Staking sessions",
 		"Started validating": "Started validating",
 		"Stopped validating/nominating": "Stopped validating/nominating",
@@ -395,13 +396,8 @@
 		"View next": "查看下一个"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "区块收割",
 		"From": "来自",
-		"Harvester Head": "收割块高",
 		"Harvester queue": "收割队列",
-		"Progress": "进展",
-		"Running": "运行",
-		"Start": "开始",
 		"To": "至"
 	},
 	"Inherent-list": {

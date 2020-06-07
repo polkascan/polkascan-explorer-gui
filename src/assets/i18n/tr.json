@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "Sonrakini görüntüle"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Hasat blokları",
 		"From": "itibaren",
-		"Harvester Head": "Biçerdöver Kafası",
 		"Harvester queue": "Hasat kuyruğu",
-		"Progress": "İlerleme",
-		"Running": "Koşu",
-		"Start": "başla",
 		"To": "için"
 	},
 	"Inherent-list": {

@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "Переглянути далі"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Блоки заготовлені",
 		"From": "Від",
-		"Harvester Head": "Голова комбайна",
 		"Harvester queue": "Черга на комбайн",
-		"Progress": "Прогрес",
-		"Running": "Біг",
-		"Start": "Старт",
 		"To": "До"
 	},
 	"Inherent-list": {

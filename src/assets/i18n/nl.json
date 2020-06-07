@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "Volgende bekijken"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Blokken geoogst",
 		"From": "van",
-		"Harvester Head": "Harvester hoofd",
 		"Harvester queue": "Harvester wachtrij",
-		"Progress": "Vooruitgang",
-		"Running": "hardlopen",
-		"Start": "Begin",
 		"To": "Naar"
 	},
 	"Inherent-list": {

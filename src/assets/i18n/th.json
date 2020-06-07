@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "ดูต่อไป"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "บล็อกเก็บเกี่ยว",
 		"From": "จาก",
-		"Harvester Head": "หัวหน้าเก็บเกี่ยว",
 		"Harvester queue": "คิวผู้เก็บเกี่ยว",
-		"Progress": "ความคืบหน้า",
-		"Running": "วิ่ง",
-		"Start": "เริ่มต้น",
 		"To": "ไปยัง"
 	},
 	"Inherent-list": {

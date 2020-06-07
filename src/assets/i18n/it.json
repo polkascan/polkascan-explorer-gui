@@ -75,6 +75,7 @@
 		"Session": "",
 		"Staking activities in ": "",
 		"Staking activity": "",
+		"Staking reward": "",
 		"Staking sessions": "",
 		"Started validating": "",
 		"Stopped validating/nominating": "",
@@ -395,13 +396,8 @@
 		"View next": "Visualizza il prossimo"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Blocchi raccolti",
 		"From": "A partire dal",
-		"Harvester Head": "Testa della mietitrice",
 		"Harvester queue": "Coda della mietitrice",
-		"Progress": "Progresso",
-		"Running": "In esecuzione",
-		"Start": "Inizio",
 		"To": "Per"
 	},
 	"Inherent-list": {
