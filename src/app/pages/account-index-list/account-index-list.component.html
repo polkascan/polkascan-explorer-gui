@@ -21,6 +21,7 @@
                               <tr>
                                 <th></th>
                                 <th>{{ 'AccountIndexList.Short Address' | translate }}</th>
+                                <th>{{ 'AccountIndexList.ID' | translate }}</th>
                                 <th>{{ 'AccountIndexList.Address' | translate }}</th>
                                 <th class="is-hidden-mobile">{{ 'AccountIndexList.Created at block' | translate }}</th>
                                 <th>{{ 'AccountIndexList.Reclaimable' | translate }}</th>
@@ -33,6 +34,7 @@
                                       <i class="fa fa-id-card-alt"></i>
                                     </td>
                                     <td><a routerLink="{{ networkURLPrefix }}/indices/account/{{ accountIndex.id }}">{{ accountIndex.attributes.short_address }}</a></td>
+                                    <td>{{ accountIndex.attributes.id }}</td>
                                     <td *ngIf="!accountIndex.attributes.address">-</td>
                                     <td *ngIf="accountIndex.attributes.address"><a routerLink="{{ networkURLPrefix }}/account/{{ accountIndex.attributes.address }}" class="address-mobile-format"><app-identicon [accountId]="accountIndex.attributes.account_id"></app-identicon> {{ accountIndex.attributes.address }}</a></td>
                                     <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ accountIndex.attributes.created_at_block }}">{{ accountIndex.attributes.created_at_block }}</a></td>
