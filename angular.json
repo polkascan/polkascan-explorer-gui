@@ -106,32 +106,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
+                  "maximumWarning": "4mb",
                   "maximumError": "5mb"
-                }
-              ]
-            },
-            "alexander": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.alexander.ts"
-                }
-              ]
-            },
-            "edgeware": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.edgeware.ts"
-                }
-              ]
-            },
-            "robonomics": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.robonomics.ts"
                 }
               ]
             }

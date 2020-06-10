@@ -26,28 +26,28 @@
 
 export const environment = {
   production: false,
-  jsonApiDiscoveryRootUrl: 'https://discovery.polkascan.io',
-  jsonApiRootUrl: null,
-  network: {
-    name: null,
-    networkId: null,
-    networkType: null,
-    chainType: null,
-    tokenSymbol: null,
-    tokenDecimals: null,
-    colorCode: null
-  }
-  // jsonApiDiscoveryRootUrl: null,
-  // jsonApiRootUrl: 'http://127.0.0.1:8000',
+  // jsonApiDiscoveryRootUrl: 'https://discovery.polkascan.io',
+  // jsonApiRootUrl: null,
   // network: {
-  //   name: 'Kusama',
-  //   networkId: 'kusama',
-  //   networkType: 'pre',
-  //   chainType: 'relay',
-  //   tokenSymbol: 'KSM',
-  //   tokenDecimals: 12,
-  //   colorCode: 'd32e79'
+  //   name: null,
+  //   networkId: null,
+  //   networkType: null,
+  //   chainType: null,
+  //   tokenSymbol: null,
+  //   tokenDecimals: null,
+  //   colorCode: null
   // }
+  jsonApiDiscoveryRootUrl: null,
+  jsonApiRootUrl: 'https://api-02.polkascan.io/kusama/api/v1',
+  network: {
+    name: 'Kusama',
+    networkId: 'kusama',
+    networkType: 'pre',
+    chainType: 'relay',
+    tokenSymbol: 'KSM',
+    tokenDecimals: 12,
+    colorCode: 'd32e79'
+  }
 };
 
 /*
