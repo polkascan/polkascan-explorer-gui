@@ -75,6 +75,7 @@
 		"Session": "Sessão",
 		"Staking activities in ": "Atividades de participação em",
 		"Staking activity": "Atividades de participação",
+		"Staking reward": "Staking reward",
 		"Staking sessions": "Sessões de participação",
 		"Started validating": "Começou a validar",
 		"Stopped validating/nominating": "Parou de validar/nominar",
@@ -99,19 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "Conta",
 		"Account Index": "Índice da conta",
-		"Created at block": "Criado no bloco",
-		"Is reclaimable": "É recuperável",
-		"Is reclaimed": "Foi recuperado",
 		"N/A": "N/D",
 		"Updated at block": "Atualizado no bloco"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Índices de conta",
 		"Address": "Endereço",
-		"Created at block": "Criado no bloco",
 		"Details": "Detalhes",
+		"ID": "ID",
 		"No items": "Nenhum item",
-		"Reclaimable": "Recuperável",
 		"Short Address": "Endereço",
 		"View next": "Ver mais"
 	},
@@ -395,13 +392,8 @@
 		"View next": "Ver mais"
 	},
 	"Harvester-admin": {
-		"Blocks harvested": "Blocos coletados",
 		"From": "De",
-		"Harvester Head": "Líder de Coleta",
 		"Harvester queue": "Fila de Coleta",
-		"Progress": "Progresso",
-		"Running": "Funcionando",
-		"Start": "Iniciar",
 		"To": "Para"
 	},
 	"Inherent-list": {
@@ -441,6 +433,7 @@
 		"item_CouncilMotions": "Moções do Conselho",
 		"item_Events": "Eventos",
 		"item_Identities": "Identidades",
+		"item_Indices": "Indices",
 		"item_Inherents": "Inerentes",
 		"item_Logs": "Registros",
 		"item_Modules": "Módulos",

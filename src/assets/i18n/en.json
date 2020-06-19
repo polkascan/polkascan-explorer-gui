@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "Account",
 		"Account Index": "Account Index",
-		"Created at block": "Created at block",
-		"Is reclaimable": "Is reclaimable",
-		"Is reclaimed": "Is reclaimed",
 		"N/A": "N/A",
 		"Updated at block": "Updated at block"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Account Indices",
 		"Address": "Address",
-		"Created at block": "Created at block",
 		"Details": "Details",
 		"ID": "ID",
 		"No items": "No items",
-		"Reclaimable": "Reclaimable",
 		"Short Address": "Short Address",
 		"View next": "View next"
 	},

@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "hesap",
 		"Account Index": "Hesap endeksi",
-		"Created at block": "Blokta oluşturuldu",
-		"Is reclaimable": "Geri alınabilir",
-		"Is reclaimed": "Geri alındı",
 		"N/A": "N / A",
 		"Updated at block": "Blokta güncellendi"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Hesap Endeksleri",
 		"Address": "Adres",
-		"Created at block": "Blokta oluşturuldu",
 		"Details": "ayrıntılar",
 		"ID": "",
 		"No items": "Öğe yok",
-		"Reclaimable": "evcilleştirilebilir",
 		"Short Address": "Kısa Adres",
 		"View next": "Sonrakini görüntüle"
 	},

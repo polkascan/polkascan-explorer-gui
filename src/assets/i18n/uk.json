@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "Акаунт",
 		"Account Index": "Індекс акаунта",
-		"Created at block": "Створено в блоці",
-		"Is reclaimable": "Можуть бути запитані",
-		"Is reclaimed": "Були запитані",
 		"N/A": "Немає в наявності",
 		"Updated at block": "Оновлено в блоці"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Індекси акаунта",
 		"Address": "Адреса",
-		"Created at block": "Створено в блоці",
 		"Details": "Деталі",
 		"ID": "ID",
 		"No items": "Немає елементів",
-		"Reclaimable": "Перезапрашиваемы",
 		"Short Address": "Короткий адресу",
 		"View next": "Дивитися далі"
 	},

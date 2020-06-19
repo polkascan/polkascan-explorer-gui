@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "Account",
 		"Account Index": "Account index",
-		"Created at block": "Gemaakt bij blok",
-		"Is reclaimable": "Is terug te vorderen",
-		"Is reclaimed": "Wordt teruggewonnen",
 		"N/A": "N / A",
 		"Updated at block": "Bijgewerkt bij blok"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Accountindices",
 		"Address": "Adres",
-		"Created at block": "Gemaakt bij blok",
 		"Details": "Details",
 		"ID": "",
 		"No items": "Geen items",
-		"Reclaimable": "ontginbaar",
 		"Short Address": "Kort adres",
 		"View next": "Volgende bekijken"
 	},

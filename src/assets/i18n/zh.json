@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "帐户",
 		"Account Index": "帐户指数",
-		"Created at block": "在街区创建",
-		"Is reclaimable": "可回收",
-		"Is reclaimed": "被收回",
 		"N/A": "N / A",
 		"Updated at block": "在区块更新"
 	},
 	"AccountIndexList": {
 		"Account Indices": "账户指数",
 		"Address": "账户",
-		"Created at block": "在区块创建",
 		"Details": "显示更多",
 		"ID": "ID",
 		"No items": "无项目",
-		"Reclaimable": "可回收",
 		"Short Address": "短地址",
 		"View next": "查看下一个"
 	},

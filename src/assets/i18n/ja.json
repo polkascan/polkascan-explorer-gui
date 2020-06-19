@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "アカウント",
 		"Account Index": "アカウントインデックス",
-		"Created at block": "ブロックで作成",
-		"Is reclaimable": "再利用可能です",
-		"Is reclaimed": "埋め立てられている",
 		"N/A": "N / A",
 		"Updated at block": "ブロックで更新"
 	},
 	"AccountIndexList": {
 		"Account Indices": "アカウントインデックス",
 		"Address": "住所",
-		"Created at block": "ブロックで作成",
 		"Details": "詳細",
 		"ID": "",
 		"No items": "アイテムはありません",
-		"Reclaimable": "再利用可能",
 		"Short Address": "ショートアドレス",
 		"View next": "次を見る"
 	},

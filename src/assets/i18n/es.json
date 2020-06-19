@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "Cuenta",
 		"Account Index": "Índice de cuenta",
-		"Created at block": "Creado en bloque",
-		"Is reclaimable": "Es recuperable",
-		"Is reclaimed": "Es reclamado",
 		"N/A": "N / A",
 		"Updated at block": "Actualizado en el bloque"
 	},
 	"AccountIndexList": {
 		"Account Indices": "Índices de cuenta",
 		"Address": "Dirección",
-		"Created at block": "Creado en bloque",
 		"Details": "Detalles",
 		"ID": "",
 		"No items": "No hay articulos",
-		"Reclaimable": "Reclamable",
 		"Short Address": "Dirección corta",
 		"View next": "Ver siguiente"
 	},

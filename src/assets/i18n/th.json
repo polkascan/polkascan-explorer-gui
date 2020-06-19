@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "บัญชี",
 		"Account Index": "ดัชนีบัญชี",
-		"Created at block": "สร้างที่บล็อก",
-		"Is reclaimable": "เรียกคืนได้",
-		"Is reclaimed": "ถูกเรียกคืน",
 		"N/A": "N / A",
 		"Updated at block": "อัปเดตที่บล็อก"
 	},
 	"AccountIndexList": {
 		"Account Indices": "ดัชนีบัญชี",
 		"Address": "ที่อยู่",
-		"Created at block": "สร้างที่บล็อก",
 		"Details": "รายละเอียด",
 		"ID": "",
 		"No items": "ไม่มีรายการ",
-		"Reclaimable": "ซึ่งเรียกคืนได้",
 		"Short Address": "ที่อยู่สั้น",
 		"View next": "ดูต่อไป"
 	},

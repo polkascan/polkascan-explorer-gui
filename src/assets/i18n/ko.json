@@ -100,20 +100,15 @@
 	"AccountIndexDetail": {
 		"Account": "계정",
 		"Account Index": "계정 인덱스",
-		"Created at block": "블록에서 생성됨",
-		"Is reclaimable": "재회수 가능",
-		"Is reclaimed": "재회수됨",
 		"N/A": "N / A",
 		"Updated at block": "블록에서 업데이트됨"
 	},
 	"AccountIndexList": {
 		"Account Indices": "계정 인덱스",
 		"Address": "주소",
-		"Created at block": "블록에서 생성됨",
 		"Details": "",
 		"ID": "ID",
 		"No items": "항목 없음",
-		"Reclaimable": "재회수 가능",
 		"Short Address": "짧은 주소",
 		"View next": "다음 사항 보기"
 	},
