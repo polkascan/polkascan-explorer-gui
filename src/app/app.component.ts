@@ -115,7 +115,7 @@ export class AppComponent implements OnInit, OnDestroy {
       case 'de':
         return 'Deutsche';
       case 'fr':
-        return 'Française';
+        return 'Français';
       case 'it':
         return 'Italiano';
       case 'es':
