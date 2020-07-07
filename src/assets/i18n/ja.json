@@ -4,7 +4,7 @@
 		"Account created": "アカウント作成",
 		"Account index": "アカウントインデックス",
 		"Account lifecycle": "アカウントライフサイクル",
-		"Account not found": "アカウントが見つかりません",
+		"Account not found": "アカウントはありません",
 		"Account reaped": "刈られたアカウント",
 		"Active": "有効",
 		"Amount": "量",
@@ -14,8 +14,8 @@
 		"Block number": "ブロック数",
 		"Bonded": "結合済",
 		"Bonded extra": "結合余剰",
-		"Call": "コール",
-		"Changed payee to": "支払人の変更",
+		"Call": "呼出",
+		"Changed payee to": "　に支払人を変更",
 		"Claim": "受け取る",
 		"Council activity": "協議会活動",
 		"Created a proposal": "プロポーザル作成",
@@ -47,14 +47,14 @@
 		"Member has renounced their candidacy": "メンバーは立候補を取り消しました",
 		"Member was kicked from council": "メンバーは協議会から追放されました",
 		"Module": "モジュール",
-		"No extrinsics found for this account": "このアカウントに外部物は見つかりませんでした",
-		"Nominated { amount } validators": "推薦バリデータ{ amount }",
+		"No extrinsics found for this account": "このアカウントにExtinsicsは見つかりませんでした",
+		"Nominated { amount } validators": "推薦されたバリデータ{ amount }",
 		"Nonce": "ナンス",
 		"Past": "過去",
 		"Past Roles": "過去の役割",
 		"Proposal activity": "提案アクティビティ",
 		"Proposed": "提案済",
-		"Proxy voted on": "Proxy投票：",
+		"Proxy voted on": " にProxyが投票：",
 		"Received a vote from ": "　より投票を受けた",
 		"Referenda activity": "投票活動",
 		"Renounced candidacy": "立候補の取り消し",
@@ -63,21 +63,21 @@
 		"Riot": "Riot",
 		"Role": "役割",
 		"Role_Council member": "協議会委員",
-		"Role_Nominator": "Nominator",
-		"Role_Registrar": "Registrar",
+		"Role_Nominator": "推薦者",
+		"Role_Registrar": "レジストラ",
 		"Role_Sudo": "Sudo",
 		"Role_Technical Committee member": "技術委員会員",
 		"Role_Treasury": "基金",
 		"Role_Validator": "バリデータ",
 		"Roles": "役割",
-		"Seconds a proposal": "再提案",
+		"Seconds a proposal": "提案を支持",
 		"Sender": "送信者",
 		"Session": "セッション",
 		"Staking activities in ": "　におけるステーキング活動",
 		"Staking activity": "ステーキング活動",
 		"Staking sessions": "ステーキングセッション",
 		"Started validating": "検証開始",
-		"Stopped validating/nominating": "検証の停止/推薦",
+		"Stopped validating/nominating": "検証/推薦の停止",
 		"Sub Identity": "サブアイデンティティ",
 		"Submitted candidacy": "立候補提出",
 		"Success": "成功",
@@ -88,20 +88,20 @@
 		"Treasury activity": "基金活動",
 		"Twitter": "Twitter",
 		"Type": "タイプ",
-		"Unbonded": "",
-		"View next": "次を見る",
-		"Voted on": "　にて投票",
+		"Unbonded": "結合解除",
+		"View next": "次へ",
+		"Voted on": "　に投票",
 		"Voted on {number} candidates locking {deposit} {currency}": "{number}の立候補者に投票し {deposit} {currency}をロック",
 		"Web": "ウェブ",
-		"Withdraw unbonded": "引出ボンド解除",
+		"Withdraw unbonded": "結合解除分を引き出す",
 		"proposal": "提案"
 	},
 	"AccountIndexDetail": {
 		"Account": "アカウント",
 		"Account Index": "アカウントインデックス",
 		"Created at block": "ブロックで作成",
-		"Is reclaimable": "再利用可能です", 
-		"Is reclaimed": "再利用されました",
+		"Is reclaimable": "再取得可能です", 
+		"Is reclaimed": "再取得されました",
 		"N/A": "N / A",
 		"Updated at block": "ブロックで更新"
 	},
@@ -111,7 +111,7 @@
 		"Created at block": "ブロックで作成",
 		"Details": "詳細",
 		"No items": "アイテムはありません",
-		"Reclaimable": "再利用可能",
+		"Reclaimable": "再取得可能",
 		"Short Address": "ショートアドレス",
 		"View next": "次へ"
 	},
@@ -136,7 +136,7 @@
 		"Amount": "量",
 		"Block": "ブロック",
 		"Block number": "ブロック数",
-		"Call": "コール",
+		"Call": "呼出",
 		"Destination": "宛先",
 		"Details": "詳細",
 		"ID": "ID",
@@ -144,20 +144,20 @@
 		"Last 25 transactions by": "　の過去25件のトランザクション",
 		"Module": "モジュール",
 		"No": "いいえ",
-		"No transactions found for this account": "このアカウントの取引は見つかりませんでした",
+		"No transactions found for this account": "このアカウントのトランザクションは見つかりませんでした",
 		"Signed": "署名済み",
 		"Success": "成功",
 		"Yes": "はい"
 	},
 	"Analytics-Charts": {
 		"Active accounts by day": "有効なアカウント/日",
-		"Average blocktime by day": "ブロックタイム平均/日",
+		"Average blocktime by day": "平均ブロックタイム/日",
 		"Charts": "チャート",
 		"New accounts by day": "新しいアカウント/日",
-		"No items": "アイテムがありません",
+		"No items": "アイテムはありません",
 		"Show": "表示",
 		"Title": "タイトル",
-		"Total transactions by day": "総取引/日",
+		"Total transactions by day": "総トランザクション/日",
 		"View next": "次へ"
 	},
 	"Analytics-Search": {
@@ -187,10 +187,10 @@
 	"Block-Detail": {
 		"Block": "ブロック",
 		"Block \"{block}\" not found": "ブロック\"{block}\"がありません",
-		"Block Author": "ブロック権限保持者",
+		"Block Author": "ブロック作成者",
 		"Block not found": "ブロックがありません",
 		"Block time": "ブロック時間",
-		"Call": "コール",
+		"Call": "呼出",
 		"Details": "詳細",
 		"Event": "イベント",
 		"Event ID": "イベントID",
@@ -248,7 +248,7 @@
 		"Council Motion": "協議会申請",
 		"Created at block": "ブロックで作成",
 		"Execution result": "実行結果",
-		"Member Threshold": "",
+		"Member Threshold": "必要議席数",
 		"Motion Hash": "申請ハッシュ",
 		"Nay votes": "反対票",
 		"Proposal": "提案",
@@ -265,7 +265,7 @@
 		"Created at Block": "ブロックで作成",
 		"Details": "詳細",
 		"Executed": "実行済",
-		"Member Threshold": "",
+		"Member Threshold": "必要議席数",
 		"Nay votes": "反対票",
 		"No items": "アイテムはありません",
 		"Proposal ID": "提案ID",
@@ -289,12 +289,12 @@
 	},
 	"Democracy-preimage-detail": {
 		"Author": "作成者",
-		"Call": "コール",
+		"Call": "呼出",
 		"Created at block": "ブロックで作成",
 		"Deposit": "デポジット",
 		"Module": "モジュール",
 		"Parameters": "パラメーター",
-		"Proposal Preimage": "",
+		"Proposal Preimage": "提案の提出",
 		"Status": "状態",
 		"Updated at block": "ブロックで更新",
 		"Verified URL": "検証されたURL",
@@ -302,7 +302,7 @@
 	},
 	"Democracy-preimage-list": {
 		"Created at Block": "ブロックで作成",
-		"Democracy Proposal Preimages": "民主主義　",
+		"Democracy Proposal Preimages": "民主主義提案の提出",
 		"Details": "詳細",
 		"Hash": "ハッシュ",
 		"No items": "アイテムはありません",
@@ -310,13 +310,13 @@
 		"View next": "次へ"
 	},
 	"Democracy-proposal-detail": {
-		"Bond": "ボンディング",
-		"Call": "コール",
+		"Bond": "結合",
+		"Call": "呼出",
 		"Created at block": "ブロックで作成",
 		"Democracy Proposal": "民主主義提案",
 		"Module": "モジュール",
 		"Parameters": "パラメーター",
-		"Proposal preimage": "",
+		"Proposal preimage": "提案の提出",
 		"Status": "状態",
 		"Updated at block": "ブロックで更新"
 	},
@@ -342,7 +342,7 @@
 		"Status": "状態",
 		"Updated at block": "ブロックで更新",
 		"Vote": "投票",
-		"Vote Threshold": "投票のしきい値",
+		"Vote Threshold": "必要投票数",
 		"Votes": "投票"
 	},
 	"Democracy-referendum-list": {
@@ -354,7 +354,7 @@
 		"Status": "状態",
 		"Success": "成功",
 		"View next": "次へ",
-		"Vote Threshold": "投票のしきい値"
+		"Vote Threshold": "必要投票数"
 	},
 	"Event-list": {
 		"All events": "すべてのイベント",
@@ -372,7 +372,7 @@
 	},
 	"Extrinsic-list": {
 		"Block": "ブロック",
-		"Call": "コール",
+		"Call": "呼出",
 		"Details": "詳細",
 		"Extrinsic ID": "Extrinsic ID",
 		"Extrinsics": "Extrinsics",
@@ -387,11 +387,11 @@
 	},
 	"Global": {
 		"DisclaimerButton": "免責事項",
-		"DisclaimerTextAnd": "",
-		"DisclaimerTextPre": "",
+		"DisclaimerTextAnd": "免責事項",
+		"DisclaimerTextPre": "免責事項",
 		"DisclaimerTextPrivacyPolicy": "免責事項およびプライベートポリシー",
 		"DisclaimerTextTermsOfUse": "免責事項および利用規約",
-		"Network": "",
+		"Network": "ネットワーク",
 		"View next": "次を見る"
 	},
 	"Harvester-admin": {
@@ -408,7 +408,7 @@
 		"All calls": "全コール",
 		"All modules": "すべてのモジュール",
 		"Block": "ブロック",
-		"Call": "コール",
+		"Call": "呼出",
 		"Details": "詳細",
 		"Filter": "フィルター",
 		"Inherent ID": "固有ID",
@@ -444,9 +444,9 @@
 		"item_Inherents": "固有",
 		"item_Logs": "ログ",
 		"item_Modules": "モジュール",
-		"item_Nominator Accounts": "Nominatorアカウント",
-		"item_Nominators": "Nominators",
-		"item_Preimages": "",
+		"item_Nominator Accounts": "推薦者アカウント",
+		"item_Nominators": "推薦者",
+		"item_Preimages": "提案の提出",
 		"item_Proposals": "提案書",
 		"item_Referenda": "民投票",
 		"item_Registrar Accounts": "Registrarアカウント",
@@ -458,7 +458,7 @@
 		"item_Transactions": "トランザクション",
 		"item_Transfers": "送金",
 		"item_Treasury Accounts": "基金アカウント",
-		"item_TreasuryProposals": "基金提案",
+		"item_TreasuryProposals": "基金提案書",
 		"item_Types": "タイプ",
 		"item_Upgrade_history": "アップグレード履歴",
 		"item_Validator Accounts": "バリデータアカウント",
@@ -476,7 +476,7 @@
 	},
 	"PlaceHolderSearch": "ブロック/トランザクション/アカウントで検索",
 	"Proposal": {
-		"Call": "コール",
+		"Call": "呼出",
 		"Description": "詳細",
 		"Module": "モジュール",
 		"Parameters": "パラメータ"
@@ -487,7 +487,7 @@
 		"Block": "ブロック",
 		"Created at block": "ブロックで作成",
 		"Execution result": "実行結果",
-		"Member Threshold": "",
+		"Member Threshold": "必要議席数",
 		"Motion Hash": "申請ハッシュ",
 		"Nay votes": "反対票",
 		"Proposal": "提案",
@@ -504,12 +504,12 @@
 		"Created at Block": "ブロックで作成",
 		"Details": "詳細",
 		"Executed": "実行されました",
-		"Member Threshold": "",
+		"Member Threshold": "必要議席数",
 		"Nay votes": "反対票",
 		"No items": "アイテムはありません",
 		"Proposal ID": "提案ID",
 		"Status": "状態",
-		"Technical committee proposals": "技術委員会提案",
+		"Technical committee proposals": "技術委員会提案書",
 		"View next": "次へ"
 	},
 	"Treasury-proposal-detail": {
@@ -523,13 +523,13 @@
 		"Value": "値"
 	},
 	"Treasury-proposal-list": {
-		"Beneficiary": "",
+		"Beneficiary": "受取人",
 		"Created at Block": "ブロックで作成",
 		"Details": "詳細",
 		"No items": "アイテムはありません",
 		"Proposal ID": "提案ID",
 		"Status": "状態",
-		"Treasury proposals": "基金提案",
+		"Treasury proposals": "基金提案書",
 		"Value": "値",
 		"View next": "次へ"
 	},
@@ -547,7 +547,7 @@
 		"Account Index": "アカウントインデックス",
 		"Address": "アドレス",
 		"Block": "ブロック",
-		"Call": "コール",
+		"Call": "呼出",
 		"Description": "概要",
 		"Hash": "ハッシュ",
 		"Index": "インデックス",
@@ -570,14 +570,14 @@
 		"clear": "クリア"
 	},
 	"runtime-call-detail": {
-		"Call": "コール",
+		"Call": "呼び出し",
 		"Documentation": "ドキュメンテーション",
 		"ID": "ID",
 		"Lookup": "調べる",
 		"Module": "モジュール",
 		"Name": "名前",
 		"Parameters": "パラメーター",
-		"Recent extrinsics using call": "呼び出しを使用した最近の外因性",
+		"Recent extrinsics using call": "呼び出しを使用した最近のextrinsics",
 		"Result": "結果",
 		"Spec version": "仕様バージョン",
 		"Type": "タイプ"
@@ -592,7 +592,7 @@
 		"Value": "値"
 	},
 	"runtime-detail": {
-		"Call Functions": "関数を呼び出す",
+		"Call Functions": "関数呼出",
 		"Events": "イベント",
 		"Modules": "モジュール",
 		"Name": "名前",
@@ -611,7 +611,7 @@
 		"Module": "モジュール",
 		"Name": "名前",
 		"Recent": "最近",
-		"Spec version": "スペックバージョン",
+		"Spec version": "仕様バージョン",
 		"Type": "タイプ",
 		"events": "イベント"
 	},
@@ -620,7 +620,7 @@
 		"Name": "名前",
 		"Runtimes": "ランタイム",
 		"Spec ID": "スペックID",
-		"Spec version": "スペックバージョン"
+		"Spec version": "仕様バージョン"
 	},
 	"runtime-module-detail": {
 		"Attributes": "属性",
@@ -642,7 +642,7 @@
 		"for runtime": "ランタイム用"
 	},
 	"runtime-module-list": {
-		"Call Functions": "関数を呼び出す",
+		"Call Functions": "関数呼出",
 		"Constants": "定数",
 		"Details": "詳細",
 		"Error Types": "エラータイプ",
@@ -650,7 +650,7 @@
 		"Name": "名前",
 		"Runtime Modules": "ランタイムモジュール",
 		"Storage Functions": "ストレージ機能",
-		"View next": ""
+		"View next": "次へ"
 	},
 	"runtime-storage-detail": {
 		"Default": "デフォルト",
@@ -681,7 +681,7 @@
 		"Era": "時代",
 		"Session": "セッション",
 		"Start at block": "ブロックから開始",
-		"Total bonded": "合計結合",
+		"Total bonded": "結合合計",
 		"Validators": "バリデーター"
 	},
 	"session-list": {
@@ -698,10 +698,10 @@
 		"Address": "アドレス",
 		"Bonded": "結合済み",
 		"No items": "アイテムはありません",
-		"Nominators for current session": "現在のセッションのノミネーター"
+		"Nominators for current session": "現在のセッションの推薦者"
 	},
 	"session-validator-detail": {
-		"Additional bonded by nominators": "ノミネーターによる追加の結合",
+		"Additional bonded by nominators": "推薦者による追加の結合",
 		"Address": "アドレス",
 		"Bonded": "結合済み",
 		"Bonded Total": "結合合計",
@@ -709,17 +709,17 @@
 		"Commission": "手数料",
 		"Controller account": "コントローラーアカウント",
 		"No nominators for this validator": "このバリデーターの推薦者はいません",
-		"Nominators": "ノミネーター",
+		"Nominators": "推薦者",
 		"Stash account": "Stashアカウント",
 		"Validator": "バリデーター",
 		"for session": "セッション用",
-		"nominators": "ノミネーター"
+		"nominators": "推薦者"
 	},
 	"session-validator-list": {
 		"Address": "アドレス",
 		"Details": "詳細",
 		"No items": "アイテムはありません",
-		"Total bonded": "合計結合",
+		"Total bonded": "結合合計",
 		"Validators for current session": "現在のセッションのバリデーター"
 	},
 	"transaction-detail": {
@@ -728,10 +728,10 @@
 		"Triggered Events": "発生したイベント"
 	},
 	"transaction-list": {
-		"All calls": "全コール",
+		"All calls": "すべての呼出",
 		"All modules": "すべてのモジュール",
 		"Block": "ブロック",
-		"Call": "コール",
+		"Call": "呼出",
 		"Details": "詳細",
 		"Filter": "フィルタ",
 		"From": "から",
