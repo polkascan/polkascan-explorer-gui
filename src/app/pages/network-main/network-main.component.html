@@ -77,23 +77,6 @@
                   </div>
                 </div>
 
-                <div class="navbar-item has-dropdown" [ngClass]="{'is-hoverable': showSubmenus}">
-                  <a class="navbar-link">
-                    {{ 'NavBar.Staking' | translate }}
-                  </a>
-                  <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                     <a class="navbar-item" routerLink="/{{ networkId }}/session/session">
-                      {{ 'NavBar.item_Sessions' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/session/validator">
-                      {{ 'NavBar.item_Validators' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/session/nominator">
-                      {{ 'NavBar.item_Nominators' | translate }}
-                    </a>
-                  </div>
-                </div>
-
                 <div *ngIf="!singleNetworkVersion" class="navbar-item has-dropdown" [ngClass]="{'is-hoverable': showSubmenus}">
                   <a class="navbar-link">
                     {{ 'NavBar.Governance' | translate }}
