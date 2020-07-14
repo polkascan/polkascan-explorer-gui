@@ -79,32 +79,6 @@
 
                 <div *ngIf="!singleNetworkVersion" class="navbar-item has-dropdown" [ngClass]="{'is-hoverable': showSubmenus}">
                   <a class="navbar-link">
-                    {{ 'NavBar.Governance' | translate }}
-                  </a>
-                  <div class="navbar-dropdown" (click)="toggleSubmenus()">
-                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/proposal">
-                      {{ 'NavBar.item_Proposals' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/referendum">
-                      {{ 'NavBar.item_Referenda' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/council/motion">
-                      {{ 'NavBar.item_CouncilMotions' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/techcomm/proposal">
-                      {{ 'NavBar.item_TechCommProposals' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/treasury/proposal">
-                      {{ 'NavBar.item_TreasuryProposals' | translate }}
-                    </a>
-                    <a class="navbar-item" routerLink="/{{ networkId }}/democracy/preimage">
-                      {{ 'NavBar.item_Preimages' | translate }}
-                    </a>
-                  </div>
-                </div>
-
-                <div *ngIf="!singleNetworkVersion" class="navbar-item has-dropdown" [ngClass]="{'is-hoverable': showSubmenus}">
-                  <a class="navbar-link">
                     {{ 'NavBar.Analytics' | translate }}
                   </a>
                   <div class="navbar-dropdown" (click)="toggleSubmenus()">
