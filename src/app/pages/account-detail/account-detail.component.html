@@ -489,6 +489,7 @@
                                   <td *ngIf="item.attributes.call_id == 'validate'">{{ 'AccountDetail.Started validating' | translate }}</td>
                                   <td *ngIf="item.attributes.call_id == 'nominate'">{{ 'AccountDetail.Nominated { amount } validators' | translate:{'amount': item.attributes.params[0].value.length} }}</td>
                                   <td *ngIf="item.attributes.call_id == 'set_payee'">{{ 'AccountDetail.Changed payee to' | translate }} {{item.attributes.params[0].value}}</td>
+                                  <td *ngIf="item.attributes.call_id == 'batch'">{{ 'AccountDetail.Multiple actions' | translate }}</td>
                                   <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/transaction/{{ item.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
                               </tr>
                           </tbody>
