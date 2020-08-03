@@ -294,7 +294,7 @@
 		"Deposit": "Depósito",
 		"Module": "Módulo",
 		"Parameters": "Parámetros",
-		"Proposal Preimage": "Preimagen ",
+		"Proposal Preimage": "Preimagen de Propuesta",
 		"Status": "Estado",
 		"Updated at block": "Actualizado en el bloque",
 		"Verified URL": "URL verificada",
@@ -316,7 +316,7 @@
 		"Democracy Proposal": "Propuesta de Democracia",
 		"Module": "Módulo",
 		"Parameters": "Parámetros",
-		"Proposal preimage": "Preimágen de Propuesta",
+		"Proposal preimage": "Preimagen de Propuesta",
 		"Status": "Estado",
 		"Updated at block": "Actualizado en el bloque"
 	},
