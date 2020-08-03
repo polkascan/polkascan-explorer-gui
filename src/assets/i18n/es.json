@@ -198,8 +198,8 @@
 		"Extrinsics Root": "Raíz del Extrinsics",
 		"From": "Desde",
 		"Hash": "Hash",
-		"Inherent ID": "ID inherente",
-		"Inherents": "Inherentes",
+		"Inherent ID": "ID Inherent",
+		"Inherents": "Inherents",
 		"Log ID": "ID del log",
 		"Logs": "Logs",
 		"Module": "Módulo",
@@ -411,8 +411,8 @@
 		"Call": "Llamada",
 		"Details": "Detalles",
 		"Filter": "Filtrar",
-		"Inherent ID": "ID inherente",
-		"Inherents": "Inherentes",
+		"Inherent ID": "ID Inherent",
+		"Inherents": "Inherents",
 		"Module": "Módulo",
 		"No items": "Sin ítems",
 		"Success": "Éxito"
@@ -466,7 +466,7 @@
 	},
 	"Network-overview": {
 		"Explore": "Explorar",
-		"IntroductionText": "Texto Introductorio",
+		"IntroductionText": "POLKASCAN es parte de WEB3SCAN y ofrece data de multi-chain en tiempo real. WEB3SCAN hace que los datos de la blockchain sean accesibles y comprensibles",
 		"Name": "Nombre",
 		"Networks": "Red"
 	},
@@ -474,7 +474,7 @@
 		"No page could be found for current URL": "No se encontró ninguna página para la URL actual",
 		"Page not found": "Página no encontrada"
 	},
-	"PlaceHolderSearch": "Buscar...",
+	"PlaceHolderSearch": "Buscar por bloque / transacción / cuenta...",
 	"Proposal": {
 		"Call": "Llamada",
 		"Description": "Descripción",
@@ -509,7 +509,7 @@
 		"No items": "Sin ítems",
 		"Proposal ID": "ID de propuesta",
 		"Status": "Estado",
-		"Technical committee proposals": "Propuestas del comité ténico",
+		"Technical committee proposals": "Propuestas del comité técnico",
 		"View next": "Ver siguiente"
 	},
 	"Treasury-proposal-detail": {
@@ -596,7 +596,7 @@
 		"Events": "Eventos",
 		"Modules": "Módulos",
 		"Name": "Nombre",
-		"Runtime": "Tiempo De Ejecución",
+		"Runtime": "Entorno",
 		"Spec version": "Versión de especificaciones",
 		"Storage Functions": "Funciones de almacenamiento",
 		"Types": "Tipos"
@@ -618,7 +618,7 @@
 	"runtime-list": {
 		"Details": "Detalles",
 		"Name": "Nombre",
-		"Runtimes": "Tiempos de ejecución",
+		"Runtimes": "Entornos",
 		"Spec ID": "ID de especificación",
 		"Spec version": "Versión de especificaciones"
 	},
@@ -639,7 +639,7 @@
 		"Storage functions": "Funciones de almacenamiento",
 		"Type": "Tipo",
 		"Value": "Valor",
-		"for runtime": "para tiempo de ejecución"
+		"for runtime": "para entornos"
 	},
 	"runtime-module-list": {
 		"Call Functions": "Funciones de llamada",
@@ -648,7 +648,7 @@
 		"Error Types": "Tipos de Error",
 		"Events": "Eventos",
 		"Name": "Nombre",
-		"Runtime Modules": "Módulos de tiempo de ejecución",
+		"Runtime Modules": "Módulos del Entorno",
 		"Storage Functions": "Funciones de almacenamiento",
 		"View next": "Ver siguiente"
 	},
@@ -669,8 +669,8 @@
 	"runtime-type-list": {
 		"Compatible with Polkascan": "Compatible con Polkascan",
 		"RUST primitive": "Primitiva RUST",
-		"Runtime Types": "Tipos de tiempo de ejecución",
-		"Runtime primitive": "Primitiva de tiempo de ejecución",
+		"Runtime Types": "Tipos de entorno",
+		"Runtime primitive": "Primitiva de entorno",
 		"Type string": "Tipo string"
 	},
 	"session-detail": {
