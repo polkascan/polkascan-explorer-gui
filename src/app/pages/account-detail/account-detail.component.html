@@ -18,6 +18,13 @@
         </div>
       </div>
       <div *ngIf="!account.is_loading && !resourceNotFound">
+
+        <article class="message is-warning" *ngIf="networkTokenSymbol == 'DOT (old)'">
+          <div class="message-body">
+            <p>On approximately August 21st at 13:15 UTC (block number 1,248,328), the DOT token will undergo a <a href="https://polkadot.js.org/apps/#/poll" target="_blank">redenomination</a> from its original sale.</p><p>New DOTs will be 100x smaller than DOTs (old). Therefore, your DOT balance will be 100x higher and the price per DOT will be 100x lower. The percentage of the DOTs you own relative to total supply will be unchanged. This will not affect the total value of your position.</p><p>See the <a href="https://polkadot.network/the-results-are-in/" rel="noopener noreferrer" target="_blank">Polkadot blog post</a> for more information.</p>
+          </div>
+        </article>
+
         <section class="info-tiles">
           <div class="card events-card">
               <header class="card-header">

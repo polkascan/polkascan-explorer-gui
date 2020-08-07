@@ -729,6 +729,10 @@ nav.navbar.networks {
   }
 }
 
+.message .message-body {
+  font-size: 14px;
+}
+
 // FIXME Temporary Edge menu fix
 @import '~node_modules/bulma/sass/utilities/mixins';
 
