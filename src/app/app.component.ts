@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public currentNetwork;
   public showNavigation = false;
   public showSubmenus = true;
-  public langs = ['en', 'zh', 'ko', 'ja', 'es', 'ru', 'uk', 'hi', 'pt', 'fr', 'tr', 'th'];
+  public langs = ['en', 'zh', 'ko', 'ja', 'es', 'de', 'ru', 'uk', 'hi', 'pt', 'fr', 'tr', 'th'];
   public selectedLanguage = 'en';
 
   public networks: DocumentCollection<Network>;
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
     translate.addLangs(this.langs);
     translate.setDefaultLang('en');
 
-    this.selectedLanguage = translate.getBrowserLang().match(/en|zh|ko|ru|uk|hi|pt|fr|ja|tr|th|es/) ? translate.getBrowserLang() : 'en';
+    this.selectedLanguage = translate.getBrowserLang().match(/en|zh|ko|de|ru|uk|hi|pt|fr|ja|tr|th|es/) ? translate.getBrowserLang() : 'en';
     translate.use(this.selectedLanguage);
   }
 

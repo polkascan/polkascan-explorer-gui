@@ -26,27 +26,16 @@
 
 export const environment = {
   production: false,
-  // jsonApiDiscoveryRootUrl: 'https://discovery-31.polkascan.io',
-  // jsonApiRootUrl: null,
-  // network: {
-  //   name: null,
-  //   networkId: null,
-  //   networkType: null,
-  //   chainType: null,
-  //   tokenSymbol: null,
-  //   tokenDecimals: null,
-  //   colorCode: null
-  // }
-  jsonApiDiscoveryRootUrl: null,
-  jsonApiRootUrl: 'https://api-02.polkascan.io/kusama/api/v1',
+  jsonApiDiscoveryRootUrl: 'https://discovery-31.polkascan.io',
+  jsonApiRootUrl: null,
   network: {
-    name: 'Kusama',
-    networkId: 'kusama',
-    networkType: 'pre',
-    chainType: 'relay',
-    tokenSymbol: 'KSM',
-    tokenDecimals: 12,
-    colorCode: 'd32e79'
+    name: null,
+    networkId: null,
+    networkType: null,
+    chainType: null,
+    tokenSymbol: null,
+    tokenDecimals: null,
+    colorCode: null
   }
 };
 
