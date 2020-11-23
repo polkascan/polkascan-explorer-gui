@@ -41,6 +41,7 @@
 		"Judgement requested for registrar #{registrar}": "Judgement requested for registrar #{registrar}",
 		"Last 25 balance transfers": "Balance transfers",
 		"Last 25 slash events": "Slash events",
+		"Last 25 staking rewards": "Staking rewards",
 		"Last 25 transactions": "Transactions",
 		"Legal name": "Legal name",
 		"Member activity": "Election activity",

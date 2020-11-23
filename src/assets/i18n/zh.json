@@ -41,6 +41,7 @@
 		"Judgement requested for registrar #{registrar}": "Judgement requested for registrar #{registrar}",
 		"Last 25 balance transfers": "余额转账",
 		"Last 25 slash events": "减少事件",
+		"Last 25 staking rewards": "Staking rewards",
 		"Last 25 transactions": "交易",
 		"Legal name": "本名",
 		"Member activity": "Member activity",

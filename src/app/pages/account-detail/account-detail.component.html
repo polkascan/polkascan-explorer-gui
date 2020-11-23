@@ -160,6 +160,18 @@
                       <span>{{ 'AccountDetail.Last 25 balance transfers' | translate }}</span>
                     </a>
                   </li>
+                  <li [ngClass]="{'is-active': currentTab == 'rewards'}" *ngIf="rewards?.data.length > 0">
+                    <a routerLink="." fragment="rewards">
+                      <span class="icon is-small"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Last 25 staking rewards' | translate }}</span>
+                    </a>
+                  </li>
+                  <li [ngClass]="{'is-active': currentTab == 'slashes'}" *ngIf="slashes?.data.length > 0">
+                    <a routerLink="." fragment="slashes">
+                      <span class="icon is-small"><i class="fas fa-user-alt-slash" aria-hidden="true"></i></span>
+                      <span>{{ 'AccountDetail.Last 25 slash events' | translate }}</span>
+                    </a>
+                  </li>
                   <li [ngClass]="{'is-active': currentTab == 'identity'}" *ngIf="identityActivity?.data.length > 0">
                     <a routerLink="." fragment="identity">
                       <span class="icon is-small"><i class="fas fa-id-card" aria-hidden="true"></i></span>
@@ -176,12 +188,6 @@
                     <a routerLink="." fragment="referenda">
                       <span class="icon is-small"><i class="fas fa-person-booth" aria-hidden="true"></i></span>
                       <span>{{ 'AccountDetail.Referenda activity' | translate }}</span>
-                    </a>
-                  </li>
-                  <li [ngClass]="{'is-active': currentTab == 'slashes'}" *ngIf="slashes?.data.length > 0">
-                    <a routerLink="." fragment="slashes">
-                      <span class="icon is-small"><i class="fas fa-user-alt-slash" aria-hidden="true"></i></span>
-                      <span>{{ 'AccountDetail.Last 25 slash events' | translate }}</span>
                     </a>
                   </li>
                   <li [ngClass]="{'is-active': currentTab == 'bonding'}" *ngIf="stakingBondActivity?.data.length > 0">
@@ -441,6 +447,34 @@
                   </div>
                   <footer class="card-footer" *ngIf="referendumActivity?.data.length == 25">
                       <a class="card-footer-item" routerLink="." [queryParams]="{ referendumActivityPage: referendumActivityPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
+                  </footer>
+              </div>
+              <div class="card-table" id="rewards" *ngIf="currentTab == 'rewards'">
+                  <div class="content">
+                      <app-loading-box *ngIf="!rewards || rewards.is_loading"></app-loading-box>
+                      <table class="table is-fullwidth is-striped" *ngIf="rewards && rewards.data.length > 0">
+                           <thead>
+                            <tr>
+                              <th></th>
+                              <th class="is-hidden-mobile">{{ 'AccountDetail.Block' | translate }}</th>
+                              <th>{{ 'AccountDetail.Amount' | translate }}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let reward of rewards.data; trackBy: rewards.trackBy">
+                                  <td width="5%">
+                                    <i class="fa fa-hand-holding-usd"></i>
+                                  </td>
+                                  <td class="is-hidden-mobile"><a routerLink="{{ networkURLPrefix }}/block/{{ reward.attributes.block_id }}">{{ reward.attributes.block_id }}</a></td>
+                                  <td>{{ formatBalance(reward.attributes.attributes[1].value) | number:'1.0-15' }} {{ networkTokenSymbol }}</td>
+                                  <td width="5%"><a class="button is-small is-primary" routerLink="{{ networkURLPrefix }}/event/{{ reward.id }}">{{ 'AccountDetail.Details' | translate }}</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <footer class="card-footer" *ngIf="rewards?.data.length == 25">
+                      <a class="card-footer-item" routerLink="." [queryParams]="{ rewardsPage: rewardsPage + 1}" [fragment]="currentTab">{{ 'AccountDetail.View next' | translate }}</a>
                   </footer>
               </div>
               <div class="card-table" id="slashes" *ngIf="currentTab == 'slashes'">

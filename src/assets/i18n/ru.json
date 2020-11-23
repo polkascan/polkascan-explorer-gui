@@ -41,6 +41,7 @@
 		"Judgement requested for registrar #{registrar}": "Запрошена оценка от регистратора #{registrar}",
 		"Last 25 balance transfers": "Последние 25 трансферов",
 		"Last 25 slash events": "Последние 25 штрафов",
+		"Last 25 staking rewards": "Staking rewards",
 		"Last 25 transactions": "Последние 25 транзакций",
 		"Legal name": "Юридическое имя",
 		"Member activity": "История голосов в поддержку",

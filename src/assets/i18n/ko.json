@@ -41,6 +41,7 @@
 		"Judgement requested for registrar #{registrar}": "#{registrar} 기록원에 평가를 요청함",
 		"Last 25 balance transfers": "최근 잔액 이체 사항 25건",
 		"Last 25 slash events": "최근 삭감 사항 25건",
+		"Last 25 staking rewards": "Staking rewards",
 		"Last 25 transactions": "최근 거래 사항 25건",
 		"Legal name": "법적 이름",
 		"Member activity": "회원 활동",

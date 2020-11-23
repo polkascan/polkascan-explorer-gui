@@ -8,7 +8,7 @@
 		"Account reaped": "Konto eingebracht",
 		"Active": "Aktiv",
 		"Amount": "Betrag",
- 		"Authored Blocks": "Erstellte Blöcke",
+		"Authored Blocks": "Erstellte Blöcke",
 		"Balance History": "Kontostandverlauf",
 		"Block": "Block",
 		"Block number": "Blocknummer",
@@ -29,7 +29,7 @@
 		"Election activity": "Wahlbetätigung",
 		"Email": "Email",
 		"Free Balance": "Freies Guthaben",
-		"Heartbeat received": "Heartbeat empfangen",
+		"Heartbeart received": "",
 		"ID": "ID",
 		"Identity activity": "Identitätsaktivität",
 		"Identity cleared": "Identität geklärt",
@@ -41,6 +41,7 @@
 		"Judgement requested for registrar #{registrar}": "Urteilsantrag erstellt für Registrator #{registrar}",
 		"Last 25 balance transfers": "Letzte 25 Saldoüberweisungen",
 		"Last 25 slash events": "Letzte 25 Reduktion-Events",
+		"Last 25 staking rewards": "Staking rewards",
 		"Last 25 transactions": "Letzte 25 Transaktionen",
 		"Legal name": "Rechtlicher Name",
 		"Member activity": "Mitgliedsaktivität",
@@ -173,7 +174,7 @@
 		"Value": "Wert"
 	},
 	"BalanceTransferList": {
-		"Balance transfer": "Saldoüberweisung",
+		"Balance transfers": "",
 		"Block": "Block",
 		"Destination": "Ziel",
 		"Details": "Details",
@@ -260,7 +261,7 @@
 	"Council-motion-list": {
 		"Aye votes": "Ja-Stimmen",
 		"Council Motions": "Ratsanträge",
-		"Created at block": "Erstellt bei Block",
+		"Created at Block": "",
 		"Details": "Details",
 		"Executed": "Ausgeführt",
 		"Member Threshold": "Mitgliedsgrenzwert",
@@ -299,7 +300,7 @@
 		"Verified by Polkascan": "Von Polkascan verifiziert"
 	},
 	"Democracy-preimage-list": {
-		"Created at block": "Erstellt bei Block",
+		"Created at Block": "",
 		"Democracy Proposal Preimages": "Demokratie-Vorschlag Preimages",
 		"Details": "Details",
 		"Hash": "Hash",
@@ -344,7 +345,7 @@
 		"Votes": "Stimmen"
 	},
 	"Democracy-referendum-list": {
-		"Created at block": "Erstellt bei Block",
+		"Created at Block": "",
 		"Democracy Referenda": "Demokratie- Referenden",
 		"Details": "Details",
 		"No items": "Keine Elemente",
@@ -484,7 +485,7 @@
 	},
 	"Tech-comm-proposal-list": {
 		"Aye votes": "Ja-Stimmen",
-		"Created at block": "Erstellt bei Block",
+		"Created at Block": "",
 		"Details": "Details",
 		"Executed": "Ausgeführt",
 		"Member Threshold": "Mitgliedsschwelle",
@@ -507,7 +508,7 @@
 	},
 	"Treasury-proposal-list": {
 		"Beneficiary": "Empfänger",
-		"Created at block": "Erstellt bei Block",
+		"Created at Block": "",
 		"Details": "Details",
 		"No items": "Keine Elemente",
 		"Proposal ID": "Vorschlag-ID",
