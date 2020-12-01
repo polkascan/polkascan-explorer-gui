@@ -113,7 +113,7 @@ export class AppComponent implements OnInit, OnDestroy {
   langsTitle(selectedLang: string) {
     switch (selectedLang) {
       case 'de':
-        return 'Deutsche';
+        return 'Deutsch';
       case 'fr':
         return 'Français';
       case 'it':
