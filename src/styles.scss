@@ -120,6 +120,40 @@ nav.navbar {
   }
 }
 
+.network-rococo {
+  .hero.welcome.is-info {
+    background: linear-gradient(to right, #6f36dc, #6f36dc);
+  }
+
+  .button.is-primary {
+    background-color: #6f36dc;
+  }
+
+  .button.is-primary:hover {
+    background-color: #6f36dc;
+  }
+
+  .card-header-icon {
+    color: #6f36dc;
+  }
+  .navbar {
+    background: #6f36dc;
+  }
+
+  .tabs li.is-active a {
+    color: #6f36dc;
+    border-bottom-color: #6f36dc;
+  }
+
+  a {
+    color: #6f36dc;
+  }
+
+  .navbar-item a, a.navbar-item {
+    color: #4a4a4a;
+  }
+}
+
 .network-encointer {
   .hero.welcome.is-info {
     background: linear-gradient(to right, #3b64b0, #3b64b0);
