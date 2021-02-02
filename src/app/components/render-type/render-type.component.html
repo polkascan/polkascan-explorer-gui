@@ -1,5 +1,6 @@
 <ng-container [ngSwitch]="item.type">
   <div *ngSwitchCase="'Address'"><a routerLink="{{ networkURLPrefix }}/account/{{ item.value }}" class="address-mobile-format"><app-identicon [accountId]="item.orig_value"></app-identicon> {{ item.value }}</a></div>
+  <div *ngSwitchCase="'LookupSource'"><a routerLink="{{ networkURLPrefix }}/account/{{ item.value }}" class="address-mobile-format"><app-identicon [accountId]="item.orig_value"></app-identicon> {{ item.value }}</a></div>
   <div *ngSwitchCase="'AuthorityId'"><a routerLink="{{ networkURLPrefix }}/account/{{ item.value }}" class="address-mobile-format"><app-identicon [accountId]="item.orig_value"></app-identicon> {{ item.value }}</a></div>
   <div *ngSwitchCase="'<Lookup as StaticLookup>::Source'"><a routerLink="{{ networkURLPrefix }}/account/{{ item.value }}" class="address-mobile-format"><app-identicon [accountId]="item.orig_value"></app-identicon> {{ item.value }}</a></div>
   <div *ngSwitchCase="'AccountId'"><a routerLink="{{ networkURLPrefix }}/account/{{ item.value }}" class="address-mobile-format"><app-identicon [accountId]="item.orig_value"></app-identicon> {{ item.value }}</a></div>
