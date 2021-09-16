@@ -44,7 +44,7 @@
     "ngx-webstorage-service": "^4.1.0",
     "node-sass": "^4.14.1",
     "rxjs": "^6.5.5",
-    "set-value": "^3.0.2",
+    "set-value": "^4.0.1",
     "tslib": "^1.13.0",
     "zone.js": "~0.8.26"
   },
