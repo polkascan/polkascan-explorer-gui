@@ -2,13 +2,6 @@
     <div class="column is-12">
         <app-polkascan-header></app-polkascan-header>
 
-        <article class="message is-warning" *ngIf="networkTokenSymbol == 'New DOT'">
-          <div class="message-body">
-            <p>At block number 1,248,328 the DOT token underwent a redenomination from its original sale.</p>
-            <p>New DOT are 100x smaller than DOT (old). Therefore, your DOT balance is 100x higher and the price per DOT is 100x lower. The percentage of the DOT you own relative to total supply is unchanged. This does not affect the total value of your position.</p><p>See the <a href="https://polkadot.network/the-results-are-in/" rel="noopener noreferrer" target="_blank">Polkadot blog post</a> for more information.</p>
-          </div>
-        </article>
-
         <section class="is-12" id="search">
             <div class="card">
                 <div class="card-content">
@@ -25,76 +18,6 @@
                         </div>
                       </form>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="info-tiles is-hidden-mobile">
-            <div class="tile is-ancestor has-text-centered">
-                <div class="tile is-parent is-2-mobile">
-                    <article class="tile is-child box">
-                      <a routerLink="{{ networkURLPrefix }}/block/">
-                        <div>
-                        <span class="icon">
-                            <i class="fa fa-cube fa-2x"></i>
-                        </span>
-                        <p class="title" *ngIf="networkstats$ | async as networkstats">{{ networkstats.attributes.best_block| number: '1.'}}</p>
-                        <p class="subtitle">{{ 'DashBoard.Finalized Block' | translate }}</p>
-                          </div>
-                      </a>
-                    </article>
-                </div>
-                <div class="tile is-parent is-2-mobile">
-                    <article class="tile is-child box">
-                      <a routerLink="{{ networkURLPrefix }}/extrinsic">
-                        <div>
-                          <span class="icon">
-                              <i class="fa fa-file-signature fa-2x"></i>
-                          </span>
-                          <p *ngIf="networkstats$ | async as networkstats" class="title">{{ networkstats.attributes.total_signed_extrinsics | number: '1.'}}</p>
-                          <p class="subtitle">{{ 'DashBoard.Transactions' | translate }}</p>
-                        </div>
-                      </a>
-                    </article>
-                </div>
-                <div class="tile is-parent is-2-mobile">
-                    <article class="tile is-child box">
-                      <a routerLink="{{ networkURLPrefix }}/event">
-                        <div>
-                          <span class="icon">
-                              <i class="fa fa-calendar-check fa-2x"></i>
-                          </span>
-                          <p class="title" *ngIf="networkstats$ | async as networkstats">{{ networkstats.attributes.total_events_module | number: '1.'}}</p>
-                          <p class="subtitle">{{ 'DashBoard.Module Events' | translate }}</p>
-                        </div>
-                      </a>
-                    </article>
-                </div>
-                <div class="tile is-parent is-2-mobile">
-                    <article class="tile is-child box">
-                      <a routerLink="{{ networkURLPrefix }}/account">
-                        <div>
-                          <span class="icon">
-                              <i class="fa fa-id-card fa-2x"></i>
-                          </span>
-                          <p *ngIf="networkstats$ | async as networkstats" class="title">{{ networkstats.attributes.total_accounts }}</p>
-                          <p class="subtitle">{{ 'DashBoard.Active Accounts' | translate }}</p>
-                        </div>
-                      </a>
-                    </article>
-                </div>
-                <div class="tile is-parent is-2-mobile">
-                    <article class="tile is-child box">
-                      <a routerLink="{{ networkURLPrefix }}/runtime">
-                        <div>
-                          <span class="icon">
-                              <i class="fa fa-cogs fa-2x"></i>
-                          </span>
-                          <p *ngIf="networkstats$ | async as networkstats" class="title">{{ networkstats.attributes.total_runtimes }}</p>
-                          <p class="subtitle">{{ 'DashBoard.Runtime Versions' | translate }}</p>
-                        </div>
-                      </a>
-                    </article>
                 </div>
             </div>
         </section>
